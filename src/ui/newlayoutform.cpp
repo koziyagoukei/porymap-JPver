@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #include "newlayoutform.h"
 #include "ui_newlayoutform.h"
 #include "project.h"
@@ -86,7 +87,7 @@ bool NewLayoutForm::validateMapDimensions() {
     QString errorText;
     if (size > maxSize) {
         QSize addition = m_project->getMapSizeAddition();
-        errorText = QString("The specified width and height are too large.\n"
+        errorText = QCoreApplication::translate("Porymap", "The specified width and height are too large.\n"
                     "The maximum map width and height is the following: (width + %1) * (height + %2) <= %3\n"
                     "The specified map width and height was: (%4 + %1) * (%5 + %2) = %6")
                         .arg(addition.width())
@@ -108,9 +109,9 @@ bool NewLayoutForm::validatePrimaryTileset(bool allowEmpty) {
 
     QString errorText;
     if (name.isEmpty()) {
-        if (!allowEmpty) errorText = QString("The Primary Tileset cannot be empty.");
+        if (!allowEmpty) errorText = QCoreApplication::translate("Porymap", "The Primary Tileset cannot be empty.");
     } else if (ui->comboBox_PrimaryTileset->findText(name) < 0) {
-        errorText = QString("The Primary Tileset '%1' does not exist.").arg(name);
+        errorText = QCoreApplication::translate("Porymap", "The Primary Tileset '%1' does not exist.").arg(name);
     }
 
     bool isValid = errorText.isEmpty();
@@ -125,9 +126,9 @@ bool NewLayoutForm::validateSecondaryTileset(bool allowEmpty) {
 
     QString errorText;
     if (name.isEmpty()) {
-        if (!allowEmpty) errorText = QString("The Secondary Tileset cannot be empty.");
+        if (!allowEmpty) errorText = QCoreApplication::translate("Porymap", "The Secondary Tileset cannot be empty.");
     } else if (ui->comboBox_SecondaryTileset->findText(name) < 0) {
-        errorText = QString("The Secondary Tileset '%1' does not exist.").arg(name);
+        errorText = QCoreApplication::translate("Porymap", "The Secondary Tileset '%1' does not exist.").arg(name);
     }
 
     bool isValid = errorText.isEmpty();

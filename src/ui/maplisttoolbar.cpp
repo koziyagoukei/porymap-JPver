@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #include "maplisttoolbar.h"
 #include "ui_maplisttoolbar.h"
 #include "editor.h"
@@ -22,7 +23,7 @@ MapListToolBar::MapListToolBar(QWidget *parent)
         toggleEmptyFolders();
 
         // Display message to let user know what just happened (if there are no empty folders visible it's not obvious).
-        const QString message = QString("%1 empty folders!").arg(m_emptyFoldersVisible ? "Showing" : "Hiding");
+        const QString message = QCoreApplication::translate("Porymap", "%1 empty folders!").arg(m_emptyFoldersVisible ? QCoreApplication::translate("Porymap", "Showing") : QCoreApplication::translate("Porymap", "Hiding"));
         QToolTip::showText(ui->button_ToggleEmptyFolders->mapToGlobal(QPoint(0, 0)), message);
     });
 }
@@ -93,7 +94,7 @@ void MapListToolBar::setEmptyFoldersVisible(bool visible) {
     }
 
     // Update tool tip to reflect what will happen if the button is pressed.
-    const QString toolTip = Util::toHtmlParagraph(QString("%1 empty folders in the list.").arg(visible ? "Hide" : "Show"));
+    const QString toolTip = Util::toHtmlParagraph(QCoreApplication::translate("Porymap", "%1 empty folders in the list.").arg(visible ? QCoreApplication::translate("Porymap", "Hide") : QCoreApplication::translate("Porymap", "Show")));
     ui->button_ToggleEmptyFolders->setToolTip(toolTip);
 
     const QSignalBlocker b(ui->button_ToggleEmptyFolders);

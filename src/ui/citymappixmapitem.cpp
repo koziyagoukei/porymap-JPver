@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #include "citymappixmapitem.h"
 #include "imageproviders.h"
 #include "config.h"
@@ -43,7 +44,7 @@ void CityMapPixmapItem::draw() {
 void CityMapPixmapItem::save() {
     QFile binFile(file);
     if (!binFile.open(QIODevice::WriteOnly)) {
-        logError(QString("Cannot save city map tilemap to %1.").arg(file));
+        logError(QCoreApplication::translate("Porymap", "Cannot save city map tilemap to %1.").arg(file));
         return;
     }
     if (projectConfig.baseGameVersion == BaseGameVersion::pokeruby) {

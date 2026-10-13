@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #include "newmapdialog.h"
 #include "maplayout.h"
 #include "mainwindow.h"
@@ -54,7 +55,7 @@ NewMapDialog::NewMapDialog(Project *project, const Map *mapToCopy, QWidget *pare
     auto sectionLayout = new QVBoxLayout();
     sectionLayout->addWidget(this->headerForm);
 
-    this->headerSection = new CollapsibleSection("Header Data", porymapConfig.newMapHeaderSectionExpanded, 150, this);
+    this->headerSection = new CollapsibleSection(QCoreApplication::translate("Porymap", "Header Data"), porymapConfig.newMapHeaderSectionExpanded, 150, this);
     this->headerSection->setContentLayout(sectionLayout);
     ui->layout_HeaderData->addWidget(this->headerSection);
 
@@ -149,9 +150,9 @@ bool NewMapDialog::validateName(bool allowEmpty) {
 
     QString errorText;
     if (name.isEmpty()) {
-        if (!allowEmpty) errorText = QString("%1 cannot be empty.").arg(ui->label_Name->text());
+        if (!allowEmpty) errorText = QCoreApplication::translate("Porymap", "%1 cannot be empty.").arg(ui->label_Name->text());
     } else if (!this->project->isIdentifierUnique(name)) {
-        errorText = QString("%1 '%2' is not unique.").arg(ui->label_Name->text()).arg(name);
+        errorText = QCoreApplication::translate("Porymap", "%1 '%2' is not unique.").arg(ui->label_Name->text()).arg(name);
     }
 
     bool isValid = errorText.isEmpty();
@@ -175,9 +176,9 @@ bool NewMapDialog::validateGroup(bool allowEmpty) {
 
     QString errorText;
     if (groupName.isEmpty()) {
-        if (!allowEmpty) errorText = QString("%1 cannot be empty.").arg(ui->label_Group->text());
+        if (!allowEmpty) errorText = QCoreApplication::translate("Porymap", "%1 cannot be empty.").arg(ui->label_Group->text());
     } else if (!this->project->groupNames.contains(groupName) && !this->project->isIdentifierUnique(groupName)) {
-        errorText = QString("%1 must either be the name of an existing map group, or a unique identifier for a new map group.").arg(ui->label_Group->text());
+        errorText = QCoreApplication::translate("Porymap", "%1 must either be the name of an existing map group, or a unique identifier for a new map group.").arg(ui->label_Group->text());
     }
 
     bool isValid = errorText.isEmpty();
@@ -196,9 +197,9 @@ bool NewMapDialog::validateLayoutID(bool allowEmpty) {
 
     QString errorText;
     if (layoutId.isEmpty()) {
-        if (!allowEmpty) errorText = QString("%1 cannot be empty.").arg(ui->label_LayoutID->text());
+        if (!allowEmpty) errorText = QCoreApplication::translate("Porymap", "%1 cannot be empty.").arg(ui->label_LayoutID->text());
     } else if (!this->project->isKnownLayout(layoutId) && !this->project->isIdentifierUnique(layoutId)) {
-        errorText = QString("%1 must either be the ID for an existing layout, or a unique identifier for a new layout.").arg(ui->label_LayoutID->text());
+        errorText = QCoreApplication::translate("Porymap", "%1 must either be the ID for an existing layout, or a unique identifier for a new layout.").arg(ui->label_LayoutID->text());
     }
 
     bool isValid = errorText.isEmpty();
@@ -254,7 +255,7 @@ void NewMapDialog::accept() {
 
     Map *map = this->project->createNewMap(this->project->newMapSettings, this->mapToCopy);
     if (!map) {
-        ui->label_GenericError->setText(QString("Failed to create map. See %1 for details.").arg(getLogPath()));
+        ui->label_GenericError->setText(QCoreApplication::translate("Porymap", "Failed to create map. See %1 for details.").arg(getLogPath()));
         ui->label_GenericError->setVisible(true);
         return;
     }

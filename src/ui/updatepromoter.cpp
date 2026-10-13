@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #ifdef QT_NETWORK_LIB
 #include "updatepromoter.h"
 #include "ui_updatepromoter.h"
@@ -27,7 +28,7 @@ UpdatePromoter::UpdatePromoter(QWidget *parent, NetworkAccessManager *manager)
 
     // Set up button box
     this->button_Retry = ui->buttonBox->button(QDialogButtonBox::Retry);
-    this->button_Downloads = ui->buttonBox->addButton("Go to Downloads...", QDialogButtonBox::ActionRole);
+    this->button_Downloads = ui->buttonBox->addButton(QCoreApplication::translate("Porymap", "Go to Downloads..."), QDialogButtonBox::ActionRole);
     ui->buttonBox->button(QDialogButtonBox::Close)->setDefault(true);
     connect(ui->buttonBox, &QDialogButtonBox::clicked, this, &UpdatePromoter::dialogButtonClicked);
 
@@ -59,7 +60,7 @@ void UpdatePromoter::checkForUpdates() {
 
     this->resetDialog();
     this->button_Retry->setEnabled(false);
-    ui->label_Status->setText("Checking for updates...");
+    ui->label_Status->setText(QCoreApplication::translate("Porymap", "Checking for updates..."));
 
     // We could use the URL ".../releases/latest" to retrieve less data, but this would run into problems if the
     // most recent item on the releases page is not actually a new release (like the static windows build).
@@ -139,7 +140,7 @@ void UpdatePromoter::processWebpage(const QJsonDocument &data, const QUrl &nextU
     this->button_Downloads->setEnabled(!this->downloadUrl.isEmpty());
     this->button_Retry->setEnabled(true);
     if (!this->newVersion.isNull()) {
-        ui->label_Status->setText("A new version of Porymap is available!");
+        ui->label_Status->setText(QCoreApplication::translate("Porymap", "A new version of Porymap is available!"));
         ui->label_Warning->setVisible(this->newVersion.majorVersion() > porymapVersion.majorVersion());
 
         // Alert the user about the new version if the dialog wasn't already open.
@@ -151,13 +152,13 @@ void UpdatePromoter::processWebpage(const QJsonDocument &data, const QUrl &nextU
         }
         porymapConfig.lastUpdateCheckVersion = this->newVersion;
     } else {
-        ui->label_Status->setText("Your version of Porymap is up to date!");
+        ui->label_Status->setText(QCoreApplication::translate("Porymap", "Your version of Porymap is up to date!"));
         ui->label_Warning->setVisible(false);
     }
 }
 
 void UpdatePromoter::error(const QString &err, const QDateTime retryAfter) {
-    const QString message = QString("Failed to check for version update: %1").arg(err);
+    const QString message = QCoreApplication::translate("Porymap", "Failed to check for version update: %1").arg(err);
     ui->label_Status->setText(message);
     if (!this->isVisible())
         logWarn(message);

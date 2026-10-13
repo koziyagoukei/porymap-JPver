@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #include "newmapconnectiondialog.h"
 #include "ui_newmapconnectiondialog.h"
 #include "message.h"
@@ -64,7 +65,7 @@ void NewMapConnectionDialog::setWarningVisible(bool visible) {
 }
 
 bool NewMapConnectionDialog::askReplaceConnection(MapConnection *connection, const QString &newMapName) {
-    QString message = QString("%1 already has a %2 connection to '%3'. Replace it with a %2 connection to '%4'?")
+    QString message = QCoreApplication::translate("Porymap", "%1 already has a %2 connection to '%3'. Replace it with a %2 connection to '%4'?")
                                 .arg(m_map->name())
                                 .arg(connection->direction())
                                 .arg(connection->targetMapName())

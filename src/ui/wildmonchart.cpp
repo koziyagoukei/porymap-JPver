@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #ifdef QT_CHARTS_LIB
 #include "wildmonchart.h"
 #include "ui_wildmonchart.h"
@@ -5,7 +6,9 @@
 #include "utility.h"
 #include "message.h"
 
-static const QString baseWindowTitle = QString("Wild Pokémon Summary Charts");
+static QString baseWindowTitle() {
+    return QCoreApplication::translate("Porymap", "Wild Pokémon Summary Charts");
+}
 
 static const QList<QPair<QString, QChart::ChartTheme>> themes = {
     {"Light",         QChart::ChartThemeLight},
@@ -77,7 +80,7 @@ void WildMonChart::clearTableData() {
     this->groupedLevelRanges.clear();
     this->speciesToGroupedData.clear();
     this->speciesToColor.clear();
-    setWindowTitle(baseWindowTitle);
+    setWindowTitle(baseWindowTitle());
 
     const QSignalBlocker blocker1(ui->comboBox_Species);
     const QSignalBlocker blocker2(ui->comboBox_Group);
@@ -93,7 +96,7 @@ void WildMonChart::readTable() {
     if (!this->table)
         return;
 
-    setWindowTitle(QString("%1 - %2").arg(baseWindowTitle).arg(this->table->encounterField().name));
+    setWindowTitle(QString("%1 - %2").arg(baseWindowTitle()).arg(this->table->encounterField().name));
 
     // Read data about encounter groups, e.g. for "fishing_mons" we want to know table indexes 2-4 belong to "good_rod"
     for (auto groupPair : this->table->encounterField().groups) {

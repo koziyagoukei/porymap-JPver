@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #include "metatileimageexporter.h"
 #include "ui_metatileimageexporter.h"
 #include "filedialog.h"
@@ -192,7 +193,7 @@ bool MetatileImageExporter::saveImage(QString filepath) {
     tryUpdatePreview();
     if (filepath.isEmpty()) {
         QString defaultFilepath = QString("%1/%2").arg(FileDialog::getDirectory()).arg(getDefaultFileName());
-        filepath = FileDialog::getSaveFileName(this, windowTitle(), defaultFilepath, QStringLiteral("Image Files (*.png *.jpg *.bmp)"));
+        filepath = FileDialog::getSaveFileName(this, windowTitle(), defaultFilepath, QCoreApplication::translate("Porymap", "Image Files (*.png *.jpg *.bmp)"));
         if (filepath.isEmpty()) {
             return false;
         }

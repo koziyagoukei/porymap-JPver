@@ -1,0 +1,19 @@
+Porymap 日本語版 / Porymap 6.3.1
+
+Porymap: GNU Lesser General Public License version 3
+  https://github.com/huderlem/porymap
+  改変箇所: 日本語翻訳、翻訳読み込み、表示と保存値の分離、JSON 処理の修正。
+
+Qt 6.8.2: The Qt Company Ltd. and other contributors
+  Qt Core / Gui / Widgets / Network / QML / OpenGL 等のランタイムを動的リンクしています。
+  Qt Charts を含みます。Qt Charts のオープンソース版には GPL version 3 が適用されます。
+  個別の条件は Qt-GPL-3.0.html / Qt-LGPL-3.0.html と Qt のソースを参照してください。
+  ソース: https://download.qt.io/archive/qt/6.8/6.8.2/single/
+  同梱 DLL を互換性のある別ビルドに置き換えることができます。
+
+MinGW-w64 / GCC 13.1 runtime:
+  https://www.mingw-w64.org/
+  https://gcc.gnu.org/onlinedocs/libstdc++/manual/license.html
+
+QtGifImage / giflib / poryjson / OrderedMap の著作権表示は同梱のソース内の各ライセンスに従います。
+  このパッケージのソースは、作成元の porymap-JPver フォルダーで提供されています。

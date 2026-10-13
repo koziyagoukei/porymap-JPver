@@ -1173,7 +1173,7 @@ void ProjectConfig::init() {
         logInfo(QString("Auto-detected base_game_version as '%1'").arg(getBaseGameVersionString(version)));
     } else {
         QDialog dialog(nullptr, Qt::WindowTitleHint);
-        dialog.setWindowTitle("Project Configuration");
+        dialog.setWindowTitle(QCoreApplication::translate("Porymap", "Project Configuration"));
         dialog.setWindowModality(Qt::NonModal);
 
         QFormLayout form(&dialog);
@@ -1182,7 +1182,7 @@ void ProjectConfig::init() {
         baseGameVersionComboBox->addItem("pokeruby", BaseGameVersion::pokeruby);
         baseGameVersionComboBox->addItem("pokefirered", BaseGameVersion::pokefirered);
         baseGameVersionComboBox->addItem("pokeemerald", BaseGameVersion::pokeemerald);
-        form.addRow(new QLabel("Game Version"), baseGameVersionComboBox);
+        form.addRow(new QLabel(QCoreApplication::translate("Porymap", "Game Version")), baseGameVersionComboBox);
 
         // TODO: Add an 'Advanced' button to open the project settings window (with some settings disabled)
 

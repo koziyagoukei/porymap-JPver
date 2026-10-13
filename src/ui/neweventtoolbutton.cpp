@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #include "neweventtoolbutton.h"
 #include <QMenu>
 
@@ -21,7 +22,7 @@ void NewEventToolButton::addEventType(Event::Type type) {
     if (this->typeToAction.contains(type))
         return;
 
-    auto action = new QAction(QStringLiteral("New ") + Event::typeToString(type), this);
+    auto action = new QAction(QCoreApplication::translate("Porymap", "New ") + Event::typeToString(type), this);
     action->setIcon(QIcon(QStringLiteral(":/icons/add.ico")));
     connect(action, &QAction::triggered, [this, type] {
         this->selectedEventType = type;

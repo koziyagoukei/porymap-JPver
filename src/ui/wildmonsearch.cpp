@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #include "wildmonsearch.h"
 #include "ui_wildmonsearch.h"
 #include "project.h"
@@ -28,7 +29,7 @@ WildMonSearch::WildMonSearch(Project *project, QWidget *parent) :
     connect(ui->comboBox_Search, &QComboBox::currentTextChanged, this, &WildMonSearch::updateResults);
 
     // Set up table header
-    static const QStringList labels = {"Group", "Field", "Level", "Chance"};
+    static const QStringList labels = {QCoreApplication::translate("Porymap", "Group"), QCoreApplication::translate("Porymap", "Field"), QCoreApplication::translate("Porymap", "Level"), QCoreApplication::translate("Porymap", "Chance")};
     ui->table_Results->setHorizontalHeaderLabels(labels);
     ui->table_Results->horizontalHeader()->setSectionResizeMode(ResultsColumn::Group,  QHeaderView::Stretch);
     ui->table_Results->horizontalHeader()->setSectionResizeMode(ResultsColumn::Field,  QHeaderView::ResizeToContents);
@@ -129,7 +130,7 @@ void WildMonSearch::updateResults(const QString &species) {
     if (results.isEmpty()) {
         static const RowData noResults = {
             .mapName = "",
-            .groupName = QStringLiteral("Species not found."),
+            .groupName = QCoreApplication::translate("Porymap", "Species not found."),
             .fieldName = QStringLiteral("--"),
             .levelRange = QStringLiteral("--"),
             .chance = QStringLiteral("--"),

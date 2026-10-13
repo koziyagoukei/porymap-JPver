@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #include "paletteeditor.h"
 #include "ui_paletteeditor.h"
 #include "paletteutil.h"
@@ -190,14 +191,14 @@ void PaletteEditor::on_actionRedo_triggered() {
 }
 
 void PaletteEditor::on_actionImport_Palette_triggered() {
-    QString filepath = FileDialog::getOpenFileName(this, "Import Tileset Palette", "", "Palette Files (*.pal *.act *tpl *gpl)");
+    QString filepath = FileDialog::getOpenFileName(this, QCoreApplication::translate("Porymap", "Import Tileset Palette"), "", "Palette Files (*.pal *.act *tpl *gpl)");
     if (filepath.isEmpty()) {
         return;
     }
     bool error = false;
     QList<QRgb> palette = PaletteUtil::parse(filepath, &error);
     if (error) {
-        RecentErrorMessage::show(QStringLiteral("Failed to import palette."), this);
+        RecentErrorMessage::show(QCoreApplication::translate("Porymap", "Failed to import palette."), this);
         return;
     }
     while (palette.length() < this->numColors) {

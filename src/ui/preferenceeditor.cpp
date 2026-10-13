@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #include "preferenceeditor.h"
 #include "ui_preferenceeditor.h"
 #include "noscrollcombobox.h"
@@ -30,11 +31,11 @@ PreferenceEditor::PreferenceEditor(QWidget *parent) :
     });
     connect(ui->pushButton_ResetApplicationFont, &QPushButton::clicked, [this] {
         this->applicationFont = QFont();
-        QToolTip::showText(ui->pushButton_ResetApplicationFont->mapToGlobal(QPoint(0, 0)), "Font reset!");
+        QToolTip::showText(ui->pushButton_ResetApplicationFont->mapToGlobal(QPoint(0, 0)), QCoreApplication::translate("Porymap", "Font reset!"));
     });
     connect(ui->pushButton_ResetMapListFont, &QPushButton::clicked, [this] {
         this->mapListFont = PorymapConfig::defaultMapListFont();
-        QToolTip::showText(ui->pushButton_ResetMapListFont->mapToGlobal(QPoint(0, 0)), "Font reset!");
+        QToolTip::showText(ui->pushButton_ResetMapListFont->mapToGlobal(QPoint(0, 0)), QCoreApplication::translate("Porymap", "Font reset!"));
     });
 
     initFields();
@@ -166,7 +167,7 @@ void PreferenceEditor::saveFields() {
     emit preferencesSaved();
 
     if (needsProjectReload) {
-        auto message = QStringLiteral("Some changes will only take effect after reloading the project. Reload the project now?");
+        auto message = QCoreApplication::translate("Porymap", "Some changes will only take effect after reloading the project. Reload the project now?");
         if (QuestionMessage::show(message, this) == QMessageBox::Yes) {
             emit reloadProjectRequested();
         }

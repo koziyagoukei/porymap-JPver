@@ -187,8 +187,8 @@ public:
     void dump(QString &out, int *) const;
     QString dump(int *indent = nullptr) const {
         QString out;
+        int temp = 0;
         if (!indent) {
-            int temp = 0;
             indent = &temp;
         }
         dump(out, indent);

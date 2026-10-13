@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #include "newtilesetdialog.h"
 #include "ui_newtilesetdialog.h"
 #include "project.h"
@@ -38,9 +39,9 @@ bool NewTilesetDialog::validateName(bool allowEmpty) {
 
     QString errorText;
     if (name.isEmpty() || name == symbolPrefix) {
-        if (!allowEmpty) errorText = QString("%1 cannot be empty.").arg(ui->label_Name->text());
+        if (!allowEmpty) errorText = QCoreApplication::translate("Porymap", "%1 cannot be empty.").arg(ui->label_Name->text());
     } else if (!this->project->isIdentifierUnique(name)) {
-        errorText = QString("%1 '%2' is not unique.").arg(ui->label_Name->text()).arg(name);
+        errorText = QCoreApplication::translate("Porymap", "%1 '%2' is not unique.").arg(ui->label_Name->text()).arg(name);
     }
 
     bool isValid = errorText.isEmpty();

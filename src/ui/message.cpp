@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #include "message.h"
 #include "log.h"
 
@@ -53,7 +54,7 @@ QuestionMessage::QuestionMessage(const QString &message, QWidget *parent) :
 }
 
 SaveChangesMessage::SaveChangesMessage(const QString &name, bool allowCancel, QWidget *parent) :
-    QuestionMessage(QString("%1 has been modified, save changes?").arg(name), parent)
+    QuestionMessage(QCoreApplication::translate("Porymap", "%1 has been modified, save changes?").arg(name), parent)
 {
     if (allowCancel) {
         addButton(QMessageBox::Cancel);
@@ -64,7 +65,7 @@ SaveChangesMessage::SaveChangesMessage(const QString &name, bool allowCancel, QW
 RecentErrorMessage::RecentErrorMessage(const QString &message, QWidget *parent) :
     ErrorMessage(message, parent)
 {
-    setInformativeText(QString("Please see %1 for full error details.").arg(getLogPath()));
+    setInformativeText(QCoreApplication::translate("Porymap", "Please see %1 for full error details.").arg(getLogPath()));
     setDetailedText(getMostRecentError());
 }
 

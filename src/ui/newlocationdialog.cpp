@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #include "newlocationdialog.h"
 #include "ui_newlocationdialog.h"
 #include "project.h"
@@ -40,9 +41,9 @@ bool NewLocationDialog::validateIdName(bool allowEmpty) {
 
     QString errorText;
     if (name.isEmpty() || name == namePrefix) {
-        if (!allowEmpty) errorText = QString("%1 cannot be empty.").arg(ui->label_IdName->text());
+        if (!allowEmpty) errorText = QCoreApplication::translate("Porymap", "%1 cannot be empty.").arg(ui->label_IdName->text());
     } else if (!this->project->isIdentifierUnique(name)) {
-        errorText = QString("%1 '%2' is not unique.").arg(ui->label_IdName->text()).arg(name);
+        errorText = QCoreApplication::translate("Porymap", "%1 '%2' is not unique.").arg(ui->label_IdName->text()).arg(name);
     }
 
     bool isValid = errorText.isEmpty();

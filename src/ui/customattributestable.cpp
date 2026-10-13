@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #include "customattributestable.h"
 #include "parseutil.h"
 #include "noscrollspinbox.h"
@@ -21,7 +22,7 @@ CustomAttributesTable::CustomAttributesTable(QWidget *parent) :
 {
     this->setColumnCount(Column::Count);
     this->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
-    this->setHorizontalHeaderLabels(QStringList({"Key", "Value"}));
+    this->setHorizontalHeaderLabels(QStringList({QCoreApplication::translate("Porymap", "Key"), QCoreApplication::translate("Porymap", "Value")}));
     this->horizontalHeader()->setStretchLastSection(true);
     this->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive);
     this->horizontalHeader()->setVisible(false);
@@ -125,7 +126,7 @@ int CustomAttributesTable::addAttribute(const QString &key, const QJsonValue &va
         break;
     } default: {
         // Arrays, objects, or null/undefined values cannot be edited
-        auto valueItem = new QTableWidgetItem("This value cannot be edited from this table");
+        auto valueItem = new QTableWidgetItem(QCoreApplication::translate("Porymap", "This value cannot be edited from this table"));
         valueItem->setFlags(Qt::NoItemFlags);
         valueItem->setData(DataRole::OriginalValue, value); // Preserve the value for writing to the file
         this->setItem(rowIndex, Column::Value, valueItem);

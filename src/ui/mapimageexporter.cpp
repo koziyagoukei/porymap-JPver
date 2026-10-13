@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #include "mapimageexporter.h"
 #include "ui_mapimageexporter.h"
 #include "qgifimage.h"
@@ -12,11 +13,11 @@ QString MapImageExporter::getTitle(ImageExporterMode mode) {
     switch (mode)
     {
         case ImageExporterMode::Normal:
-            return QString("Export %1 Image").arg(m_map ? "Map" : "Layout");
+            return QCoreApplication::translate("Porymap", "Export %1 Image").arg(m_map ? QCoreApplication::translate("Porymap", "Map") : QCoreApplication::translate("Porymap", "Layout"));
         case ImageExporterMode::Stitch:
-            return QStringLiteral("Export Map Stitch Image");
+            return QCoreApplication::translate("Porymap", "Export Map Stitch Image");
         case ImageExporterMode::Timelapse:
-            return QString("Export %1 Timelapse Image").arg(m_map ? "Map" : "Layout");
+            return QCoreApplication::translate("Porymap", "Export %1 Timelapse Image").arg(m_map ? "Map" : "Layout");
     }
     return "";
 }
@@ -25,11 +26,11 @@ QString MapImageExporter::getDescription(ImageExporterMode mode) {
     switch (mode)
     {
         case ImageExporterMode::Normal:
-            return QString("Exports an image of the selected %1.").arg(m_map ? "Map" : "Layout");
+            return QCoreApplication::translate("Porymap", "Exports an image of the selected %1.").arg(m_map ? "Map" : "Layout");
         case ImageExporterMode::Stitch:
-            return "Exports a combined image of all the maps connected to the selected map.";
+            return QCoreApplication::translate("Porymap", "Exports a combined image of all the maps connected to the selected map.");
         case ImageExporterMode::Timelapse:
-            return QString("Exports a GIF of the edit history for the selected %1.").arg(m_map ? "Map" : "Layout");
+            return QCoreApplication::translate("Porymap", "Exports a GIF of the edit history for the selected %1.").arg(m_map ? "Map" : "Layout");
     }
     return "";
 }
@@ -102,7 +103,7 @@ void MapImageExporter::setModeSpecificUi() {
     if (m_map) {
         ui->comboBox_MapSelection->addItems(m_project->mapNames());
         ui->comboBox_MapSelection->setTextItem(m_map->name());
-        ui->label_MapSelection->setText(m_mode == ImageExporterMode::Stitch ? QStringLiteral("Starting Map") : QStringLiteral("Map"));
+        ui->label_MapSelection->setText(m_mode == ImageExporterMode::Stitch ? QCoreApplication::translate("Porymap", "Starting Map") : QStringLiteral("Map"));
     } else if (m_layout) {
         ui->comboBox_MapSelection->addItems(m_project->layoutIds());
         ui->comboBox_MapSelection->setTextItem(m_layout->id);
@@ -329,7 +330,7 @@ QGifImage* MapImageExporter::createTimelapseGifImage(QProgressDialog *progress) 
     // Rewind the edit histories and get the maximum map size for the gif's canvas.
     QSize canvasSize = QSize(0,0);
     for (const auto &step : steps) {
-        progress->setLabelText(QString("Rewinding %1 edit history...").arg(step.name));
+        progress->setLabelText(QCoreApplication::translate("Porymap", "Rewinding %1 edit history...").arg(step.name));
         progress->setMinimum(0);
         progress->setMaximum(step.initialStackIndex);
         progress->setValue(progress->minimum());
@@ -358,7 +359,7 @@ QGifImage* MapImageExporter::createTimelapseGifImage(QProgressDialog *progress) 
 
         // Progress is represented by the number of commands we need to redo to finish the timelapse,
         // which can be different than the number of image frames we need to create.
-        progress->setLabelText(QString("Building %1 timelapse...").arg(step.name));
+        progress->setLabelText(QCoreApplication::translate("Porymap", "Building %1 timelapse...").arg(step.name));
         progress->setMinimum(step.historyStack->index());
         progress->setMaximum(step.initialStackIndex - step.historyStack->index());
         progress->setValue(progress->minimum());
@@ -387,7 +388,7 @@ QGifImage* MapImageExporter::createTimelapseGifImage(QProgressDialog *progress) 
     for (const auto &step : steps) {
         if (step.historyStack->index() >= step.initialStackIndex)
             continue;
-        progress->setLabelText(QString("Restoring %1 edit history...").arg(step.name));
+        progress->setLabelText(QCoreApplication::translate("Porymap", "Restoring %1 edit history...").arg(step.name));
         progress->setMinimum(0);
         progress->setMaximum(step.initialStackIndex);
         progress->setValue(step.historyStack->index());

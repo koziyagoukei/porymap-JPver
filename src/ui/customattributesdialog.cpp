@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #include "customattributesdialog.h"
 #include "ui_customattributesdialog.h"
 #include "utility.h"
@@ -15,7 +16,7 @@ CustomAttributesDialog::CustomAttributesDialog(CustomAttributesTable *table) :
     ui->setupUi(this);
 
     // Type combo box
-    ui->comboBox_Type->addItems({"String", "Number", "Boolean"});
+    ui->comboBox_Type->addItems({QCoreApplication::translate("Porymap", "String"), QCoreApplication::translate("Porymap", "Number"), QCoreApplication::translate("Porymap", "Boolean")});
     ui->comboBox_Type->setEditable(false);
 
     // When the value type is changed, update the value input widget
@@ -54,9 +55,9 @@ bool CustomAttributesDialog::validateName(bool allowEmpty) {
 
     QString errorText;
     if (name.isEmpty()) {
-        if (!allowEmpty) errorText = QString("%1 cannot be empty.").arg(ui->label_Name->text());
+        if (!allowEmpty) errorText = QCoreApplication::translate("Porymap", "%1 cannot be empty.").arg(ui->label_Name->text());
     } else if (m_table->restrictedKeys().contains(name)) {
-        errorText = QString("The name '%1' is reserved, please choose a different name.").arg(name);
+        errorText = QCoreApplication::translate("Porymap", "The name '%1' is reserved, please choose a different name.").arg(name);
     }
 
     bool isValid = errorText.isEmpty();
@@ -89,8 +90,8 @@ void CustomAttributesDialog::clickedButton(QAbstractButton *button) {
         const QString key = ui->lineEdit_Name->text();
         if (m_table->keys().contains(key)) {
             // Warn user if key name would overwrite an existing custom attribute
-            const QString msg = QString("Overwrite value for existing attribute '%1'?").arg(key);
-            if (QMessageBox::warning(this, "Warning", msg, QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Cancel){
+            const QString msg = QCoreApplication::translate("Porymap", "Overwrite value for existing attribute '%1'?").arg(key);
+            if (QMessageBox::warning(this, QCoreApplication::translate("Porymap", "Warning"), msg, QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Cancel){
                 return;
             }
         }

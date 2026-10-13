@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #include "encountertablemodel.h"
 #include "editor.h"
 
@@ -94,21 +95,21 @@ QVariant EncounterTableModel::headerData(int section, Qt::Orientation orientatio
     if (role == Qt::DisplayRole && orientation == Qt::Horizontal) {
         switch (section) {
         case ColumnType::Slot:
-            return QString("Slot");
+            return QCoreApplication::translate("Porymap", "Slot");
         case ColumnType::Group:
-            return QString("Group");
+            return QCoreApplication::translate("Porymap", "Group");
         case ColumnType::Species:
-            return QString("Species");
+            return QCoreApplication::translate("Porymap", "Species");
         case ColumnType::MinLevel:
-            return QString("Min Level");
+            return QCoreApplication::translate("Porymap", "Min Level");
         case ColumnType::MaxLevel:
-            return QString("Max Level");
+            return QCoreApplication::translate("Porymap", "Max Level");
         case ColumnType::EncounterChance:
-            return QString("Encounter Chance");
+            return QCoreApplication::translate("Porymap", "Encounter Chance");
         case ColumnType::SlotRatio:
-            return QString("Slot Ratio");
+            return QCoreApplication::translate("Porymap", "Slot Ratio");
         case ColumnType::EncounterRate:
-            return QString("Encounter Rate");
+            return QCoreApplication::translate("Porymap", "Encounter Rate");
         default:
             return QVariant();
         }

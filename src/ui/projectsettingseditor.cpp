@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #include "projectsettingseditor.h"
 #include "config.h"
 #include "noscrollcombobox.h"
@@ -114,16 +115,16 @@ void ProjectSettingsEditor::initUi() {
     ui->comboBox_BaseGameVersion->addItems(ProjectConfig::versionStrings);
     ui->comboBox_AttributesSize->addItems({"1", "2", "4"});
 
-    ui->comboBox_EventsTabIcon->addItem("Automatic",         "");
+    ui->comboBox_EventsTabIcon->addItem(QCoreApplication::translate("Porymap", "Automatic"),         "");
     ui->comboBox_EventsTabIcon->addItem("Brendan (Emerald)", ProjectConfig::getPlayerIconPath(BaseGameVersion::pokeemerald, 0));
     ui->comboBox_EventsTabIcon->addItem("Brendan (R/S)",     ProjectConfig::getPlayerIconPath(BaseGameVersion::pokeruby,    0));
     ui->comboBox_EventsTabIcon->addItem("May (Emerald)",     ProjectConfig::getPlayerIconPath(BaseGameVersion::pokeemerald, 1));
     ui->comboBox_EventsTabIcon->addItem("May (R/S)",         ProjectConfig::getPlayerIconPath(BaseGameVersion::pokeruby,    1));
     ui->comboBox_EventsTabIcon->addItem("Red",               ProjectConfig::getPlayerIconPath(BaseGameVersion::pokefirered, 0));
     ui->comboBox_EventsTabIcon->addItem("Green",             ProjectConfig::getPlayerIconPath(BaseGameVersion::pokefirered, 1));
-    ui->comboBox_EventsTabIcon->addItem("Custom",            "Custom");
+    ui->comboBox_EventsTabIcon->addItem(QCoreApplication::translate("Porymap", "Custom"),            "Custom");
     connect(ui->comboBox_EventsTabIcon, QOverload<int>::of(&NoScrollComboBox::currentIndexChanged), [this](int index) {
-        bool usingCustom = (index == ui->comboBox_EventsTabIcon->findText("Custom"));
+        bool usingCustom = (index == ui->comboBox_EventsTabIcon->findData("Custom"));
         ui->lineEdit_EventsTabIcon->setVisible(usingCustom);
         ui->button_EventsTabIcon->setVisible(usingCustom);
     });
@@ -193,7 +194,7 @@ void ProjectSettingsEditor::initUi() {
 bool ProjectSettingsEditor::disableParsedSetting(QWidget * widget, const QString &identifier, const QString &filepath) {
     if (project && project->disabledSettingsNames.contains(identifier)) {
         widget->setEnabled(false);
-        QString toolTip = QString("This value has been set using '%1' in %2").arg(identifier).arg(filepath);
+        QString toolTip = QCoreApplication::translate("Porymap", "This value has been set using '%1' in %2").arg(identifier).arg(filepath);
         if (!widget->toolTip().isEmpty())
             toolTip.prepend(QString("%1\n\n").arg(widget->toolTip()));
         widget->setToolTip(Util::toHtmlParagraph(toolTip));
@@ -417,10 +418,10 @@ QString ProjectSettingsEditor::chooseProjectFile(const QString &defaultFilepath)
     QString path;
     if (defaultFilepath.endsWith("/")){
         // Default filepath is a folder, choose a new folder
-        path = FileDialog::getExistingDirectory(this, "Choose Project File Folder", startDir) + "/";
+        path = FileDialog::getExistingDirectory(this, QCoreApplication::translate("Porymap", "Choose Project File Folder"), startDir) + "/";
     } else{
         // Default filepath is not a folder, choose a new file
-        path = FileDialog::getOpenFileName(this, "Choose Project File", startDir);
+        path = FileDialog::getOpenFileName(this, QCoreApplication::translate("Porymap", "Choose Project File"), startDir);
     }
     if (path.isEmpty())
         return path;
@@ -429,7 +430,7 @@ QString ProjectSettingsEditor::chooseProjectFile(const QString &defaultFilepath)
         // Most of Porymap's file-parsing code for project files will assume that filepaths
         // are relative to the root project folder, so we enforce that here.
         QMessageBox::warning(this, QApplication::applicationName(),
-                           QString("Custom filepaths must be inside the root project folder '%1'").arg(this->baseDir));
+                           QCoreApplication::translate("Porymap", "Custom filepaths must be inside the root project folder '%1'").arg(this->baseDir));
         return QString();
     }
     return path.remove(0, this->baseDir.length());
@@ -677,7 +678,7 @@ void ProjectSettingsEditor::chooseFile(QLineEdit * filepathEdit, const QString &
 }
 
 void ProjectSettingsEditor::addNewGlobalConstantsFilepath() {
-    QString filepath = stripProjectDir(FileDialog::getOpenFileName(this, "Choose Global Constants File"));
+    QString filepath = stripProjectDir(FileDialog::getOpenFileName(this, QCoreApplication::translate("Porymap", "Choose Global Constants File")));
     if (filepath.isEmpty() || getGlobalConstantsFilepaths().contains(filepath))
         return;
 
@@ -811,7 +812,7 @@ bool ProjectSettingsEditor::promptRestoreDefaults() {
         return false;
 
     const QString versionText = ui->comboBox_BaseGameVersion->currentText();
-    if (this->prompt(QString("Restore default config settings for %1?").arg(versionText)) == QMessageBox::No)
+    if (this->prompt(QCoreApplication::translate("Porymap", "Restore default config settings for %1?").arg(versionText)) == QMessageBox::No)
         return false;
 
     // Restore defaults by resetting config in memory, refreshing the UI, then restoring the config.

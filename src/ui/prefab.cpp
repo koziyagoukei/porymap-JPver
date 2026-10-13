@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 
 #include "prefab.h"
 #include "prefabframe.h"
@@ -32,14 +33,14 @@ void Prefab::loadPrefabs() {
 
     QString error;
     if (!parser.tryParseJsonFile(&prefabDoc, validPath, &error)) {
-        logError(QString("Failed to read prefab data from %1: %2").arg(filepath).arg(error));
+        logError(QCoreApplication::translate("Porymap", "Failed to read prefab data from %1: %2").arg(filepath).arg(error));
         return;
     }
     filepath = validPath;
 
     QJsonArray prefabs = prefabDoc.array();
     if (prefabs.size() == 0) {
-        logWarn(QString("Prefabs array is empty or missing in %1.").arg(filepath));
+        logWarn(QCoreApplication::translate("Porymap", "Prefabs array is empty or missing in %1.").arg(filepath));
         return;
     }
 
@@ -98,11 +99,11 @@ void Prefab::savePrefabs() {
     }
     QFile prefabsFile(filepath);
     if (!prefabsFile.open(QIODevice::WriteOnly)) {
-        logError(QString("Error: Could not open %1 for writing").arg(filepath));
+        logError(QCoreApplication::translate("Porymap", "Error: Could not open %1 for writing").arg(filepath));
         QMessageBox messageBox;
-        messageBox.setText("Failed to save prefabs file!");
-        messageBox.setInformativeText(QString("Could not open \"%1\" for writing").arg(filepath));
-        messageBox.setDetailedText("Any created prefabs will not be available next time Porymap is opened. Please fix your prefabs_filepath in the Porymap project config file.");
+        messageBox.setText(QCoreApplication::translate("Porymap", "Failed to save prefabs file!"));
+        messageBox.setInformativeText(QCoreApplication::translate("Porymap", "Could not open \"%1\" for writing").arg(filepath));
+        messageBox.setDetailedText(QCoreApplication::translate("Porymap", "Any created prefabs will not be available next time Porymap is opened. Please fix your prefabs_filepath in the Porymap project config file."));
         messageBox.setIcon(QMessageBox::Warning);
         messageBox.exec();
         return;
@@ -222,7 +223,7 @@ void Prefab::updatePrefabUi(QPointer<Layout> layout) {
         QObject::connect(frame->ui->graphicsView_Prefab, &ClickableGraphicsView::clicked, [this, item, frame](QMouseEvent *event){
             if (this->selector) {
                 this->selector->setPrefabSelection(item.selection);
-                QToolTip::showText(frame->ui->graphicsView_Prefab->mapToGlobal(event->pos()), "Selected prefab!", nullptr, {}, 1000);
+                QToolTip::showText(frame->ui->graphicsView_Prefab->mapToGlobal(event->pos()), QCoreApplication::translate("Porymap", "Selected prefab!"), nullptr, {}, 1000);
             }
         });
 
@@ -231,14 +232,14 @@ void Prefab::updatePrefabUi(QPointer<Layout> layout) {
             for (int i = 0; i < this->items.size(); i++) {
                 if (this->items[i].id == item.id) {
                     QMessageBox msgBox;
-                    msgBox.setText("Confirm Prefab Deletion");
+                    msgBox.setText(QCoreApplication::translate("Porymap", "Confirm Prefab Deletion"));
                     if (this->items[i].name.isEmpty()) {
-                        msgBox.setInformativeText("Are you sure you want to delete this prefab?");
+                        msgBox.setInformativeText(QCoreApplication::translate("Porymap", "Are you sure you want to delete this prefab?"));
                     } else {
-                        msgBox.setInformativeText(QString("Are you sure you want to delete prefab \"%1\"?").arg(this->items[i].name));
+                        msgBox.setInformativeText(QCoreApplication::translate("Porymap", "Are you sure you want to delete prefab \"%1\"?").arg(this->items[i].name));
                     }
 
-                    QPushButton *deleteButton = msgBox.addButton("Delete", QMessageBox::DestructiveRole);
+                    QPushButton *deleteButton = msgBox.addButton(QCoreApplication::translate("Porymap", "Delete"), QMessageBox::DestructiveRole);
                     msgBox.addButton(QMessageBox::Cancel);
                     msgBox.setDefaultButton(QMessageBox::Cancel);
                     msgBox.exec();
@@ -305,9 +306,9 @@ bool Prefab::tryImportDefaultPrefabs(QWidget * parent, BaseGameVersion version, 
     // The warning message when importing defaults changes if there's a pre-existing file.
     QString fileWarning;
     if (!QFileInfo::exists(absFilepath)) {
-        fileWarning = QString("This will create a file called '%1'").arg(absFilepath);
+        fileWarning = QCoreApplication::translate("Porymap", "This will create a file called '%1'").arg(absFilepath);
     } else {
-        fileWarning = QString("This will overwrite any existing prefabs in '%1'").arg(absFilepath);
+        fileWarning = QCoreApplication::translate("Porymap", "This will overwrite any existing prefabs in '%1'").arg(absFilepath);
     }
 
     // Display a dialog box to the user, asking if the default prefabs should be imported
@@ -315,7 +316,7 @@ bool Prefab::tryImportDefaultPrefabs(QWidget * parent, BaseGameVersion version, 
      QMessageBox::StandardButton prompt =
              QMessageBox::question(parent,
                                    QApplication::applicationName(),
-                                   QString("Would you like to import the default prefabs for %1? %2.")
+                                   QCoreApplication::translate("Porymap", "Would you like to import the default prefabs for %1? %2.")
                                                .arg(projectConfig.getBaseGameVersionString(version))
                                                .arg(fileWarning),
                                    QMessageBox::Yes | QMessageBox::No);
@@ -328,10 +329,10 @@ bool Prefab::tryImportDefaultPrefabs(QWidget * parent, BaseGameVersion version, 
         if (!prefabsFile.open(QIODevice::WriteOnly)) {
             projectConfig.prefabFilepath = QString();
 
-            logError(QString("Error: Could not open %1 for writing").arg(absFilepath));
+            logError(QCoreApplication::translate("Porymap", "Error: Could not open %1 for writing").arg(absFilepath));
             QMessageBox messageBox(parent);
-            messageBox.setText("Failed to import default prefabs file!");
-            messageBox.setInformativeText(QString("Could not open \"%1\" for writing").arg(absFilepath));
+            messageBox.setText(QCoreApplication::translate("Porymap", "Failed to import default prefabs file!"));
+            messageBox.setInformativeText(QCoreApplication::translate("Porymap", "Could not open \"%1\" for writing").arg(absFilepath));
             messageBox.setIcon(QMessageBox::Warning);
             messageBox.exec();
             return false;

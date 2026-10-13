@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #include "shortcutseditor.h"
 #include "ui_shortcutseditor.h"
 #include "config.h"
@@ -54,7 +55,7 @@ void ShortcutsEditor::saveShortcuts() {
             // the original object so the shortcut can be saved. Alternatively this could generally be
             // prevented by making the shortcuts editor modal. For now, saving these shortcuts is skipped,
             // and we warn the user that this happened.
-            ErrorMessage::show(QStringLiteral("Some shortcuts failed to save. Please close the Shortcuts Editor and retry."), this);
+            ErrorMessage::show(QCoreApplication::translate("Porymap", "Some shortcuts failed to save. Please close the Shortcuts Editor and retry."), this);
             return;
         }
         if (it.key()->keySequences().isEmpty())
@@ -203,7 +204,7 @@ void ShortcutsEditor::promptUserOnDuplicateFound(MultiKeyEdit *sender, MultiKeyE
     const auto siblingLabel = this->labels_objects.key(multiKeyEdits_objects.value(sibling));
     if (siblingLabel.isEmpty())
         return;
-    const auto message = QString("Shortcut '%1' is already used by '%2', would you like to replace it?")
+    const auto message = QCoreApplication::translate("Porymap", "Shortcut '%1' is already used by '%2', would you like to replace it?")
                                     .arg(duplicateKeySequence.toString())
                                     .arg(siblingLabel);
 

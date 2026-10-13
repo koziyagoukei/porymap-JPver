@@ -276,7 +276,7 @@ const Json &              JsonValue::operator[] (int)         const { return sta
 const Json &              JsonValue::operator[] (const QString &) const { return static_null(); }
 
 const Json & JsonObject::operator[] (const QString &key) const {
-    static auto iter = m_value.find(key);
+    const auto iter = m_value.find(key);
     return (iter == m_value.end()) ? static_null() : (*iter).second;
 }
 const Json & JsonArray::operator[] (int i) const {

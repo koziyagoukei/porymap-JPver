@@ -1,0 +1,902 @@
+Groups	グループ
+Project Configuration	プロジェクトの初期設定
+Game Version	ゲームのバージョン
+Export %1 Image	%1の画像を書き出す
+Exports a combined image of all the maps connected to the selected map.	選択したマップと接続先のマップをまとめて画像として書き出します。
+WARNING	警告
+Tileset	タイルセット
+Metatile	メタタイル
+Slot	スロット
+Level	レベル
+Chance	確率
+Key	キー
+This value cannot be edited from this table	この値はこの表では編集できません。
+palette	パレット
+width	幅
+Version X.x.x	バージョン X.x.x
+e.g. code %D	例: code %D
+e.g. code --goto %F:%L	例: code --goto %F:%L
+Header	ヘッダー
+Wild Pokemon	野生ポケモン
+Verifying project	プロジェクトを確認しています
+Opening initial map	最初のマップを開いています
+Clear Items	履歴を消去
+Open Map	マップを開く
+Open JSON file	JSON ファイルを開く
+Copy Map Name	マップ名をコピー
+Copy Map ID	マップ ID をコピー
+Duplicate Map	マップを複製
+Add New Map to Group	グループにマップを追加
+Delete Map Group	マップグループを削除
+Add New Map to Location	この場所にマップを追加
+Copy Location ID Name	場所の ID 名をコピー
+Copy Location In-Game Name	ゲーム内の場所の名前をコピー
+Delete Location	場所を削除
+Sort List by Value	値の順で並べ替え
+Sort List Alphabetically	名前の順で並べ替え
+Open Layout	レイアウトを開く
+Copy Layout Name	レイアウト名をコピー
+Copy Layout ID	レイアウト ID をコピー
+Duplicate Layout	レイアウトを複製
+Add New Map with Layout	このレイアウトでマップを追加
+Delete Layout	レイアウトを削除
+Import Map from Advance Map 1.92	Advance Map 1.92 からマップを読み込む
+Choose Custom Script File	カスタムスクリプトファイルを選択
+Create New Script File	スクリプトファイルを新規作成
+JavaScript Files (*.js)	JavaScript ファイル (*.js)
+Refreshed!	再読み込みしました。
+Object	オブジェクト
+Warp	ワープ
+Trigger	トリガー
+BG	背景イベント
+Heal Location	回復地点
+Clone Object	複製オブジェクト
+Weather Trigger	天候トリガー
+Hidden Item	隠しアイテム
+Sign	看板
+Import Tileset Palette	タイルセットのパレットを読み込む
+Selected prefab!	定型パーツを選択しました。
+Font reset!	フォントをリセットしました。
+Choose Project File Folder	プロジェクトのファイルフォルダーを選択
+Choose Project File	プロジェクトファイルを選択
+Choose Global Constants File	グローバル定数ファイルを選択
+Select a File	ファイルを選択
+Select Palette for Tiles Image	タイル画像のパレットを選択
+Copied!	コピーしました。
+Clear Shortcut	ショートカットを解除
+Automatic	自動
+Custom	カスタム
+String	文字列
+Number	数値
+Boolean	真偽値
+Warning	警告
+Showing	表示中
+Hiding	非表示中
+Hide	非表示に
+Show	表示
+Remove	削除
+Locations	場所
+Layouts	レイアウト
+Paint	描画
+Select	選択
+Fill	塗りつぶし
+Dropper	スポイト
+Shift	一括移動
+Smart Paths	スマートパス
+Grid	グリッド
+Border	外周
+Change Dimensions	サイズを変更
+Metatiles	メタタイル
+Selection	選択範囲
+Primary Tileset	基本タイルセット
+Secondary Tileset	追加タイルセット
+Layout	レイアウト
+Collision	通行設定
+Opacity	不透明度
+Elevation	高さ
+Prefabs	定型パーツ
+Create from Selection	選択範囲から作成
+Prefabs for Map's Tilesets	現在のタイルセットの定型パーツ
+New Object	オブジェクトを追加
+Delete	削除
+Open Map Scripts	マップのスクリプトを開く
+Objects	オブジェクト
+object id	オブジェクト ID
+Warps	ワープ
+warp id	ワープ ID
+Triggers	トリガー
+coord id	座標イベント ID
+BGs	背景イベント
+bg id	背景イベント ID
+Heal Locations	回復地点
+heal id	回復地点 ID
+Map	マップ
+Events	イベント
+Connections	接続
+Wild Pokémon	野生ポケモン
+File	ファイル
+Edit	編集
+View	表示
+Tools	ツール
+Options	オプション
+Help	ヘルプ
+Open Project...	プロジェクトを開く...
+Open Recent Project	最近使ったプロジェクト
+Reload Project	プロジェクトを再読み込み
+Close Project	プロジェクトを閉じる
+Save	保存
+Save All	すべて保存
+Exit	終了
+New Map...	新しいマップ...
+New Layout...	新しいレイアウト...
+New Tileset...	新しいタイルセット...
+Duplicate Current Map...	現在のマップを複製...
+Duplicate Current Layout...	現在のレイアウトを複製...
+Export Map Image...	マップを画像として書き出す...
+Export Map Stitch Image...	接続マップをまとめて画像に書き出す...
+Export Map Timelapse Image...	編集過程をアニメーションに書き出す...
+Export Metatiles Image...	メタタイルを画像として書き出す...
+Import Map from Advance Map 1.92...	Advance Map 1.92 からマップを読み込む...
+Undo	元に戻す
+Redo	やり直す
+&Undo	元に戻す(&U)
+&Redo	やり直す(&R)
+Edit History	編集履歴
+Cut	切り取り
+Copy	コピー
+Paste	貼り付け
+Zoom In	拡大
+Zoom Out	縮小
+Show Grid	グリッドを表示
+Grid Settings...	グリッド設定...
+Show Events in Map View	マップ上にイベントを表示
+Show Player View Rectangle	プレイヤーの表示範囲を表示
+Show Cursor Tile Outline	カーソルのタイル枠を表示
+Show Dive/Emerge Map	潜水・浮上先のマップを表示
+Show Emerge/Dive Maps	浮上・潜水先のマップを表示
+Tileset Editor	タイルセットエディター
+Region Map Editor	タウンマップエディター
+Open Project in Text Editor	テキストエディターでプロジェクトを開く
+Open Log File	ログファイルを開く
+Open Config Folder	設定フォルダーを開く
+Preferences...	環境設定...
+Project Settings...	プロジェクト設定...
+Shortcuts...	ショートカット...
+Custom Scripts...	カスタムスクリプト...
+About Porymap...	Porymap について...
+Open Manual	マニュアルを開く
+Check for Updates...	更新を確認...
+About Porymap	Porymap について
+Map editor for pokeemerald, pokefirered and pokeruby.	pokeemerald・pokefirered・pokeruby 用マップエディター。
+Add	追加
+Add Connection	接続を追加
+Add Global Constant...	グローバル定数を追加...
+Add Global Constants File...	グローバル定数ファイルを追加...
+Add New Custom Attribute	カスタム属性を追加
+Add New Map Connection	マップ接続を追加
+Add new Tileset	タイルセットを追加
+alias	別名
+All	すべて
+All possible scripts	すべてのスクリプト
+Allow Biking	自転車を許可
+Allow Dig & Escape Rope	あなをほる・あなぬけのヒモを許可
+Allow Running	ダッシュを許可
+Application Font	アプリのフォント
+Application Theme	アプリのテーマ
+Attributes size (in bytes)	属性のサイズ（バイト）
+Automatically check for updates	更新を自動的に確認
+Back	戻る
+Background Image	背景画像
+Base game version	ベースとなるゲーム
+Battle Scene	戦闘背景
+Behavior mask	動作のビットマスク
+binary	バイナリ
+Bit Depth:	色深度:
+Black	黒
+Blue	青
+Border Dimensions	外周のサイズ
+Border Height	外周の高さ
+Border Metatiles	外周のメタタイル
+Border Width	外周の幅
+Bottom/Top	下層・上層
+Bucket Fill	バケツ塗り
+C array	C 配列
+Can Fly To	そらをとぶの移動先
+Cancel	キャンセル
+Change Number of Metatiles...	メタタイル数を変更...
+Checkerboard Fill	市松模様で初期化
+Choose a new filepath for this script	このスクリプトの新しい保存先を選択
+Clear Background Image	背景画像を解除
+Clear Map Entries	マップ項目を消去
+Clear Map Layout	マップレイアウトを消去
+Close	閉じる
+Collision Graphics	通行設定の画像
+Color	色
+Color Picker	色の選択
+Configure JSON...	JSON を設定...
+Covered	上層で覆う
+Create New Script...	スクリプトを新規作成...
+Create separate text file	テキストを別ファイルに作成
+Current map only	現在のマップのみ
+Current map, and global script files	現在のマップと共通スクリプト
+Cursor Icons	カーソルアイコン
+Custom Attributes	カスタム属性
+Custom Scripts Editor	カスタムスクリプトエディター
+Customize...	カスタマイズ...
+Data Output	データ出力
+Default Icons	標準アイコン
+Default Tilesets	標準タイルセット
+Delete Square	マスを削除
+Dialog	ダイアログ
+Dimensions	サイズ
+Dimensions (in pixels)	サイズ（ピクセル）
+Direction	方向
+Disable preview scaling	プレビューを拡大縮小しない
+Disable preview updates	プレビューの更新を停止
+Disable Warning	警告を無効化
+Disable warning when deleting events with IDs	ID 付きイベント削除時の警告を無効化
+Display Metatile Usage Counts	メタタイルの使用数を表示
+Display Unused Metatiles	未使用のメタタイルを表示
+Display Unused Tiles	未使用のタイルを表示
+Dive Map	潜水先のマップ
+Do not alert me about new updates	新しい更新を通知しない
+Down	下
+East	東
+Edit Frame Skip	編集フレームの間引き
+Emerge Map	浮上先のマップ
+Enable 'Allow Running/Biking/Escaping'	ダッシュ・自転車・脱出の許可設定を有効化
+Enable 'Floor Number'	階数の設定を有効化
+Enable 'Quantity' for Hidden Items	隠しアイテムの個数設定を有効化
+Enable 'Requires Itemfinder' for Hidden Items	隠しアイテムのダウジングマシン必須設定を有効化
+Enable 'Respawn Map/NPC' for Heal Locations	回復地点の復帰先マップ・NPC 設定を有効化
+Enable Clone Objects	複製オブジェクトを有効化
+Enable Custom Border Size	外周サイズの変更を有効化
+Enable Secret Bases	ひみつきちを有効化
+Enable Triple Layer Metatiles	3 層メタタイルを有効化
+Enable Weather Triggers	天候トリガーを有効化
+Encounter Type	エンカウントの種類
+Encounter Type mask	エンカウント種別のビットマスク
+End	終了
+Errors	エラー
+Export Map Image	マップ画像を書き出す
+Export Metatiles Image	メタタイル画像を書き出す
+Export Porytiles Layer Images	Porytiles のレイヤー画像を書き出す
+Export Tiles Image	タイル画像を書き出す
+Eyedropper	スポイト
+Fields	フィールド
+Files	ファイル
+Filter...	絞り込み...
+Find Color Usage...	色の使用箇所を検索...
+First palette color	パレットの先頭色
+Floor Number	階数
+Fonts	フォント
+Form	フォーム
+format	形式
+Forward	進む
+Frame	フレーム
+Frame Delay	フレーム間隔
+General	全般
+Generate...	生成...
+Goto Line Command	指定行を開くコマンド
+Green	緑
+Grid Settings	グリッド設定
+Group	グループ
+h-flip	左右反転
+height	高さ
+Hide empty folders in the list.	空のフォルダーを非表示にします。
+Horizontal	横
+Identifiers	識別子
+If unchecked this script will be ignored	チェックを外すとこのスクリプトは無効になります
+IMAGE	画像
+Image Export Color Space	画像出力の色空間
+Image Path	画像のパス
+Import City Map Image Tiles...	街のマップ画像タイルを読み込む...
+Import Defaults	標準設定を読み込む
+Import Metatiles from Advance Map 1.92	Advance Map 1.92 からメタタイルを読み込む
+Import Palette	パレットを読み込む
+Import Region Map Image Tiles...	タウンマップの画像タイルを読み込む...
+Import Tiles Image	タイル画像を読み込む
+Individual Mode	個別モード
+Information	情報
+Layer	レイヤー
+Layer Arrangement	レイヤーの配置
+Layer Grid	レイヤーのグリッド
+Layer Type	レイヤーの種類
+Layer Type mask	レイヤー種別のビットマスク
+Layers	レイヤー
+Layout Height	レイアウトの高さ
+Layout ID	レイアウト ID
+Layout Name	レイアウト名
+layout path	レイアウトのパス
+Layout Properties	レイアウトのプロパティ
+Layout Width	レイアウトの幅
+Left	左
+left offset	左端のオフセット
+Level Distribution	レベルの分布
+Load Script...	スクリプトを読み込む...
+Loading....	読み込み中...
+Loading 	読み込み中: 
+Location	場所
+Location ID	場所 ID
+Location Name	場所の名前
+Logging	ログ
+Map Data Layout	マップデータの構造
+Map Dimensions	マップのサイズ
+Map Entries	マップ項目
+Map Group	マップグループ
+Map Group Name	マップグループ名
+Map Layout	マップレイアウト
+Map List Font	マップ一覧のフォント
+Map Name	マップ名
+Map Section	マップ区画
+Map Shift	マップを一括移動
+Maps	マップ
+Max Collision	通行設定の最大値
+Max Elevation	高さの最大値
+Maximum Events per Event group	イベントグループごとの最大数
+Metatile Behavior	メタタイルの動作
+Metatile Grid	メタタイルのグリッド
+Metatile ID	メタタイル ID
+Metatile Label (Optional)	メタタイルのラベル（任意）
+Metatile Properties	メタタイルのプロパティ
+Metatile Range	メタタイルの範囲
+Metatile Selector Width	メタタイル選択欄の幅
+Mirror to Connecting Maps	接続先のマップにも反映
+Miscellaneous	その他
+Monitor project files	プロジェクトファイルを監視
+Move	移動
+Multiple	複数
+Name	名前
+New Layout Options	新規レイアウトの設定
+New Map Defaults	新規マップの初期設定
+New Map Options	新規マップの設定
+Normal	通常
+North	北
+Offset	オフセット
+Offset (in pixels)	オフセット（ピクセル）
+Open Directory Command	フォルダーを開くコマンド
+Open recent project on launch	起動時に最近使ったプロジェクトを開く
+Open this script file	このスクリプトファイルを開く
+Output 'callback' field	callback フィールドを出力
+Output 'isCompressed' field	isCompressed フィールドを出力
+Palette	パレット
+Palette Color Search	パレットの色を検索
+Palette Editor	パレットエディター
+palette path	パレットのパス
+Pencil	鉛筆
+plain	単純形式
+Player View Distance	プレイヤーの表示距離
+Pointer	選択カーソル
+Pokémon Icons	ポケモンのアイコン
+Porymap Version Update	Porymap の更新
+Prefab Name	定型パーツ名
+Prefabs Path	定型パーツのパス
+Preferences	環境設定
+Preserve data only needed to match the original game	原作との一致にのみ必要なデータを保持
+press [SPACE] to capture color	スペースキーで色を取得
+Preview	プレビュー
+Primary	基本
+Primary...	基本...
+Project Settings	プロジェクト設定
+Raw Attributes Value	属性の数値
+Red	赤
+Refresh Scripts	スクリプトを再読み込み
+Region	地方
+Region Map Properties	タウンマップのプロパティ
+Remove this script	このスクリプトを削除
+Render as black	黒で表示
+Render placeholder metatiles	代替メタタイルを表示
+Render using first palette color	パレットの先頭色で表示
+Replace Layout Section...	レイアウトの区画を置換...
+Requires Flash	フラッシュが必要
+Reset	リセット
+Resize Layout	レイアウトのサイズを変更
+Resize Tilemap	タイルマップのサイズを変更
+Right	右
+Save Tileset	タイルセットを保存
+Script label autocomplete	スクリプトラベルの入力補完
+Scripts	スクリプト
+Secondary	追加
+Secondary...	追加...
+Select by clicking on sprite	スプライトの不透明部分をクリックして選択
+Select by clicking within bounding rectangle	スプライトの矩形内をクリックして選択
+Selection Mode	選択方法
+Shortcuts Editor	ショートカットエディター
+Show Location Name	場所の名前を表示
+Show project loading screen	読み込み画面を表示
+Show Raw Metatile Attributes	メタタイル属性の数値を表示
+Show Tileset Divider	タイルセットの区切りを表示
+Show Unused Colors	未使用の色を表示
+Show Wild Encounter Tables	野生ポケモンの出現表を表示
+Song	BGM
+South	南
+Species	ポケモンの種類
+Species Distribution	種類ごとの分布
+Split	分割
+Start	開始
+Status bar message types	ステータスバーに表示するメッセージ
+Style	スタイル
+Summary Chart...	集計グラフ...
+Swap Layout Sections...	レイアウトの区画を交換...
+Swap Metatiles	メタタイルを交換
+Tab Icon	タブのアイコン
+Terrain Type	地形の種類
+Terrain Type mask	地形種別のビットマスク
+Text Editor	テキストエディター
+Theme	テーマ
+These masks have overlapping bits. This may result in unexpected value changes.	ビットマスクが重複しています。値が意図せず変わる可能性があります。
+Tile Properties	タイルのプロパティ
+tilemap path	タイルマップのパス
+Tilemap Properties	タイルマップのプロパティ
+tileset path	タイルセットのパス
+Tilesets	タイルセット
+Timelapse	編集過程のアニメーション
+top offset	上端のオフセット
+Transparency	透明度
+Transparent Pixel Rendering	透明ピクセルの表示方法
+Type	種類
+Unused Layer Rendering	未使用レイヤーの表示方法
+Up	上
+Update Config...	設定を更新...
+Use Poryscript	Poryscript を使用
+Use the dropbown and buttons to add behaviors to the list...	プルダウンとボタンを使って動作を一覧に追加してください...
+v-flip	上下反転
+Value	値
+Vertical	縦
+Warnings	警告
+Warp Behaviors	ワープの動作
+Weather	天候
+West	西
+Width	幅
+Width (metatiles)	幅（メタタイル）
+Width (pixels)	幅（ピクセル）
+Wild Pokémon Search	野生ポケモンの検索
+Wild Pokémon Summary	野生ポケモンの集計
+X Flip	左右反転
+Y Flip	上下反転
+(All colors used)	（すべての色が使用中）
+'Map' must be the name of an existing map.	「マップ」には既存のマップ名を指定してください。
+Header Data	ヘッダー情報
+Cannot save city map tilemap to %1.	街のタイルマップを %1 に保存できません。
+%1 cannot be empty.	%1 を空にすることはできません。
+The name '%1' is reserved, please choose a different name.	「%1」は予約済みの名前です。別の名前を指定してください。
+Overwrite value for existing attribute '%1'?	既存の属性「%1」の値を上書きしますか？
+Remove Selected Scripts	選択したスクリプトを削除
+Open Selected Scripts	選択したスクリプトを開く
+Failed to create new script file!	スクリプトファイルを作成できませんでした。
+Error: Could not open %1 for writing	エラー: %1 を書き込み用に開けません。
+Could not open "%1" for writing	「%1」を書き込み用に開けません。
+The script '%1' is already loaded	スクリプト「%1」は読み込み済みです。
+Failed to open script '%1'	スクリプト「%1」を開けませんでした。
+Min Level	最低レベル
+Max Level	最高レベル
+Encounter Chance	出現確率
+Slot Ratio	スロット比率
+Encounter Rate	遭遇率
+event_type	イベントの種類
+An optional, unique name to use to refer to this object in scripts. If no name is given you can refer to this object using its 'object id' number.	スクリプトからこのオブジェクトを参照するための一意な名前です（任意）。省略した場合はオブジェクト ID の番号で参照できます。
+The sprite graphics to use for this object.	このオブジェクトに使用するスプライト画像です。
+The object's natural movement behavior when the player is not interacting with it.	プレイヤーが話しかけていないときのオブジェクトの移動方法です。
+The maximum number of metatiles this object is allowed to move left or right during its normal movement behavior actions.	通常の移動で左右に動ける最大距離をメタタイル単位で指定します。
+The maximum number of metatiles this object is allowed to move up or down during its normal movement behavior actions.	通常の移動で上下に動ける最大距離をメタタイル単位で指定します。
+The script that is executed with this event.	このイベントで実行するスクリプトです。
+Go to this script definition in text editor.	テキストエディターでこのスクリプトの定義を開きます。
+The flag that hides the object when set.	このフラグが立つとオブジェクトが非表示になります。
+The trainer type of this object event. If it is not a trainer, use NONE. SEE ALL DIRECTIONS should only be used with a sight radius of 1.	トレーナーの種類です。トレーナーでない場合は NONE を使用します。SEE ALL DIRECTIONS は視界の範囲が 1 の場合にのみ使用してください。
+The maximum sight range of a trainer, OR the unique id of the berry tree.	トレーナーの視界の最大範囲、またはきのみの木の一意な ID です。
+The sprite graphics to use for this object. This is updated automatically to match the target object, and so can't be edited. By default the games will get the graphics directly from the target object, so this field is ignored.	このオブジェクトのスプライト画像です。参照先に合わせて自動更新されるため編集できません。標準のゲームでは参照先から画像を直接取得するため、この項目は使用しません。
+The name of the map that the object being cloned is on.	複製元のオブジェクトがあるマップの名前です。
+The Local ID name or number of the object being cloned.	複製元オブジェクトのローカル ID の名前または番号です。
+An optional, unique name to use to refer to this warp from other warps. If no name is given you can refer to this warp using its 'warp id' number.	他のワープからこのワープを参照するための一意な名前です（任意）。省略した場合はワープ ID の番号で参照できます。
+The destination map name of the warp.	ワープの移動先マップの名前です。
+The warp id on the destination map.	移動先マップ内のワープ ID です。
+The variable by which the script is triggered. The script is triggered when this variable's value matches 'Var Value'.	スクリプトの実行条件となる変数です。この変数が「変数の値」と一致すると実行します。
+The variable's value that triggers the script.	スクリプトを実行する条件となる変数の値です。
+The weather that starts when the player steps on this spot.	プレイヤーがこの場所に踏み入れたときに開始する天候です。
+The direction that the player must be facing to be able to interact with this event.	このイベントを調べるときに必要なプレイヤーの向きです。
+The item to be given.	入手するアイテムです。
+The flag that is set when the hidden item is picked up.	隠しアイテムを拾ったときに立てるフラグです。
+The number of items received when the hidden item is picked up.	隠しアイテムを拾ったときに入手する個数です。
+If checked, hidden item can only be picked up using the Itemfinder	ダウジングマシンを使用した場合のみ隠しアイテムを拾えるようにします。
+The secret base id that is inside this secret base entrance. Secret base ids are meant to be unique to each and every secret base entrance.	この入口に対応するひみつきちの ID です。入口ごとに一意の ID を指定してください。
+The unique identifier for this heal location.	この回復地点の一意な識別子です。
+The map where the player will respawn after whiteout.	全滅後にプレイヤーが復帰するマップです。
+The Local ID name or number of the NPC the player interacts with upon respawning after whiteout.	全滅後の復帰時に対応する NPC のローカル ID の名前または番号です。
+Warning:\nThis warp event is not positioned on a metatile with a warp behavior.\nClick this warning for more details.	警告:\nこのワープはワープ動作のあるメタタイル上に配置されていません。\n詳細はこの警告をクリックしてください。
+Export Map Stitch Image	接続マップの画像を書き出す
+Export %1 Timelapse Image	%1 の編集過程を書き出す
+Exports an image of the selected %1.	選択中の %1 を画像として書き出します。
+Exports a GIF of the edit history for the selected %1.	選択中の %1 の編集履歴を GIF として書き出します。
+Starting Map	開始マップ
+Rewinding %1 edit history...	%1 の編集履歴を巻き戻しています...
+Building %1 timelapse...	%1 のアニメーションを生成しています...
+Restoring %1 edit history...	%1 の編集履歴を復元しています...
+%1 empty folders!	空のフォルダーを%1！
+%1 empty folders in the list.	一覧の空のフォルダーを%1します。
+Image Files (*.png *.jpg *.bmp)	画像ファイル (*.png *.jpg *.bmp)
+%1 '%2' is not unique.	%1「%2」は既に使用されています。
+Failed to create layout. See %1 for details.	レイアウトを作成できませんでした。詳細は %1 を確認してください。
+The specified width and height are too large.\nThe maximum map width and height is the following: (width + %1) * (height + %2) <= %3\nThe specified map width and height was: (%4 + %1) * (%5 + %2) = %6	指定した幅と高さが大きすぎます。\n制限: (幅 + %1) * (高さ + %2) <= %3\n指定したサイズ: (%4 + %1) * (%5 + %2) = %6
+The Primary Tileset cannot be empty.	基本タイルセットを指定してください。
+The Primary Tileset '%1' does not exist.	基本タイルセット「%1」は存在しません。
+The Secondary Tileset cannot be empty.	追加タイルセットを指定してください。
+The Secondary Tileset '%1' does not exist.	追加タイルセット「%1」は存在しません。
+%1 already has a %2 connection to '%3'. Replace it with a %2 connection to '%4'?	%1 には既に「%3」への %2 接続があります。「%4」への %2 接続に置き換えますか？
+%1 must either be the name of an existing map group, or a unique identifier for a new map group.	%1 には既存のマップグループ名、または新しいグループ用の一意な識別子を指定してください。
+%1 must either be the ID for an existing layout, or a unique identifier for a new layout.	%1 には既存のレイアウト ID、または新しいレイアウト用の一意な識別子を指定してください。
+Invalid overlay opacity '%1', must be in range 0-100	重ね合わせの不透明度「%1」は無効です。0～100 で指定してください。
+Invalid overlay color "%1". Colors can be in the format "#RRGGBB" or "#AARRGGBB"	重ね合わせの色「%1」は無効です。#RRGGBB または #AARRGGBB 形式で指定してください。
+Invalid rectangle rounding '%1', must be in range 0-100	角の丸み「%1」は無効です。0～100 で指定してください。
+Failed to load image '%1'	画像「%1」を読み込めませんでした。
+%1x%2 image starting at (%3,%4) exceeds the image size for '%5'	(%3,%4) からの %1×%2 の範囲が「%5」の画像サイズを超えています。
+Failed to load custom image	カスタム画像を読み込めませんでした。
+Searching for usage of %1's palette %2.	%1 のパレット %2 の使用箇所を検索しています。
+This color is unused.	この色は使用されていません。
+Failed to import palette.	パレットを読み込めませんでした。
+Failed to save prefabs file!	定型パーツのファイルを保存できませんでした。
+Any created prefabs will not be available next time Porymap is opened. Please fix your prefabs_filepath in the Porymap project config file.	作成した定型パーツは次回の起動時には使用できません。Porymap のプロジェクト設定ファイルの prefabs_filepath を修正してください。
+Confirm Prefab Deletion	定型パーツの削除確認
+Are you sure you want to delete this prefab?	この定型パーツを削除しますか？
+Failed to import default prefabs file!	標準の定型パーツファイルを読み込めませんでした。
+Failed to read prefab data from %1: %2	%1 から定型パーツを読み込めませんでした: %2
+Prefabs array is empty or missing in %1.	%1 の定型パーツ配列が空、または存在しません。
+Are you sure you want to delete prefab "%1"?	定型パーツ「%1」を削除しますか？
+This will create a file called '%1'	ファイル「%1」を作成します
+This will overwrite any existing prefabs in '%1'	「%1」の既存の定型パーツを上書きします
+Would you like to import the default prefabs for %1? %2.	%1 の標準の定型パーツを読み込みますか？ %2。
+Some changes will only take effect after reloading the project. Reload the project now?	一部の変更はプロジェクトの再読み込み後に反映されます。今すぐ再読み込みしますか？
+This value has been set using '%1' in %2	この値は %2 内の「%1」で設定されています。
+Custom filepaths must be inside the root project folder '%1'	カスタムパスはプロジェクトのルートフォルダー「%1」内を指定してください。
+Restore default config settings for %1?	%1 の設定を標準に戻しますか？
+Map Layout: Delete Square	マップレイアウト: マスを削除
+Configure Region Maps	タウンマップの設定
+Region Map List:	タウンマップ一覧:
+Add Region Map...	タウンマップを追加...
+Delete Selected Region Map	選択したタウンマップを削除
+City Map List:	街のマップ一覧:
+Configure City Maps...	街のマップを設定...
+\nUse pokefirered defaults\n	\npokefirered の標準設定を使用\n
+\nUse pokeemerald defaults\n	\npokeemerald の標準設定を使用\n
+\nUse pokeruby defaults\n	\npokeruby の標準設定を使用\n
+Region map configuration not found.	タウンマップの設定が見つかりません。
+In order to continue, you must setup porymap to use your region map.	続行するには、使用するタウンマップを Porymap に設定してください。
+Reconfiguring region maps will discard any unsaved changes.	タウンマップを再設定すると、未保存の変更は破棄されます。
+Continue?	続行しますか？
+Fill Tilemap	タイルマップを塗りつぶす
+Reset Layout Square	レイアウトのマスをリセット
+New Tilemap Dimensions	新しいタイルマップのサイズ
+Height	高さ
+Swap Map Sections	マップ区画を交換
+Map Section 1:	マップ区画 1:
+Map Section 2:	マップ区画 2:
+Swap Layout Sections 	レイアウト区画を交換: 
+Replace Map Section	マップ区画を置換
+Old Map Section:	置換前のマップ区画:
+New Map Section:	置換後のマップ区画:
+Replace Layout Section 	レイアウト区画を置換: 
+Clear Tilemap	タイルマップを消去
+Clear Layout	レイアウトを消去
+Could not open %1 for writing	%1 を書き込み用に開けません。
+This action will reset the entire map layout to %1. Continue?	マップレイアウト全体を %1 にリセットします。続行しますか？
+alias cannot be empty	別名を空にすることはできません。
+this alias is not an acceptable string	この別名は使用できません。
+tilemap width not valid, must be one of [16, 32, 64, 128]	タイルマップの幅は 16・32・64・128 のいずれかにしてください。
+tilemap height not valid, must be one of [	タイルマップの高さが無効です。次のいずれかにしてください: [
+layout map width + left offset cannot be larger than tilemap width	レイアウトの幅と左オフセットの合計はタイルマップの幅を超えられません。
+layout map height + top offset cannot be larger than tilemap height	レイアウトの高さと上オフセットの合計はタイルマップの高さを超えられません。
+this path cannot be empty	パスを空にすることはできません。
+The specified width and height are too large.	指定した幅と高さが大きすぎます。
+The maximum layout width and height is the following: (width + %1) * (height + %2) <= %3\nThe specified layout width and height was: (%4 + %1) * (%5 + %2) = %6	レイアウトの制限: (幅 + %1) * (高さ + %2) <= %3\n指定したサイズ: (%4 + %1) * (%5 + %2) = %6
+Some shortcuts failed to save. Please close the Shortcuts Editor and retry.	一部のショートカットを保存できませんでした。エディターを閉じて再度お試しください。
+Shortcut '%1' is already used by '%2', would you like to replace it?	ショートカット「%1」は「%2」で使用中です。置き換えますか？
+Bottom/Middle/Top	下層・中層・上層
+Change Number of Metatiles	メタタイル数を変更
+Saved primary and secondary Tilesets!	基本・追加タイルセットを保存しました。
+Failed to save tilesets! See log for details.	タイルセットを保存できませんでした。詳細はログを確認してください。
+Import %1 Tileset Tiles Image	%1タイルセットのタイル画像を読み込む
+Importing %1 tileset tiles '%2'	%1タイルセットのタイル「%2」を読み込んでいます
+Failed to open image file: '%1'	画像ファイル「%1」を開けませんでした。
+Failed to import tiles.	タイルを読み込めませんでした。
+The image dimensions (%1x%2) are invalid. The dimensions must be a multiple of %3x%4 pixels.	画像サイズ（%1×%2）が無効です。幅と高さは %3×%4 ピクセルの倍数にしてください。
+The maximum number of tiles allowed in the %1 tileset is %2, but the provided image contains %3 total tiles.	%1タイルセットの最大タイル数は %2 ですが、指定した画像には %3 タイル含まれています。
+Select a palette file for this image?	この画像のパレットファイルを選択しますか？
+The provided image is not indexed. An indexed image will be generated using the provided image and palette.	指定した画像はインデックスカラーではありません。画像とパレットからインデックスカラー画像を生成します。
+Export %1 Tiles Image	%1のタイル画像を書き出す
+Choose Folder to Export Images	画像の出力先フォルダーを選択
+The following files will be overwritten, are you sure you want to export?\n\n%1	次のファイルを上書きします。書き出しますか？\n\n%1
+Failed to save Porytiles layer image '%1'.	Porytiles のレイヤー画像「%1」を保存できませんでした。
+Import %1 Tileset Metatiles from Advance Map 1.92	Advance Map 1.92 から%1タイルセットのメタタイルを読み込む
+Failed to import metatiles from Advance Map 1.92 .bvd file.	Advance Map 1.92 の .bvd ファイルからメタタイルを読み込めませんでした。
+Failed to load metatile %1 for swap.	交換するメタタイル %1 を読み込めませんでした。
+Swapping metatiles %1 and %2 in map layouts...	マップレイアウト内のメタタイル %1 と %2 を交換しています...
+Go to Downloads...	ダウンロードページを開く...
+Checking for updates...	更新を確認しています...
+A new version of Porymap is available!	Porymap の新しいバージョンがあります。
+Your version of Porymap is up to date!	Porymap は最新です。
+Failed to check for version update: %1	更新を確認できませんでした: %1
+Wild Pokémon Summary Charts	野生ポケモンの集計グラフ
+Species not found.	ポケモンが見つかりません。
+Zoom Reset	拡大率をリセット
+Duplicate Selected Event(s)	選択したイベントを複製
+Toggle Border	外周表示を切り替え
+Toggle Smart Paths	スマートパスを切り替え
+Map List: Hide/Show Empty Folders	マップ一覧: 空フォルダーの表示切り替え
+Map List: Expand all folders	マップ一覧: すべて展開
+Map List: Collapse all folders	マップ一覧: すべて折りたたむ
+Show Edit History...	編集履歴を表示...
+Create new map	マップを新規作成
+Open previous map	前のマップを開く
+Open next map	次のマップを開く
+You are in layout-only mode. This tab is only enabled when a map is open.	レイアウトのみの編集モードです。このタブはマップを開いたときに使用できます。
+Reconfigure	再設定
+Launching Porymap v%1 (%2)	Porymap v%1 (%2) を起動しています
+Using Qt v%2 (%3)	Qt v%2 (%3) を使用
+Resizing main window. Dimensions of %1x%2 exceed available screen size of %3x%4	ウィンドウのサイズ %1×%2 が画面の %3×%4 を超えるため調整します。
+Failed to open %1: No such directory	%1 を開けません。フォルダーが存在しません。
+The directory '%1' failed the project sanity check.	フォルダー「%1」はプロジェクトの整合性確認に失敗しました。
+The selected directory appears to be invalid.	選択したフォルダーは有効なプロジェクトではないようです。
+The directory '%1' is missing key files.\n\nMake sure you selected the correct project directory (the one used to make your .gba file, e.g. 'pokeemerald').	フォルダー「%1」に必要なファイルがありません。\n\n.gba ファイルのビルドに使用するプロジェクトフォルダー（例: pokeemerald）を選択してください。
+Failed to check project version	プロジェクトのバージョンを確認できませんでした。
+Successfully checked project version. 	プロジェクトのバージョンを確認しました。 
+Supports at least Porymap v%1	少なくとも Porymap v%1 に対応しています
+Too old for any Porymap version	古すぎるため Porymap に対応していません
+Your project may be incompatible!	プロジェクトに互換性がない可能性があります。
+There was an error opening the project.	プロジェクトを開くときにエラーが発生しました。
+The file %1 has changed on disk. Would you like to reload the project?	ファイル %1 が外部で変更されました。プロジェクトを再読み込みしますか？
+Some project files have changed on disk. Would you like to reload the project?	プロジェクトのファイルが外部で変更されました。プロジェクトを再読み込みしますか？
+The following files have changed:\n	次のファイルが変更されました:\n
+Choose Project Folder	プロジェクトフォルダーを選択
+Cannot open map with empty name.	名前が空のマップは開けません。
+Cannot open map '%1'.	マップ「%1」を開けません。
+This map name is a placeholder to indicate that the warp's map will be set programmatically.	このマップ名は、ワープ先をプログラムから設定することを示す仮の名前です。
+There was an error opening map '%1'.	マップ「%1」を開くときにエラーが発生しました。
+Ignored setting map to '%1'	マップ「%1」への切り替えを無視しました
+Setting map to '%1'	マップを「%1」に切り替えています
+Failed to set map to '%1'	マップを「%1」に切り替えられませんでした
+Cannot open layout with empty ID.	ID が空のレイアウトは開けません。
+There was an error opening layout '%1'.	レイアウト「%1」を開くときにエラーが発生しました。
+Setting layout to '%1'	レイアウトを「%1」に切り替えています
+Failed to determine which map '%1' refers to.	「%1」が参照するマップを特定できませんでした。
+Unable to set layout '%1'.	レイアウト「%1」を設定できません。
+Failed to load custom Events tab icon '%1'.	イベントタブのカスタムアイコン「%1」を読み込めませんでした。
+Created a new map named %1.	マップ「%1」を作成しました。
+Created a new layout named %1.	レイアウト「%1」を作成しました。
+Created a new tileset named %1.	タイルセット「%1」を作成しました。
+Unable to duplicate '%1'.	「%1」を複製できません。
+New tileset created at '%1'!	「%1」にタイルセットを作成しました。
+Failed to save some project changes.	一部の変更を保存できませんでした。
+Reload your map in-game!	ゲーム内でマップに入り直してください。
+If your game is currently saved on a map you have edited, the changes may not appear until you leave the map and return.	編集したマップ内でセーブしている場合、一度マップを出て戻るまで変更が表示されないことがあります。
+Unable to paste, the maximum number of events would be exceeded.	イベント数の上限を超えるため貼り付けできません。
+<span style="color:red;">NOTE:</span> This map inherits events from %1.<br>Adding any events will separate it from that map.	<span style="color:red;">注意:</span> このマップは %1 のイベントを共有しています。<br>イベントを追加すると共有が解除されます。
+There are no events on the current map.	現在のマップにはイベントがありません。
+Map stitch images are not possible without a map selected.	接続マップの画像を書き出すにはマップを選択してください。
+Failed to import map from Advance Map 1.92 .map file.	Advance Map 1.92 の .map ファイルから読み込めませんでした。
+Warp Events only function as exits on certain metatiles	ワープイベントは特定のメタタイル上でのみ出口として動作します
+There was an error opening the region map data.	タウンマップのデータを開くときにエラーが発生しました。
+Aborted project close	プロジェクトを閉じる操作を中止しました
+: stopped by '%1'	: 「%1」によって停止
+The project	プロジェクト
+New Wild Encounter Group Label	野生ポケモングループの新しいラベル
+Group Base Label:	グループの基本ラベル:
+Fields:	フィールド:
+Copy from current group	現在のグループからコピー
+Confirm Delete	削除の確認
+Are you sure you want to delete 	削除してもよろしいですか: 
+Configure Wild Encounter Fields	野生ポケモンの出現フィールドを設定
+Field	フィールド
+Add New Field...	フィールドを追加...
+Field Name	フィールド名
+Delete Field	フィールドを削除
+Failed to find data for map %1. Unable to delete	マップ %1 のデータが見つからないため削除できません。
+Failed to find selected wild mon group: %1. Unable to delete	選択した野生ポケモングループ %1 が見つからないため削除できません。
+<font color="red">\tWARNING: value exceeds the limit for a u8 variable.</font>	<font color="red">\t警告: 値が u8 変数の上限を超えています。</font>
+Note: This affects all maps, not just the current map.	注意: この変更は現在のマップだけでなく、すべてのマップに適用されます。
+Unable to duplicate, the maximum number of events would be exceeded.	イベント数の上限を超えるため複製できません。
+The maximum number of %1 events (%2) has been reached.	%1 イベントの上限（%2）に達しています。
+Deleting this event may also delete the constant listed below. This can stop your project from compiling.\n\nAre you sure you want to delete this event?	このイベントを削除すると、以下の定数も削除される場合があります。その結果、プロジェクトがビルドできなくなる可能性があります。\n\nこのイベントを削除しますか？
+Don't warn me again	次回から警告しない
+Delete All	すべて削除
+Failed to load custom collision image '%1', using default.	通行設定のカスタム画像「%1」を読み込めないため、標準画像を使用します。
+Local ID	ローカル ID
+Sprite	スプライト
+Movement	移動方法
+Movement Radius X	横方向の移動範囲
+Movement Radius Y	縦方向の移動範囲
+Script	スクリプト
+Event Flag	イベントフラグ
+Trainer Type	トレーナーの種類
+Sight Radius / Berry Tree ID	視界の範囲 / きのみの木 ID
+Target Map	参照先マップ
+Target Local ID	参照先のローカル ID
+Destination Map	移動先マップ
+Destination Warp	移動先ワープ
+Var	変数
+Var Value	変数の値
+Player Facing Direction	プレイヤーの向き
+Item	アイテム
+Flag	フラグ
+Quantity	個数
+Requires Itemfinder	ダウジングマシンが必要
+Secret Base	ひみつきち
+Respawn Map	復帰先マップ
+Respawn NPC	復帰先 NPC
+New 	追加: 
+Do not ask again.	次回から確認しない
+Try Anyway	そのまま試す
+Open Settings...	設定を開く...
+%1 has been modified, save changes?	%1 は変更されています。変更を保存しますか？
+Please see %1 for full error details.	エラーの詳細は %1 を確認してください。
+Failed to create map. See %1 for details.	マップを作成できませんでした。詳細は %1 を確認してください。
+<html><head/><body><p>(optional) Path to the .pal JASC palette file</p></body></html>	<html><head/><body><p>（任意）JASC 形式のパレットファイル（.pal）のパスです。</p></body></html>
+<html><head/><body><p><span style=" font-size:13pt; color:#d7000c;">WARNING:  </span><span style=" font-weight:400;">The settings from this point below require project changes to function properly. Do not modify these settings without the necessary changes. </span></p></body></html>	<html><head/><body><p>警告: 以下の設定を使用するには、プロジェクト側にも対応する変更が必要です。必要な変更を行わずに設定を変えないでください。</p></body></html>
+<html><head/><body><p><span style=" font-size:13pt; color:#d7000c;">WARNING:  </span><span style=" font-weight:400;">Updating Porymap may require you to update your projects. See "Breaking Changes" in the Changelog for details.</span></p></body></html>	<html><head/><body><p>警告: Porymap の更新に伴い、プロジェクトの更新が必要になる場合があります。詳細は変更履歴の「Breaking Changes」を確認してください。</p></body></html>
+<html><head/><body><p><span style=" font-weight:600;">Tip</span>: Click on individual metatiles to remove them from the Prefab</p></body></html>	<html><head/><body><p>ヒント: 個々のメタタイルをクリックすると定型パーツから除外できます。</p></body></html>
+<html><head/><body><p>A comma-separated list of metatile values that will be used to fill new map borders</p></body></html>	<html><head/><body><p>新規マップの外周に使用するメタタイルの値を、カンマ区切りで指定します。</p></body></html>
+<html><head/><body><p>A nickname for this region map that will differentiate it from others (should be unique).</p></body></html>	<html><head/><body><p>このタウンマップを識別するための名前です。他の名前と重複しないようにしてください。</p></body></html>
+<html><head/><body><p>Add a new event to the map.</p></body></html>	<html><head/><body><p>マップに新しいイベントを追加します。</p></body></html>
+<html><head/><body><p>Add a new folder to the list.</p></body></html>	<html><head/><body><p>一覧に新しいフォルダーを追加します。</p></body></html>
+<html><head/><body><p>Add additional C files containing #defines or enums. These will be used to resolve unknown symbols during project launch.</p></body></html>	<html><head/><body><p>#define や列挙型を含む C ファイルを追加します。プロジェクトの読み込み時に、不明なシンボルの解決に使用します。</p></body></html>
+<html><head/><body><p>Add an additional #define name and expression. This may be used to evaluate other #defines during project launch.</p></body></html>	<html><head/><body><p>#define の名前と式を追加します。プロジェクトの読み込み時に、他の #define の評価にも使用できます。</p></body></html>
+<html><head/><body><p>Add an existing script file to the list below</p></body></html>	<html><head/><body><p>既存のスクリプトファイルを下の一覧に追加します。</p></body></html>
+<html><head/><body><p>Add the current text to the list</p></body></html>	<html><head/><body><p>現在のテキストを一覧に追加します。</p></body></html>
+<html><head/><body><p>Bucket Fill</p><p>Fills all similar tiles in a region with the selected metatiles or collision attributes</p></body></html>	<html><head/><body><p>バケツ塗り: つながっている同じタイルを、選択中のメタタイルまたは通行属性で塗りつぶします。</p></body></html>
+<html><head/><body><p>Change a map layout's width and height.</p></body></html>	<html><head/><body><p>マップレイアウトの幅と高さを変更します。</p></body></html>
+<html><head/><body><p>Collapse all folders in the list.</p></body></html>	<html><head/><body><p>一覧のすべてのフォルダーを折りたたみます。</p></body></html>
+<html><head/><body><p>Copies the full metatile label to the clipboard.</p></body></html>	<html><head/><body><p>メタタイルの完全なラベルをクリップボードにコピーします。</p></body></html>
+<html><head/><body><p>Create a new Porymap script file with a default template</p></body></html>	<html><head/><body><p>標準テンプレートを使って Porymap のスクリプトファイルを新規作成します。</p></body></html>
+<html><head/><body><p>Create a new group for wild pokemon data on this map.</p></body></html>	<html><head/><body><p>このマップに野生ポケモンのデータグループを追加します。</p></body></html>
+<html><head/><body><p>Delete a group of wild pokemon data on this map.</p></body></html>	<html><head/><body><p>このマップの野生ポケモンのデータグループを削除します。</p></body></html>
+<html><head/><body><p>Delete the selected event from the map.</p></body></html>	<html><head/><body><p>選択中のイベントをマップから削除します。</p></body></html>
+<html><head/><body><p>Destination map name when emerging using <span style=" font-weight:600;">Dive</span>. If empty, no such connection will exist.</p></body></html>	<html><head/><body><p>ダイビングで浮上するときの移動先マップです。空欄の場合は接続しません。</p></body></html>
+<html><head/><body><p>Destination map name when using <span style=" font-weight:600;">Dive</span>. If empty, no such connection will exist.</p></body></html>	<html><head/><body><p>ダイビングで潜るときの移動先マップです。空欄の場合は接続しません。</p></body></html>
+<html><head/><body><p>Each metatile consists of 3 layers of tiles. These layers can be toggled here by clicking the checkbox, or rearranged by clicking and dragging them up or down in the list.</p></body></html>	<html><head/><body><p>メタタイルは 3 層のタイルで構成されます。チェックボックスで各層の表示を切り替え、上下にドラッグして順番を変更できます。</p></body></html>
+<html><head/><body><p>Expand all folders in the list.</p></body></html>	<html><head/><body><p>一覧のすべてのフォルダーを展開します。</p></body></html>
+<html><head/><body><p>Eyedropper</p><p><span style=" font-weight:600;">Click</span> to select a metatile or collision attribute.</p></body></html>	<html><head/><body><p>スポイト: クリックしたメタタイルまたは通行属性を選択します。</p></body></html>
+<html><head/><body><p>Floor number to be used for maps with elevators.</p></body></html>	<html><head/><body><p>エレベーターのあるマップで使用する階数です。</p></body></html>
+<html><head/><body><p>Fully transparent pixels will be rendered as black pixels (the Pokémon games do this by default)</p></body></html>	<html><head/><body><p>完全に透明なピクセルを黒で表示します。ポケモンのゲームでの標準動作です。</p></body></html>
+<html><head/><body><p>Fully transparent pixels will be rendered using the first palette color (this the default behavior for the GBA)</p></body></html>	<html><head/><body><p>完全に透明なピクセルをパレットの先頭色で表示します。GBA の標準動作です。</p></body></html>
+<html><head/><body><p>Height (in metatiles) of the new map's border.</p></body></html>	<html><head/><body><p>新規マップの外周の高さをメタタイル単位で指定します。</p></body></html>
+<html><head/><body><p>Height (in metatiles) of the new map.</p></body></html>	<html><head/><body><p>新規マップの高さをメタタイル単位で指定します。</p></body></html>
+<html><head/><body><p>If checked, Porymap will automatically alert you on startup if a new release is available</p></body></html>	<html><head/><body><p>起動時に新しいリリースがある場合、自動的に通知します。</p></body></html>
+<html><head/><body><p>If checked, Porymap will automatically open your most recently opened project on startup</p></body></html>	<html><head/><body><p>起動時に最後に使用したプロジェクトを自動的に開きます。</p></body></html>
+<html><head/><body><p>If checked, Warp Events will not display a warning about incompatible metatile behaviors</p></body></html>	<html><head/><body><p>ワープイベントとメタタイルの動作が対応していなくても警告を表示しません。</p></body></html>
+<html><head/><body><p>If checked, a Heal Location will be added to this map automatically.</p></body></html>	<html><head/><body><p>このマップに回復地点を自動的に追加します。</p></body></html>
+<html><head/><body><p>If checked, a loading screen with progress information will appear when a project is opened.</p></body></html>	<html><head/><body><p>プロジェクトを開くときに進捗情報付きの読み込み画面を表示します。</p></body></html>
+<html><head/><body><p>If checked, a map name popup will appear when the player enters this map. The name that appears on this popup depends on the Location field.</p></body></html>	<html><head/><body><p>プレイヤーがこのマップに入ったときに場所の名前を表示します。表示名は「場所」の設定によって決まります。</p></body></html>
+<html><head/><body><p>If checked, a prompt to reload your project will appear if relevant project files are edited</p></body></html>	<html><head/><body><p>関連するプロジェクトファイルが変更された場合、再読み込みの確認を表示します。</p></body></html>
+<html><head/><body><p>If checked, automatically update the metatile range to include the full primary tileset.</p></body></html>	<html><head/><body><p>基本タイルセット全体を含むようにメタタイルの範囲を自動更新します。</p></body></html>
+<html><head/><body><p>If checked, automatically update the metatile range to include the full secondary tileset.</p></body></html>	<html><head/><body><p>追加タイルセット全体を含むようにメタタイルの範囲を自動更新します。</p></body></html>
+<html><head/><body><p>If checked, display the placeholder tiles that are rendered for the unused layer in-game. For a given metatile only 2 of the 3 tile layers are used, and the 3rd layer is filled with these placeholder tiles. The unused layer and placeholder tile change depending on the metatile's layer type.</p></body></html>	<html><head/><body><p>ゲーム内で未使用レイヤーに描かれる代替タイルを表示します。通常は 3 層のうち 2 層を使用し、残りの層を代替タイルで埋めます。未使用の層と代替タイルはレイヤーの種類によって変わります。</p></body></html>
+<html><head/><body><p>If checked, metatiles will be interpreted as having 3 layers of 4 tiles each (12 tiles total) as opposed to the default 2 layers of 4 tiles each (8 total).</p></body></html>	<html><head/><body><p>標準の 4 タイル × 2 層（計 8 タイル）ではなく、4 タイル × 3 層（計 12 タイル）としてメタタイルを扱います。</p></body></html>
+<html><head/><body><p>If checked, no warning will be shown when deleting an event that has an associated #define that may also be deleted.</p></body></html>	<html><head/><body><p>関連する #define も削除される可能性があるイベントを削除するときに、警告を表示しません。</p></body></html>
+<html><head/><body><p>If checked, the image in the preview window will not be recreated when the settings are changed. This has no effect on the exported file.</p></body></html>	<html><head/><body><p>設定を変更してもプレビュー画像を更新しません。書き出すファイルには影響しません。</p></body></html>
+<html><head/><body><p>If checked, the image shown in the preview window will not scale to fit into the available space. The aspect ratio of the image will never change. This has no effect on the exported file.</p></body></html>	<html><head/><body><p>プレビュー画像を表示領域に合わせて拡大縮小しません。縦横比は変わりません。書き出すファイルには影響しません。</p></body></html>
+<html><head/><body><p>If checked, the list of suggestions when typing in an Event's Script field will include all global script labels in the project. This is the slowest option for Porymap's project opening.</p></body></html>	<html><head/><body><p>イベントのスクリプト入力候補に、プロジェクト内のすべてのグローバルラベルを含めます。プロジェクトの読み込みが最も遅くなります。</p></body></html>
+<html><head/><body><p>If checked, the list of suggestions when typing in an Event's Script field will include script labels from the current map's scripts file, scripts in-use by the map's other events, and all script files in the <span style=" font-family:'SFMono-Regular','Menlo','Monaco','Consolas','Liberation Mono','Courier New','Courier','monospace'; font-size:11px; color:#e74c3c; background-color:#ffffff;">data_scripts_folders </span>folder.</p></body></html>	<html><head/><body><p>現在のマップのスクリプト、他のイベントが使用するスクリプト、および data_scripts_folders フォルダー内のすべてのスクリプトを入力候補に含めます。</p></body></html>
+<html><head/><body><p>If checked, the list of suggestions when typing in an Event's Script field will only include script labels from the current map's scripts file and scripts in-use by the map's other events. This is the fastest option for Porymap's project opening.</p></body></html>	<html><head/><body><p>現在のマップのスクリプトと、同じマップ内のイベントが使用するスクリプトだけを入力候補に含めます。プロジェクトを最も速く読み込めます。</p></body></html>
+<html><head/><body><p>If checked, the player will be allowed to get on their bike on this map.</p></body></html>	<html><head/><body><p>このマップで自転車に乗れるようにします。</p></body></html>
+<html><head/><body><p>If checked, the player will be allowed to run on this map.</p></body></html>	<html><head/><body><p>このマップでダッシュできるようにします。</p></body></html>
+<html><head/><body><p>If checked, the player will be allowed to use Dig or Escape Rope on this map.</p></body></html>	<html><head/><body><p>このマップで「あなをほる」や「あなぬけのヒモ」を使用できるようにします。</p></body></html>
+<html><head/><body><p>If checked, the player will need to use Flash to see fully on this map.</p></body></html>	<html><head/><body><p>このマップ全体を見渡すにはフラッシュが必要になります。</p></body></html>
+<html><head/><body><p>If checked, transparent pixels in the image will be rendered as black. This is the default in-game behavior.</p></body></html>	<html><head/><body><p>画像の透明ピクセルを黒で表示します。ゲーム内の標準動作です。</p></body></html>
+<html><head/><body><p>If checked, transparent pixels in the image will be rendered using the first color in tileset palette 0. This is the default behavior of the GBA.</p></body></html>	<html><head/><body><p>画像の透明ピクセルをタイルセットのパレット 0 の先頭色で表示します。GBA の標準動作です。</p></body></html>
+<html><head/><body><p>If checked, transparent pixels in the image will be rendered with alpha of 0.</p></body></html>	<html><head/><body><p>画像の透明ピクセルをアルファ値 0 で表示します。</p></body></html>
+<html><head/><body><p>If enabled, Porymap will display wild encounter data on the Wild Pokémon tab.</p></body></html>	<html><head/><body><p>「野生ポケモン」タブに出現データを表示します。</p></body></html>
+<html><head/><body><p>If enabled, Porymap will not discard data like &quot;connections_include_order&quot; or &quot;name_clone&quot;, which serve no purpose other than recreating the original game.</p></body></html>	<html><head/><body><p>原作を再現するためだけに必要な connections_include_order や name_clone などのデータを保持します。</p></body></html>
+<html><head/><body><p>If enabled, an event can be selected by clicking anywhere within its sprite dimensions. This may be preferable for events with small or mostly transparent sprites.</p></body></html>	<html><head/><body><p>スプライトの矩形内のどこをクリックしてもイベントを選択できます。小さいスプライトや透明部分の多いスプライトに適しています。</p></body></html>
+<html><head/><body><p>If enabled, an event can be selected by clicking directly on the opaque pixels of its sprite. This may be preferable when events are overlapping.</p></body></html>	<html><head/><body><p>スプライトの不透明部分をクリックしてイベントを選択します。イベントが重なっている場合に適しています。</p></body></html>
+<html><head/><body><p>If enabled, folders may be renamed and items in the list may be rearranged.</p></body></html>	<html><head/><body><p>フォルダー名の変更や一覧項目の並べ替えを許可します。</p></body></html>
+<html><head/><body><p>If enabled, the connected Emerge and/or Dive maps will be displayed with an opacity set using the slider.</p></body></html>	<html><head/><body><p>浮上・潜水先の接続マップを表示します。不透明度はスライダーで設定します。</p></body></html>
+<html><head/><body><p>If enabled, the metatiles in the new tileset will be filled alternately with tile 1 or tile 2. If not enabled, all the metatiles will be filled with tile 0.</p></body></html>	<html><head/><body><p>新しいタイルセットのメタタイルをタイル 1 と 2 で交互に埋めます。無効の場合はタイル 0 で埋めます。</p></body></html>
+<html><head/><body><p>Map Shift</p><p><span style=" font-weight:600;">Click and drag</span> on the map to shift the positions of all metatiles (Map tab) or events (Events tab) at once. This is useful after resizing a map.</p></body></html>	<html><head/><body><p>マップの一括移動: ドラッグすると、マップタブでは全メタタイル、イベントタブでは全イベントをまとめて移動します。マップのサイズ変更後などに便利です。</p></body></html>
+<html><head/><body><p>Maps cannot have more than this number of events in each event group. Object events are additionally limited by 'define_obj_event_count' on the Identifiers tab.</p></body></html>	<html><head/><body><p>各イベントグループに配置できる最大数です。オブジェクトイベントは「識別子」タブの define_obj_event_count によっても制限されます。</p></body></html>
+<html><head/><body><p>Metatile Behaviors on this list won't trigger warnings for Warp Events</p></body></html>	<html><head/><body><p>この一覧にあるメタタイルの動作では、ワープイベントの警告を表示しません。</p></body></html>
+<html><head/><body><p>Move</p><p>Click to drag map around.</p></body></html>	<html><head/><body><p>移動: ドラッグしてマップの表示位置を移動します。</p></body></html>
+<html><head/><body><p>No prefabs have been created for the currently-used tilesets. Create some by using the button above!</p><p>Prefabs are &quot;prefabricated&quot; metatile selections that are used for easy selecting of complicated map structures. For example, a useful prefab could be a building or tree formation, which would otherwise be annoying to paint with the regular metatile picker.</p></body></html>	<html><head/><body><p>現在のタイルセットには定型パーツがありません。上のボタンから作成できます。定型パーツは建物や木の配置など、複雑なメタタイルの組み合わせを簡単に選んで描画するための機能です。</p></body></html>
+<html><head/><body><p>Official Documentation: <a href="https://huderlem.github.io/porymap/"><span style=" text-decoration: underline; color:#0069d9;">https://huderlem.github.io/porymap/</span></a></p></body></html>	<html><head/><body><p>公式ドキュメント: <a href="https://huderlem.github.io/porymap/">https://huderlem.github.io/porymap/</a></p></body></html>
+<html><head/><body><p>Open the connected map.</p></body></html>	<html><head/><body><p>接続先のマップを開きます。</p></body></html>
+<html><head/><body><p>Open the selected Dive Map</p></body></html>	<html><head/><body><p>選択中の潜水先マップを開きます。</p></body></html>
+<html><head/><body><p>Open the selected Emerge Map</p></body></html>	<html><head/><body><p>選択中の浮上先マップを開きます。</p></body></html>
+<html><head/><body><p>Opens a search dialog to find which tilesets/metatiles are using certain colors.</p></body></html>	<html><head/><body><p>指定した色を使用しているタイルセットやメタタイルを検索します。</p></body></html>
+<html><head/><body><p>Path to the tilemap binary relative to the project root.</p></body></html>	<html><head/><body><p>プロジェクトのルートからの相対パスで、タイルマップのバイナリを指定します。</p></body></html>
+<html><head/><body><p>Path to the tileset image (.png) relative to the project root.</p></body></html>	<html><head/><body><p>プロジェクトのルートからの相対パスで、タイルセット画像（.png）を指定します。</p></body></html>
+<html><head/><body><p>Pencil</p><p><span style=" font-weight:600;">Click</span> and drag to draw on the map.</p><p><span style=" font-weight:600;">Right-click</span> and drag to select tiles.</p></body></html>	<html><head/><body><p>鉛筆: 左ドラッグでマップを描画します。右ドラッグでタイルを選択します。</p></body></html>
+<html><head/><body><p>Pointer</p><p>Does nothing</p></body></html>	<html><head/><body><p>選択カーソル: 描画操作を行いません。</p></body></html>
+<html><head/><body><p>Porymap will display a warning on Warp Events if they are not positioned on a metatile with one of these behaviors. This list is purely for the warning and <b>will have no effect on your game</b>.</p></body></html>	<html><head/><body><p>一覧にある動作のメタタイル上にワープがない場合、警告を表示します。この一覧は警告のためだけに使用し、ゲームの動作には影響しません。</p></body></html>
+<html><head/><body><p>Primary Tileset</p><p>Defines the first 0x200 metatiles available for the map.</p></body></html>	<html><head/><body><p>基本タイルセット: マップで使える最初の 0x200 個のメタタイルを定義します。</p></body></html>
+<html><head/><body><p>Refresh all loaded scripts to account for any recent edits</p></body></html>	<html><head/><body><p>読み込み済みのすべてのスクリプトを更新し、最近の編集を反映します。</p></body></html>
+<html><head/><body><p>Remove the current text from the list</p></body></html>	<html><head/><body><p>現在のテキストを一覧から削除します。</p></body></html>
+<html><head/><body><p>Remove this connection.</p></body></html>	<html><head/><body><p>この接続を削除します。</p></body></html>
+<html><head/><body><p>Restore the data in the prefabs file to the version defaults. Will create a new file if one doesn't exist.</p></body></html>	<html><head/><body><p>定型パーツのデータを、このバージョンの標準設定に戻します。ファイルがない場合は新規作成します。</p></body></html>
+<html><head/><body><p>Secondary Tileset</p><p>Defines the second 0x200 metatiles available for the map.</p></body></html>	<html><head/><body><p>追加タイルセット: マップで使える後半の 0x200 個のメタタイルを定義します。</p></body></html>
+<html><head/><body><p>Show the player's view rectangle on the map based on the cursor's position.</p></body></html>	<html><head/><body><p>カーソル位置を基準に、プレイヤーの画面に映る範囲を表示します。</p></body></html>
+<html><head/><body><p>Smart-path mode allows easier drawing of paths. If a 3x3 metatile block is selcted in the right panel, then smart path mode will automatically form a pathway using those selected blocks.</p><p>When smart-path mode is <span style=" font-weight:600;">not</span> enabled, clicking and dragging a selection will tile it in a grid.</p><p>Hold down the <span style=" font-weight:600;">shift</span> key while editing to quickly enable smart-path mode.</p></body></html>	<html><head/><body><p>スマートパスは道を描きやすくする機能です。右側で 3×3 のメタタイルを選択すると、自動的に道の形を作ります。無効時は選択した範囲を繰り返し配置します。編集中に Shift キーを押すと一時的に有効になります。</p></body></html>
+<html><head/><body><p>The border is a 2x2 metatile which is repeated outside of the map layout's boundary. Draw on this border area to modify it.</p></body></html>	<html><head/><body><p>外周は、マップの外側に繰り返し表示する 2×2 のメタタイルです。この領域に描画して変更します。</p></body></html>
+<html><head/><body><p>The color space to use for exported images. If &quot;---&quot; is set, no color space will be used for the exported image. For details on each color space, see Qt's manual page for QColorSpace.</p></body></html>	<html><head/><body><p>画像出力に使用する色空間です。「---」では色空間を指定しません。各色空間の詳細は Qt の QColorSpace のマニュアルを参照してください。</p></body></html>
+<html><head/><body><p>The constant that will be used to refer to this layout. It cannot be the same as any other existing layout.</p></body></html>	<html><head/><body><p>このレイアウトを参照する定数です。既存のレイアウトと同じ定数は使用できません。</p></body></html>
+<html><head/><body><p>The data type for the new JSON field</p></body></html>	<html><head/><body><p>新しい JSON フィールドのデータ型です。</p></body></html>
+<html><head/><body><p>The default background music for this map.</p></body></html>	<html><head/><body><p>このマップの標準 BGM です。</p></body></html>
+<html><head/><body><p>The default collision that will be used to fill new maps</p></body></html>	<html><head/><body><p>新規マップを埋める通行設定の初期値です。</p></body></html>
+<html><head/><body><p>The default elevation that will be used to fill new maps</p></body></html>	<html><head/><body><p>新規マップを埋める高さの初期値です。</p></body></html>
+<html><head/><body><p>The default layout height for new maps</p></body></html>	<html><head/><body><p>新規マップのレイアウトの標準の高さです。</p></body></html>
+<html><head/><body><p>The default layout width for new maps</p></body></html>	<html><head/><body><p>新規マップのレイアウトの標準の幅です。</p></body></html>
+<html><head/><body><p>The default metatile value that will be used for the bottom-left border metatile on new maps.</p></body></html>	<html><head/><body><p>新規マップの外周の左下に使用するメタタイルの初期値です。</p></body></html>
+<html><head/><body><p>The default metatile value that will be used for the bottom-right border metatile on new maps.</p></body></html>	<html><head/><body><p>新規マップの外周の右下に使用するメタタイルの初期値です。</p></body></html>
+<html><head/><body><p>The default metatile value that will be used for the top-left border metatile on new maps.</p></body></html>	<html><head/><body><p>新規マップの外周の左上に使用するメタタイルの初期値です。</p></body></html>
+<html><head/><body><p>The default metatile value that will be used for the top-right border metatile on new maps.</p></body></html>	<html><head/><body><p>新規マップの外周の右上に使用するメタタイルの初期値です。</p></body></html>
+<html><head/><body><p>The default metatile value that will be used to fill new maps</p></body></html>	<html><head/><body><p>新規マップを埋めるメタタイルの初期値です。</p></body></html>
+<html><head/><body><p>The default primary tileset to use for new maps/layouts.</p></body></html>	<html><head/><body><p>新しいマップやレイアウトに使用する標準の基本タイルセットです。</p></body></html>
+<html><head/><body><p>The default secondary tileset to use for new maps/layouts.</p></body></html>	<html><head/><body><p>新しいマップやレイアウトに使用する標準の追加タイルセットです。</p></body></html>
+<html><head/><body><p>The default weather on this map.</p></body></html>	<html><head/><body><p>このマップの標準の天候です。</p></body></html>
+<html><head/><body><p>The distance (in pixels) that a player is able to see East of their character's position in-game. By default this is the distance from the center 16x16 to the edge of the 240 pixel wide GBA screen.</p></body></html>	<html><head/><body><p>プレイヤー位置から東に見える距離（ピクセル）です。標準では中央の 16×16 の領域から、幅 240 ピクセルの GBA 画面の右端までの距離です。</p></body></html>
+<html><head/><body><p>The distance (in pixels) that a player is able to see North of their character's position in-game. By default this is the distance from the center 16x16 to the edge of the 160 pixel tall GBA screen.</p></body></html>	<html><head/><body><p>プレイヤー位置から北に見える距離（ピクセル）です。標準では中央の 16×16 の領域から、高さ 160 ピクセルの GBA 画面の上端までの距離です。</p></body></html>
+<html><head/><body><p>The distance (in pixels) that a player is able to see South of their character's position in-game. By default this is the distance from the center 16x16 to the edge of the 160 pixel tall GBA screen.</p></body></html>	<html><head/><body><p>プレイヤー位置から南に見える距離（ピクセル）です。標準では中央の 16×16 の領域から、高さ 160 ピクセルの GBA 画面の下端までの距離です。</p></body></html>
+<html><head/><body><p>The distance (in pixels) that a player is able to see West of their character's position in-game. By default this is the distance from the center 16x16 to the edge of the 240 pixel wide GBA screen.</p></body></html>	<html><head/><body><p>プレイヤー位置から西に見える距離（ピクセル）です。標準では中央の 16×16 の領域から、幅 240 ピクセルの GBA 画面の左端までの距離です。</p></body></html>
+<html><head/><body><p>The file that will be used to populate the Prefabs tab</p></body></html>	<html><head/><body><p>定型パーツタブのデータを読み込むファイルです。</p></body></html>
+<html><head/><body><p>The format of the layout file, can be a C array in a text file with &quot;MAPSEC_&quot;-prefixed constants, or a binary file where each byte is a value of some &quot;MAPSEC_&quot;-prefixed constant.</p></body></html>	<html><head/><body><p>レイアウトファイルの形式です。MAPSEC_ 定数の C 配列を含むテキスト、または各バイトに MAPSEC_ 定数の値を格納するバイナリを選択できます。</p></body></html>
+<html><head/><body><p>The height of the tilemap</p></body></html>	<html><head/><body><p>タイルマップの高さです。</p></body></html>
+<html><head/><body><p>The icon that will be displayed for the Events tab in the editor. If 'Automatic' is chosen, the icon will be a random player character from the project's base game version. If 'Custom' is chosen an image file path may be specified.</p></body></html>	<html><head/><body><p>イベントタブのアイコンです。「自動」ではベースゲームの主人公をランダムに選びます。「カスタム」では画像ファイルを指定できます。</p></body></html>
+<html><head/><body><p>The icon that will be displayed on the Wild Pokémon tab for the above species</p></body></html>	<html><head/><body><p>上で指定したポケモンを野生ポケモンタブに表示するためのアイコンです。</p></body></html>
+<html><head/><body><p>The icon that will be used to represent BG events</p></body></html>	<html><head/><body><p>背景イベントを表示するためのアイコンです。</p></body></html>
+<html><head/><body><p>The icon that will be used to represent Heal Location events</p></body></html>	<html><head/><body><p>回復地点イベントを表示するためのアイコンです。</p></body></html>
+<html><head/><body><p>The icon that will be used to represent Object events that don't have their own sprite</p></body></html>	<html><head/><body><p>専用のスプライトがないオブジェクトイベント用のアイコンです。</p></body></html>
+<html><head/><body><p>The icon that will be used to represent Trigger events</p></body></html>	<html><head/><body><p>トリガーイベントを表示するためのアイコンです。</p></body></html>
+<html><head/><body><p>The icon that will be used to represent Warp events</p></body></html>	<html><head/><body><p>ワープイベントを表示するためのアイコンです。</p></body></html>
+<html><head/><body><p>The image file path to use for the icon of the Events tab.</p></body></html>	<html><head/><body><p>イベントタブのアイコンに使用する画像ファイルのパスです。</p></body></html>
+<html><head/><body><p>The image sheet that will be used to represent elevation and collision on the Collision tab</p></body></html>	<html><head/><body><p>通行設定タブで高さと通行設定を表示するための画像シートです。</p></body></html>
+<html><head/><body><p>The key name for the new JSON field</p></body></html>	<html><head/><body><p>新しい JSON フィールドのキー名です。</p></body></html>
+<html><head/><body><p>The layout height.</p></body></html>	<html><head/><body><p>レイアウトの高さです。</p></body></html>
+<html><head/><body><p>The layout width.</p></body></html>	<html><head/><body><p>レイアウトの幅です。</p></body></html>
+<html><head/><body><p>The map type is a general attribute, which is used for many different things. For example, underground type maps will have a special transition effect when the player enters/exits the map.</p></body></html>	<html><head/><body><p>マップ種別はさまざまな処理に使用されます。例えば地下のマップでは、出入りのときに専用の画面切り替え効果が使われます。</p></body></html>
+<html><head/><body><p>The mask used to read/write Encounter Type from the metatile's attributes data. If 0, this attribute is disabled.</p></body></html>	<html><head/><body><p>メタタイル属性からエンカウント種別を読み書きするビットマスクです。0 の場合はこの属性を無効にします。</p></body></html>
+<html><head/><body><p>The mask used to read/write Layer Type from the metatile's attributes data. If 0, this attribute is disabled.</p></body></html>	<html><head/><body><p>メタタイル属性からレイヤー種別を読み書きするビットマスクです。0 の場合はこの属性を無効にします。</p></body></html>
+<html><head/><body><p>The mask used to read/write Metatile Behavior from the metatile's attributes data. If 0, this attribute is disabled.</p></body></html>	<html><head/><body><p>メタタイル属性から動作を読み書きするビットマスクです。0 の場合はこの属性を無効にします。</p></body></html>
+<html><head/><body><p>The mask used to read/write Terrain Type from the metatile's attributes data. If 0, this attribute is disabled.</p></body></html>	<html><head/><body><p>メタタイル属性から地形種別を読み書きするビットマスクです。0 の場合はこの属性を無効にします。</p></body></html>
+<html><head/><body><p>The mask used to read/write collision values in map data.</p></body></html>	<html><head/><body><p>マップデータの通行設定を読み書きするビットマスクです。</p></body></html>
+<html><head/><body><p>The mask used to read/write elevation values in map data.</p></body></html>	<html><head/><body><p>マップデータの高さを読み書きするビットマスクです。</p></body></html>
+<html><head/><body><p>The mask used to read/write metatile IDs in map data.</p></body></html>	<html><head/><body><p>マップデータのメタタイル ID を読み書きするビットマスクです。</p></body></html>
+<html><head/><body><p>The maximum collision value represented with an icon on the image sheet</p></body></html>	<html><head/><body><p>画像シートにアイコンが用意されている通行設定の最大値です。</p></body></html>
+<html><head/><body><p>The maximum elevation value represented with an icon on the image sheet</p></body></html>	<html><head/><body><p>画像シートにアイコンが用意されている高さの最大値です。</p></body></html>
+<html><head/><body><p>The metatile ID to end the rendered image at.</p></body></html>	<html><head/><body><p>描画する最後のメタタイル ID です。</p></body></html>
+<html><head/><body><p>The metatile ID to start the rendered image at.</p></body></html>	<html><head/><body><p>描画する最初のメタタイル ID です。</p></body></html>
+<html><head/><body><p>The name of the group this map will be added to.</p></body></html>	<html><head/><body><p>このマップを追加するグループの名前です。</p></body></html>
+<html><head/><body><p>The name of the map to connect to the current map.</p></body></html>	<html><head/><body><p>現在のマップに接続するマップの名前です。</p></body></html>
+<html><head/><body><p>The name of the new layout. The name cannot be the same as any other existing layout.</p></body></html>	<html><head/><body><p>新しいレイアウトの名前です。既存のレイアウト名と重複できません。</p></body></html>
+<html><head/><body><p>The name of the new map. The name cannot be the same as any other existing map.</p></body></html>	<html><head/><body><p>新しいマップの名前です。既存のマップ名と重複できません。</p></body></html>
+<html><head/><body><p>The name that will be displayed in-game for this Location. This name will be shared with any other map that has the same Location.</p></body></html>	<html><head/><body><p>ゲーム内に表示する場所の名前です。同じ場所に属するマップで共有されます。</p></body></html>
+<html><head/><body><p>The number of bytes each metatile has for metatile attributes. This is the metadata about each metatile like behvior, layer type, etc.</p></body></html>	<html><head/><body><p>メタタイルごとの属性データのバイト数です。動作やレイヤーの種類などの情報を格納します。</p></body></html>
+<html><head/><body><p>The number of spaces to move the connected map perpendicular to its connected direction.</p></body></html>	<html><head/><body><p>接続方向と直角の方向に、接続先のマップをずらすマス数です。</p></body></html>
+<html><head/><body><p>The offset from the left of the tilemap where the layout starts.</p><p>(ie, coordinate (0,0) in the layout would be (offset left, offset top) in the tilemap).</p></body></html>	<html><head/><body><p>タイルマップの左端からレイアウトの開始位置までのオフセットです。レイアウトの (0,0) がタイルマップの（左オフセット, 上オフセット）に対応します。</p></body></html>
+<html><head/><body><p>The offset from the top of the tilemap where the layout starts.</p><p>(ie, coordinate (0,0) in the layout would be (offset left, offset top) in the tilemap).</p></body></html>	<html><head/><body><p>タイルマップの上端からレイアウトの開始位置までのオフセットです。レイアウトの (0,0) がタイルマップの（左オフセット, 上オフセット）に対応します。</p></body></html>
+<html><head/><body><p>The path to the layout file, relative to the project root.</p></body></html>	<html><head/><body><p>プロジェクトのルートからの相対パスでレイアウトファイルを指定します。</p></body></html>
+<html><head/><body><p>The primary tileset for the new map.</p></body></html>	<html><head/><body><p>新規マップの基本タイルセットです。</p></body></html>
+<html><head/><body><p>The secondary tileset for the new map.</p></body></html>	<html><head/><body><p>新規マップの追加タイルセットです。</p></body></html>
+<html><head/><body><p>The section of the region map which the map is grouped under. This also determines the name of the map that is display when the player enters it.</p></body></html>	<html><head/><body><p>このマップが属するタウンマップ上の区画です。プレイヤーが入ったときに表示する場所の名前も決まります。</p></body></html>
+<html><head/><body><p>The section of the region map which the map is grouped under. This also determines the name of the map that is displayed when the player enters it.</p></body></html>	<html><head/><body><p>このマップが属するタウンマップ上の区画です。プレイヤーが入ったときに表示する場所の名前も決まります。</p></body></html>
+<html><head/><body><p>The shell command for your preferred text editor (possibly an absolute path if the program doesn't exist in your PATH).</p></body></html>	<html><head/><body><p>使用するテキストエディターの起動コマンドです。PATH にない場合は実行ファイルの絶対パスを指定してください。</p></body></html>
+<html><head/><body><p>The shell command for your preferred text editor to open a file to a specific line number (possibly an absolute path if the program doesn't exist in your PATH).</p></body></html>	<html><head/><body><p>テキストエディターでファイルの指定行を開くコマンドです。PATH にない場合は実行ファイルの絶対パスを指定してください。</p></body></html>
+<html><head/><body><p>The tilemap format can be either:</p><p>1) Plain (tilemap is a list of 8-bit tile indexes into the tileset)</p><p>2) 4BPP (tilemap entries are 16 bits, with x/y-flip, and palette index for 16 16-color palettes)</p><p>3) 8BPP (tilemap entries are 16 bits, with x/y-flip, single 256-color palette)</p></body></html>	<html><head/><body><p>タイルマップ形式: 1) 単純形式: 8 ビットのタイル番号。2) 4BPP: 16 ビットの項目に上下左右反転と 16 色×16 パレットの番号を格納。3) 8BPP: 16 ビットの項目に上下左右反転を格納し、256 色パレットを 1 つ使用。</p></body></html>
+<html><head/><body><p>The value for the new JSON field</p></body></html>	<html><head/><body><p>新しい JSON フィールドの値です。</p></body></html>
+<html><head/><body><p>The width (in metatiles) of the metatile selectors on the Map tab and in the Tileset Editor.</p></body></html>	<html><head/><body><p>マップタブとタイルセットエディターのメタタイル選択欄の幅を、メタタイル単位で指定します。</p></body></html>
+<html><head/><body><p>The width of the tilemap</p></body></html>	<html><head/><body><p>タイルマップの幅です。</p></body></html>
+<html><head/><body><p>This field is used to help determine what graphics to use in the background of battles on this map.</p></body></html>	<html><head/><body><p>このマップでの戦闘背景に使用する画像の判定に使います。</p></body></html>
+<html><head/><body><p>This is the command that is executed when clicking <span style=" font-weight:600; font-style:italic;">Open Project in Text Editor</span> in the <span style=" font-weight:600; font-style:italic;">Tools</span> menu. <span style=" font-weight:600;">%D</span> will be substituted with the project's root directory. If <span style=" font-weight:600;">%D</span> is <span style=" font-style:italic;">not</span> specified then the project directory will be added to the end of the command.</p></body></html>	<html><head/><body><p>「ツール」→「テキストエディターでプロジェクトを開く」で実行するコマンドです。%D はプロジェクトのルートフォルダーに置き換わります。%D がない場合はコマンドの末尾にフォルダーを追加します。</p></body></html>
+<html><head/><body><p>This raw tile value will be used to fill the unused bottom layer of Normal metatiles</p></body></html>	<html><head/><body><p>通常のメタタイルの未使用の下層を埋めるタイルの数値です。</p></body></html>
+<html><head/><body><p>This raw tile value will be used to fill the unused middle layer of Split metatiles</p></body></html>	<html><head/><body><p>分割メタタイルの未使用の中層を埋めるタイルの数値です。</p></body></html>
+<html><head/><body><p>This raw tile value will be used to fill the unused top layer of Covered metatiles</p></body></html>	<html><head/><body><p>上層で覆うメタタイルの未使用の上層を埋めるタイルの数値です。</p></body></html>
+<html><head/><body><p>Toggles a grid over the map's metatile boundaries.</p><p><span style=" font-weight:600;">Ctrl + G</span></p></body></html>	<html><head/><body><p>メタタイルの境界にグリッドを表示します。ショートカット: Ctrl + G</p></body></html>
+<html><head/><body><p>Use reticule-styled cursors with icon showing currently selected tool.</p></body></html>	<html><head/><body><p>選択中のツールのアイコン付き照準型カーソルを使用します。</p></body></html>
+<html><head/><body><p>When this command is set a button will appear next to the <span style=" font-weight:600; font-style:italic;">Script</span> combo-box in the <span style=" font-weight:600; font-style:italic;">Events</span> tab which executes this command.<span style=" font-weight:600;"> %F</span> will be substituted with the file path of the script and <span style=" font-weight:600;">%L</span> will be substituted with the line number of the script in that file. <span style=" font-weight:600;">%F </span><span style=" font-style:italic;">must</span> be given if <span style=" font-weight:600;">%L</span> is given. If <span style=" font-weight:600;">%F</span> is <span style=" font-style:italic;">not</span> given then the script's file path will be added to the end of the command. If the script can't be found then the current map's scripts file is opened.</p></body></html>	<html><head/><body><p>設定すると、イベントタブのスクリプト欄の横に実行ボタンが表示されます。%F はスクリプトのパス、%L は行番号に置き換わります。%L を指定する場合は %F も必要です。%F がない場合はコマンド末尾にパスを追加します。スクリプトが見つからない場合は現在のマップのスクリプトファイルを開きます。</p></body></html>
+<html><head/><body><p>Where the connected map should be positioned relative to the current map.</p></body></html>	<html><head/><body><p>現在のマップに対して接続先のマップを配置する方向です。</p></body></html>
+<html><head/><body><p>Whether &quot;Allow Running&quot;, &quot;Allow Biking&quot; and &quot;Allow Dig &amp; Escape Rope&quot; are default options for Map Headers</p></body></html>	<html><head/><body><p>マップヘッダーでダッシュ・自転車・あなをほる・あなぬけのヒモの許可設定を使用するかを指定します。</p></body></html>
+<html><head/><body><p>Whether &quot;Floor Number&quot; is a default option for Map Headers</p></body></html>	<html><head/><body><p>マップヘッダーで階数の設定を使用するかを指定します。</p></body></html>
+<html><head/><body><p>Whether a separate text.inc or text.pory file will be created for new maps, alongside the scripts file</p></body></html>	<html><head/><body><p>新規マップでスクリプトとは別に text.inc または text.pory を作成するかを指定します。</p></body></html>
+<html><head/><body><p>Whether map script files should prefer using .pory</p></body></html>	<html><head/><body><p>マップのスクリプトに .pory 形式を優先して使用するかを指定します。</p></body></html>
+<html><head/><body><p>Whether the C data outputted for new tilesets will include the &quot;callback&quot; field</p></body></html>	<html><head/><body><p>新規タイルセットの C データに callback フィールドを出力するかを指定します。</p></body></html>
+<html><head/><body><p>Whether the C data outputted for new tilesets will include the &quot;isCompressed&quot; field</p></body></html>	<html><head/><body><p>新規タイルセットの C データに isCompressed フィールドを出力するかを指定します。</p></body></html>
+<html><head/><body><p>Whether the dimensions of the border can be changed. If not set, all borders are 2x2</p></body></html>	<html><head/><body><p>外周のサイズを変更できるようにします。無効の場合は常に 2×2 です。</p></body></html>
+<html><head/><body><p>Width (in metatiles) of the new map's border.</p></body></html>	<html><head/><body><p>新規マップの外周の幅をメタタイル単位で指定します。</p></body></html>
+<html><head/><body><p>Width (in metatiles) of the new map.</p></body></html>	<html><head/><body><p>新規マップの幅をメタタイル単位で指定します。</p></body></html>
+<html><head/><body><p>Width of the output image in metatiles.</p></body></html>	<html><head/><body><p>出力画像の幅をメタタイル単位で指定します。</p></body></html>
+<html><head/><body><p>Width of the output image in pixels. Automatically rounded up to a multiple of a metatile's pixel width.</p></body></html>	<html><head/><body><p>出力画像の幅をピクセル単位で指定します。メタタイルの幅の倍数に自動的に切り上げます。</p></body></html>

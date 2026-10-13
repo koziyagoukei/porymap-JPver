@@ -9,6 +9,7 @@ porymap
 porymap.cfg
 porymap.log
 build/
+dist/
 venv/
 
 # Qt generated files

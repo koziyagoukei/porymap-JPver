@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #include "newmapgroupdialog.h"
 #include "ui_newmapgroupdialog.h"
 #include "project.h"
@@ -34,9 +35,9 @@ bool NewMapGroupDialog::validateName(bool allowEmpty) {
 
     QString errorText;
     if (name.isEmpty()) {
-        if (!allowEmpty) errorText = QString("%1 cannot be empty.").arg(ui->label_Name->text());
+        if (!allowEmpty) errorText = QCoreApplication::translate("Porymap", "%1 cannot be empty.").arg(ui->label_Name->text());
     } else if (!this->project->isIdentifierUnique(name)) {
-        errorText = QString("%1 '%2' is not unique.").arg(ui->label_Name->text()).arg(name);
+        errorText = QCoreApplication::translate("Porymap", "%1 '%2' is not unique.").arg(ui->label_Name->text()).arg(name);
     }
 
     bool isValid = errorText.isEmpty();

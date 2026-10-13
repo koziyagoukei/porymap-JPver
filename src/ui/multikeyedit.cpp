@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #include "multikeyedit.h"
 
 #include <QLineEdit>
@@ -180,7 +181,7 @@ void MultiKeyEdit::onEditingFinished(QKeySequenceEdit *sender) {
  * context menu related code in this class might need to change. */
 void MultiKeyEdit::showDefaultContextMenu(QLineEdit *lineEdit, const QPoint &pos) {
     QMenu menu(this);
-    QAction clearAction("Clear Shortcut", &menu);
+    QAction clearAction(QCoreApplication::translate("Porymap", "Clear Shortcut"), &menu);
     connect(&clearAction, &QAction::triggered, lineEdit, [this, &lineEdit]() {
         removeOne(lineEdit->text());
     });

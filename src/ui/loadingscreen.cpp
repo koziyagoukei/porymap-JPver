@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #include "loadingscreen.h"
 #include "aboutporymap.h"
 #include "ui_loadingscreen.h"
@@ -71,7 +72,7 @@ void PorymapLoadingScreen::showMessage(const QString &text) {
 
 // Displays the message 'Loading text...'
 void PorymapLoadingScreen::showLoadingMessage(const QString &text) {
-    showMessage(QStringLiteral("Loading "), text);
+    showMessage(QCoreApplication::translate("Porymap", "Loading "), text);
 }
 
 void PorymapLoadingScreen::updateFrame() {

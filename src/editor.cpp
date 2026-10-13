@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #include "editor.h"
 #include "eventpixmapitem.h"
 #include "imageproviders.h"
@@ -325,7 +326,7 @@ void Editor::addNewWildMonGroup(QWidget *window) {
     int stackIndex = stack->currentIndex();
 
     QDialog dialog(window, Qt::WindowTitleHint | Qt::WindowCloseButtonHint);
-    dialog.setWindowTitle("New Wild Encounter Group Label");
+    dialog.setWindowTitle(QCoreApplication::translate("Porymap", "New Wild Encounter Group Label"));
     dialog.setWindowModality(Qt::NonModal);
 
     QFormLayout form(&dialog);
@@ -334,7 +335,7 @@ void Editor::addNewWildMonGroup(QWidget *window) {
 
     QLineEdit *lineEdit = new QLineEdit();
     lineEdit->setClearButtonEnabled(true);
-    form.addRow(new QLabel("Group Base Label:"), lineEdit);
+    form.addRow(new QLabel(QCoreApplication::translate("Porymap", "Group Base Label:")), lineEdit);
     lineEdit->setValidator(new IdentifierValidator(lineEdit));
     connect(lineEdit, &QLineEdit::textChanged, [this, &lineEdit, &buttonBox](QString text){
         bool invalid = !this->project->isIdentifierUnique(text);
@@ -345,11 +346,11 @@ void Editor::addNewWildMonGroup(QWidget *window) {
     lineEdit->setText(this->project->toUniqueIdentifier("g" + map->name()));
 
     // Fields [x] copy from existing
-    QLabel *fieldsLabel = new QLabel("Fields:");
+    QLabel *fieldsLabel = new QLabel(QCoreApplication::translate("Porymap", "Fields:"));
     form.addRow(fieldsLabel);
     QCheckBox *copyCheckbox = new QCheckBox;
     copyCheckbox->setEnabled(stack->count());
-    form.addRow(new QLabel("Copy from current group"), copyCheckbox);
+    form.addRow(new QLabel(QCoreApplication::translate("Porymap", "Copy from current group")), copyCheckbox);
     QVector<QCheckBox *> fieldCheckboxes;
     for (EncounterField monField : project->wildMonFields) {
         QCheckBox *fieldCheckbox = new QCheckBox;
@@ -441,10 +442,10 @@ void Editor::deleteWildMonGroup() {
     }
 
     QMessageBox msgBox;
-    msgBox.setText("Confirm Delete");
-    msgBox.setInformativeText("Are you sure you want to delete " + labelCombo->currentText() + "?");
+    msgBox.setText(QCoreApplication::translate("Porymap", "Confirm Delete"));
+    msgBox.setInformativeText(QCoreApplication::translate("Porymap", "Are you sure you want to delete ") + labelCombo->currentText() + "?");
 
-    QPushButton *deleteButton = msgBox.addButton("Delete", QMessageBox::DestructiveRole);
+    QPushButton *deleteButton = msgBox.addButton(QCoreApplication::translate("Porymap", "Delete"), QMessageBox::DestructiveRole);
     msgBox.addButton(QMessageBox::Cancel);
     msgBox.setDefaultButton(QMessageBox::Cancel);
     msgBox.exec();
@@ -452,13 +453,13 @@ void Editor::deleteWildMonGroup() {
     if (msgBox.clickedButton() == deleteButton) {
         auto it = project->wildMonData.find(map->constantName());
         if (it == project->wildMonData.end()) {
-          logError(QString("Failed to find data for map %1. Unable to delete").arg(map->constantName()));
+          logError(QCoreApplication::translate("Porymap", "Failed to find data for map %1. Unable to delete").arg(map->constantName()));
           return;
         }
 
         int i = project->encounterGroupLabels.indexOf(labelCombo->currentText());
         if (i < 0) {
-          logError(QString("Failed to find selected wild mon group: %1. Unable to delete")
+          logError(QCoreApplication::translate("Porymap", "Failed to find selected wild mon group: %1. Unable to delete")
                    .arg(labelCombo->currentText()));
           return;
         }
@@ -517,7 +518,7 @@ void Editor::configureEncounterJSON(QWidget *window) {
         }
         if (total > 0xFF) {
             totalLabel->setTextFormat(Qt::RichText);
-            groupTotalMessage += QString("<font color=\"red\">\tWARNING: value exceeds the limit for a u8 variable.</font>");
+            groupTotalMessage += QCoreApplication::translate("Porymap", "<font color=\"red\">\tWARNING: value exceeds the limit for a u8 variable.</font>");
         }
         totalLabel->setText(groupTotalMessage);
     };
@@ -591,7 +592,7 @@ void Editor::configureEncounterJSON(QWidget *window) {
     };
 
     QDialog dialog(window, Qt::WindowTitleHint | Qt::WindowCloseButtonHint);
-    dialog.setWindowTitle("Configure Wild Encounter Fields");
+    dialog.setWindowTitle(QCoreApplication::translate("Porymap", "Configure Wild Encounter Fields"));
     dialog.setWindowModality(Qt::NonModal);
 
     enum GridRow {
@@ -643,10 +644,10 @@ void Editor::configureEncounterJSON(QWidget *window) {
     connect(fieldChoices, QOverload<int>::of(&QComboBox::currentIndexChanged), drawSlotWidgets);
     fieldChoices->addItems(getFieldNames());
 
-    QLabel *fieldChoiceLabel = new QLabel("Field");
+    QLabel *fieldChoiceLabel = new QLabel(QCoreApplication::translate("Porymap", "Field"));
 
     // Button to create new fields in the JSON.
-    QPushButton *addFieldButton = new QPushButton("Add New Field...");
+    QPushButton *addFieldButton = new QPushButton(QCoreApplication::translate("Porymap", "Add New Field..."));
     connect(addFieldButton, &QPushButton::clicked, [fieldChoices, &tempFields]() {
         QDialog newNameDialog(nullptr, Qt::WindowTitleHint | Qt::WindowCloseButtonHint);
         newNameDialog.setWindowModality(Qt::NonModal);
@@ -659,7 +660,7 @@ void Editor::configureEncounterJSON(QWidget *window) {
 
         QFormLayout newFieldForm(&newNameDialog);
 
-        newFieldForm.addRow("Field Name", newNameEdit);
+        newFieldForm.addRow(QCoreApplication::translate("Porymap", "Field Name"), newNameEdit);
         newFieldForm.addRow(&newFieldButtonBox);
 
         if (newNameDialog.exec() == QDialog::Accepted) {
@@ -670,7 +671,7 @@ void Editor::configureEncounterJSON(QWidget *window) {
             fieldChoices->setCurrentIndex(fieldChoices->count() - 1);
         }
     });
-    QPushButton *deleteFieldButton = new QPushButton("Delete Field");
+    QPushButton *deleteFieldButton = new QPushButton(QCoreApplication::translate("Porymap", "Delete Field"));
     connect(deleteFieldButton, &QPushButton::clicked, [drawSlotWidgets, fieldChoices, &tempFields]() {
         if (tempFields.size() < 2) return;// don't delete last
         int index = fieldChoices->currentIndex();
@@ -700,7 +701,7 @@ void Editor::configureEncounterJSON(QWidget *window) {
     });
     // TODO: method for editing groups?
 
-    auto noteLabel = new QLabel(QStringLiteral("Note: This affects all maps, not just the current map."));
+    auto noteLabel = new QLabel(QCoreApplication::translate("Porymap", "Note: This affects all maps, not just the current map."));
     grid.addWidget(noteLabel, GridRow::NoteLabel, 0, 1, -1, Qt::AlignCenter);
 
     QFrame firstRow;
@@ -2198,7 +2199,7 @@ void Editor::duplicateSelectedEvents() {
         duplicatedEvents.append(event->duplicate());
     }
     if (!canAddEvents(duplicatedEvents)) {
-        WarningMessage::show(QStringLiteral("Unable to duplicate, the maximum number of events would be exceeded."), ui->graphicsView_Map);
+        WarningMessage::show(QCoreApplication::translate("Porymap", "Unable to duplicate, the maximum number of events would be exceeded."), ui->graphicsView_Map);
         qDeleteAll(duplicatedEvents);
         return;
     }
@@ -2212,7 +2213,7 @@ Event *Editor::addNewEvent(Event::Type type) {
     Event::Group group = Event::typeToGroup(type);
     int maxEvents = this->project->getMaxEvents(group);
     if (this->map->getNumEvents(group) >= maxEvents) {
-        WarningMessage::show(QString("The maximum number of %1 events (%2) has been reached.").arg(Event::groupToString(group)).arg(maxEvents), ui->graphicsView_Map);
+        WarningMessage::show(QCoreApplication::translate("Porymap", "The maximum number of %1 events (%2) has been reached.").arg(Event::groupToString(group)).arg(maxEvents), ui->graphicsView_Map);
         return nullptr;
     }
 
@@ -2249,7 +2250,7 @@ void Editor::deleteSelectedEvents() {
         } else {
             // If an event with a ID #define is deleted, its ID is also deleted (by the user's project, not Porymap).
             // Warn the user about this and give them a chance to abort.
-            WarningMessage msgBox(QStringLiteral("Deleting this event may also delete the constant listed below. This can stop your project from compiling.\n\n"
+            WarningMessage msgBox(QCoreApplication::translate("Porymap", "Deleting this event may also delete the constant listed below. This can stop your project from compiling.\n\n"
                                                  "Are you sure you want to delete this event?"),
                                   ui->graphicsView_Map);
             msgBox.setInformativeText(idName);
@@ -2257,11 +2258,11 @@ void Editor::deleteSelectedEvents() {
             msgBox.setStandardButtons(QMessageBox::Cancel);
             msgBox.setDefaultButton(QMessageBox::Cancel);
             msgBox.addButton(QStringLiteral("Delete"), QMessageBox::DestructiveRole);
-            msgBox.setCheckBox(new QCheckBox(QStringLiteral("Don't warn me again")));
+            msgBox.setCheckBox(new QCheckBox(QCoreApplication::translate("Porymap", "Don't warn me again")));
 
             QAbstractButton* deleteAllButton = nullptr;
             if (this->selectedEvents.length() > 1) {
-                deleteAllButton = msgBox.addButton(QStringLiteral("Delete All"), QMessageBox::DestructiveRole);
+                deleteAllButton = msgBox.addButton(QCoreApplication::translate("Porymap", "Delete All"), QMessageBox::DestructiveRole);
                 msgBox.addButton(QStringLiteral("Skip"), QMessageBox::NoRole);
             }
 
@@ -2423,7 +2424,7 @@ void Editor::setCollisionGraphics() {
         imgSheet = QImage(filepath);
         if (imgSheet.isNull()) {
             // Custom collision image failed to load, use default
-            logWarn(QString("Failed to load custom collision image '%1', using default.").arg(filepath));
+            logWarn(QCoreApplication::translate("Porymap", "Failed to load custom collision image '%1', using default.").arg(filepath));
             imgSheet = this->defaultCollisionImgSheet;
         }
     }

@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #include "project.h"
 #include "regionmappropertiesdialog.h"
 #include "ui_regionmappropertiesdialog.h"
@@ -8,6 +9,13 @@ RegionMapPropertiesDialog::RegionMapPropertiesDialog(QWidget *parent) :
     ui(new Ui::RegionMapPropertiesDialog)
 {
     ui->setupUi(this);
+    // Keep the JSON format identifiers independent of translated display text.
+    const QStringList tilemapFormats = {"plain", "4bpp", "8bpp"};
+    const QStringList layoutFormats = {"C array", "binary"};
+    for (int i = 0; i < tilemapFormats.size(); ++i)
+        ui->config_tilemapFormat->setItemData(i, tilemapFormats.at(i));
+    for (int i = 0; i < layoutFormats.size(); ++i)
+        ui->config_layoutFormat->setItemData(i, layoutFormats.at(i));
     this->hideMessages();
 }
 
@@ -33,7 +41,7 @@ void RegionMapPropertiesDialog::hideMessages() {
 
 QString RegionMapPropertiesDialog::browse(QString filter) {
     if (!this->project) return QString();
-    QString filepath = FileDialog::getOpenFileName(this, "Select a File", "", filter);
+    QString filepath = FileDialog::getOpenFileName(this, QCoreApplication::translate("Porymap", "Select a File"), "", filter);
 
     // remove the project root from the filepath
     return filepath.replace(this->project->root + "/", "");
@@ -48,7 +56,7 @@ void RegionMapPropertiesDialog::setProperties(poryjson::Json json) {
 
     // Tilemap properties
     poryjson::Json::object tilemap = object["tilemap"].object_items();
-    ui->config_tilemapFormat->setCurrentText(tilemap["format"].string_value());
+    ui->config_tilemapFormat->setCurrentIndex(ui->config_tilemapFormat->findData(tilemap["format"].string_value()));
     ui->config_tilemapWidth->setValue(tilemap["width"].int_value());
     ui->config_tilemapHeight->setValue(tilemap["height"].int_value());
 
@@ -62,7 +70,7 @@ void RegionMapPropertiesDialog::setProperties(poryjson::Json json) {
         ui->group_layout->setChecked(false);
     } else {
         poryjson::Json::object layout = object["layout"].object_items();
-        ui->config_layoutFormat->setCurrentText(layout["format"].string_value());
+        ui->config_layoutFormat->setCurrentIndex(ui->config_layoutFormat->findData(layout["format"].string_value()));
         ui->config_layoutPath->setText(layout["path"].string_value());
         ui->config_layoutWidth->setValue(layout["width"].int_value());
         ui->config_layoutHeight->setValue(layout["height"].int_value());
@@ -81,7 +89,7 @@ poryjson::Json RegionMapPropertiesDialog::saveToJson() {
     poryjson::Json::object tilemapObject;
     tilemapObject["width"] = ui->config_tilemapWidth->value();
     tilemapObject["height"] = ui->config_tilemapHeight->value();
-    tilemapObject["format"] = ui->config_tilemapFormat->currentText();
+    tilemapObject["format"] = ui->config_tilemapFormat->currentData().toString();
     tilemapObject["tileset_path"] = ui->config_tilemapImagePath->text();
     tilemapObject["tilemap_path"] = ui->config_tilemapBinPath->text();
     tilemapObject["palette"] = ui->config_tilemapPalettePath->text();
@@ -89,7 +97,7 @@ poryjson::Json RegionMapPropertiesDialog::saveToJson() {
 
     if (ui->group_layout->isChecked()) {
         poryjson::Json::object layoutObject;
-        layoutObject["format"] = ui->config_layoutFormat->currentText();
+        layoutObject["format"] = ui->config_layoutFormat->currentData().toString();
         layoutObject["path"] = ui->config_layoutPath->text();
         layoutObject["width"] = ui->config_layoutWidth->value();
         layoutObject["height"] = ui->config_layoutHeight->value();
@@ -145,7 +153,7 @@ void RegionMapPropertiesDialog::accept() {
     QString alias = ui->config_alias->text();
     if (alias.isEmpty()) {
         valid = false;
-        ui->message_alias->setText("alias cannot be empty");
+        ui->message_alias->setText(QCoreApplication::translate("Porymap", "alias cannot be empty"));
         ui->message_alias->setVisible(true);
     } else {
         static const QRegularExpression re("[A-Za-z0-9_\\- ]+");
@@ -153,7 +161,7 @@ void RegionMapPropertiesDialog::accept() {
         QRegularExpressionValidator v(re, 0);
         
         if (v.validate(alias, temp) != QValidator::Acceptable) {
-            ui->message_alias->setText("this alias is not an acceptable string");
+            ui->message_alias->setText(QCoreApplication::translate("Porymap", "this alias is not an acceptable string"));
             ui->message_alias->setVisible(true);
             valid = false;
         }
@@ -172,7 +180,7 @@ void RegionMapPropertiesDialog::accept() {
     if (!acceptableDimensions.contains(tilemapWidth)) {
         // width not valid
         valid = false;
-        ui->message_tilemapWidth->setText("tilemap width not valid, must be one of [16, 32, 64, 128]");
+        ui->message_tilemapWidth->setText(QCoreApplication::translate("Porymap", "tilemap width not valid, must be one of [16, 32, 64, 128]"));
         ui->message_tilemapWidth->setVisible(true);
     } else {
         ui->message_tilemapWidth->setText("");
@@ -184,7 +192,7 @@ void RegionMapPropertiesDialog::accept() {
             for (int i : acceptableDimensions.value(tilemapWidth))
                 options += QString::number(i) + ", ";
             options.chop(2);
-            ui->message_tilemapHeight->setText("tilemap height not valid, must be one of [" + options + "]");
+            ui->message_tilemapHeight->setText(QCoreApplication::translate("Porymap", "tilemap height not valid, must be one of [") + options + "]");
             ui->message_tilemapHeight->setVisible(true);
         }
         else { // no issues detected
@@ -199,7 +207,7 @@ void RegionMapPropertiesDialog::accept() {
     int height = ui->config_layoutHeight->value() + ui->config_topOffs->value();
     if (width > tilemapWidth) {
         valid = false;
-        ui->message_layoutWidth->setText("layout map width + left offset cannot be larger than tilemap width");
+        ui->message_layoutWidth->setText(QCoreApplication::translate("Porymap", "layout map width + left offset cannot be larger than tilemap width"));
         ui->message_layoutWidth->setVisible(true);
     } else {
         ui->message_layoutWidth->setText("");
@@ -207,7 +215,7 @@ void RegionMapPropertiesDialog::accept() {
     }
     if (height > tilemapHeight) {
         valid = false;
-        ui->message_layoutHeight->setText("layout map height + top offset cannot be larger than tilemap height");
+        ui->message_layoutHeight->setText(QCoreApplication::translate("Porymap", "layout map height + top offset cannot be larger than tilemap height"));
         ui->message_layoutHeight->setVisible(true);
     } else {
         ui->message_layoutHeight->setText("");
@@ -217,7 +225,7 @@ void RegionMapPropertiesDialog::accept() {
     // make sure paths arent empty
     if (ui->config_tilemapImagePath->text().isEmpty()) {
         valid = false;
-        ui->message_tilemapImagePath->setText("this path cannot be empty");
+        ui->message_tilemapImagePath->setText(QCoreApplication::translate("Porymap", "this path cannot be empty"));
         ui->message_tilemapImagePath->setVisible(true);
     } else {
         ui->message_tilemapImagePath->setText("");
@@ -226,7 +234,7 @@ void RegionMapPropertiesDialog::accept() {
 
     if (ui->config_tilemapBinPath->text().isEmpty()) {
         valid = false;
-        ui->message_tilemapBinPath->setText("this path cannot be empty");
+        ui->message_tilemapBinPath->setText(QCoreApplication::translate("Porymap", "this path cannot be empty"));
         ui->message_tilemapBinPath->setVisible(true);
     } else {
         ui->message_tilemapBinPath->setText("");
@@ -237,7 +245,7 @@ void RegionMapPropertiesDialog::accept() {
     if (ui->group_layout->isChecked()) {
         if (ui->config_layoutPath->text().isEmpty()) {
         valid = false;
-        ui->message_layoutPath->setText("this path cannot be empty");
+        ui->message_layoutPath->setText(QCoreApplication::translate("Porymap", "this path cannot be empty"));
         ui->message_layoutPath->setVisible(true);
         } else {
             ui->message_layoutPath->setText("");

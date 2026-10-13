@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #include "customscriptseditor.h"
 #include "ui_customscriptseditor.h"
 #include "ui_customscriptslistitem.h"
@@ -42,23 +43,23 @@ CustomScriptsEditor::~CustomScriptsEditor()
 void CustomScriptsEditor::initShortcuts() {
     auto *shortcut_remove = new Shortcut({QKeySequence("Del"), QKeySequence("Backspace")}, this, SLOT(removeSelectedScripts()));
     shortcut_remove->setObjectName("shortcut_remove");
-    shortcut_remove->setWhatsThis("Remove Selected Scripts");
+    shortcut_remove->setWhatsThis(QCoreApplication::translate("Porymap", "Remove Selected Scripts"));
 
     auto *shortcut_open = new Shortcut(QKeySequence(), this, SLOT(openSelectedScripts()));
     shortcut_open->setObjectName("shortcut_open");
-    shortcut_open->setWhatsThis("Open Selected Scripts");
+    shortcut_open->setWhatsThis(QCoreApplication::translate("Porymap", "Open Selected Scripts"));
 
     auto *shortcut_createNew = new Shortcut(QKeySequence(), this, SLOT(createNewScript()));
     shortcut_createNew->setObjectName("shortcut_createNew");
-    shortcut_createNew->setWhatsThis("Create New Script...");
+    shortcut_createNew->setWhatsThis(QCoreApplication::translate("Porymap", "Create New Script..."));
 
     auto *shortcut_load = new Shortcut(QKeySequence(), this, SLOT(loadScript()));
     shortcut_load->setObjectName("shortcut_load");
-    shortcut_load->setWhatsThis("Load Script...");
+    shortcut_load->setWhatsThis(QCoreApplication::translate("Porymap", "Load Script..."));
 
     auto *shortcut_refresh = new Shortcut(QKeySequence(), this, SLOT(userRefreshScripts()));
     shortcut_refresh->setObjectName("shortcut_refresh");
-    shortcut_refresh->setWhatsThis("Refresh Scripts");
+    shortcut_refresh->setWhatsThis(QCoreApplication::translate("Porymap", "Refresh Scripts"));
 
     shortcutsConfig.load();
     shortcutsConfig.setDefaultShortcuts(shortcutableObjects());
@@ -144,20 +145,20 @@ bool CustomScriptsEditor::getScriptEnabled(QListWidgetItem * item) const {
 }
 
 QString CustomScriptsEditor::chooseScript(QString dir) {
-    return FileDialog::getOpenFileName(this, "Choose Custom Script File", dir, "JavaScript Files (*.js)");
+    return FileDialog::getOpenFileName(this, QCoreApplication::translate("Porymap", "Choose Custom Script File"), dir, "JavaScript Files (*.js)");
 }
 
 void CustomScriptsEditor::createNewScript() {
-    const QString filepath = FileDialog::getSaveFileName(this, "Create New Script File", FileDialog::getDirectory() + "/new_script.js", "JavaScript Files (*.js)");
+    const QString filepath = FileDialog::getSaveFileName(this, QCoreApplication::translate("Porymap", "Create New Script File"), FileDialog::getDirectory() + "/new_script.js", QCoreApplication::translate("Porymap", "JavaScript Files (*.js)"));
     if (filepath.isEmpty())
         return;
 
     QFile scriptFile(filepath);
     if (!scriptFile.open(QIODevice::WriteOnly)) {
-        logError(QString("Error: Could not open %1 for writing").arg(filepath));
+        logError(QCoreApplication::translate("Porymap", "Error: Could not open %1 for writing").arg(filepath));
         QMessageBox messageBox(this);
-        messageBox.setText("Failed to create new script file!");
-        messageBox.setInformativeText(QString("Could not open \"%1\" for writing").arg(filepath));
+        messageBox.setText(QCoreApplication::translate("Porymap", "Failed to create new script file!"));
+        messageBox.setInformativeText(QCoreApplication::translate("Porymap", "Could not open \"%1\" for writing").arg(filepath));
         messageBox.setIcon(QMessageBox::Warning);
         messageBox.exec();
         return;
@@ -182,7 +183,7 @@ void CustomScriptsEditor::displayNewScript(QString filepath) {
     // Verify new script path is not already in list
     for (int i = 0; i < ui->list->count(); i++) {
         if (filepath == this->getScriptFilepath(ui->list->item(i), false)) {
-            QMessageBox::information(this, QApplication::applicationName(), QString("The script '%1' is already loaded").arg(filepath));
+            QMessageBox::information(this, QApplication::applicationName(), QCoreApplication::translate("Porymap", "The script '%1' is already loaded").arg(filepath));
             return;
         }
     }
@@ -216,7 +217,7 @@ void CustomScriptsEditor::openScript(QListWidgetItem * item) {
     const QString path = this->getScriptFilepath(item);
     QFileInfo fileInfo(path);
     if (!fileInfo.exists() || !fileInfo.isFile()){
-        QMessageBox::warning(this, QApplication::applicationName(), QString("Failed to open script '%1'").arg(path));
+        QMessageBox::warning(this, QApplication::applicationName(), QCoreApplication::translate("Porymap", "Failed to open script '%1'").arg(path));
         return;
     }
     Editor::openInTextEditor(path);
@@ -236,7 +237,7 @@ void CustomScriptsEditor::openManual() {
 // We don't want this tooltip to display when we refresh programmatically, like when changes are saved.
 void CustomScriptsEditor::userRefreshScripts() {
     if (refreshScripts())
-        QToolTip::showText(ui->button_RefreshScripts->mapToGlobal(QPoint(0, 0)), "Refreshed!");
+        QToolTip::showText(ui->button_RefreshScripts->mapToGlobal(QPoint(0, 0)), QCoreApplication::translate("Porymap", "Refreshed!"));
 }
 
 bool CustomScriptsEditor::refreshScripts() {

@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #include "tileseteditor.h"
 #include "ui_tileseteditor.h"
 #include "log.h"
@@ -186,7 +187,7 @@ void TilesetEditor::initAttributesUi() {
         }
     } else {
         this->ui->frame_LayerType->setVisible(false);
-        this->ui->label_BottomTop->setText("Bottom/Middle/Top");
+        this->ui->label_BottomTop->setText(QCoreApplication::translate("Porymap", "Bottom/Middle/Top"));
     }
 
     // Raw attributes value
@@ -355,11 +356,11 @@ void TilesetEditor::initExtraShortcuts() {
 
     auto *shortcut_xFlip = new Shortcut(QKeySequence(), ui->checkBox_xFlip, SLOT(toggle()));
     shortcut_xFlip->setObjectName("shortcut_xFlip");
-    shortcut_xFlip->setWhatsThis("X Flip");
+    shortcut_xFlip->setWhatsThis(QCoreApplication::translate("Porymap", "X Flip"));
 
     auto *shortcut_yFlip = new Shortcut(QKeySequence(), ui->checkBox_yFlip, SLOT(toggle()));
     shortcut_yFlip->setObjectName("shortcut_yFlip");
-    shortcut_yFlip->setWhatsThis("Y Flip");
+    shortcut_yFlip->setWhatsThis(QCoreApplication::translate("Porymap", "Y Flip"));
 }
 
 QObjectList TilesetEditor::shortcutableObjects() const {
@@ -746,8 +747,8 @@ bool TilesetEditor::save() {
     if (this->paletteEditor) {
         this->paletteEditor->setTilesets(this->primaryTileset, this->secondaryTileset);
     }
-    this->ui->statusbar->showMessage(success ? QStringLiteral("Saved primary and secondary Tilesets!")
-                                             : QStringLiteral("Failed to save tilesets! See log for details."), 5000);
+    this->ui->statusbar->showMessage(success ? QCoreApplication::translate("Porymap", "Saved primary and secondary Tilesets!")
+                                             : QCoreApplication::translate("Porymap", "Failed to save tilesets! See log for details."), 5000);
     if (success) {
         this->hasUnsavedChanges = false;
     }
@@ -760,12 +761,12 @@ void TilesetEditor::importTilesetTiles(Tileset *tileset) {
     QString descriptor = primary ? "primary" : "secondary";
     QString descriptorCaps = primary ? "Primary" : "Secondary";
 
-    QString filepath = FileDialog::getOpenFileName(this, QString("Import %1 Tileset Tiles Image").arg(descriptorCaps), "", "Image Files (*.png *.bmp *.jpg *.dib)");
+    QString filepath = FileDialog::getOpenFileName(this, QCoreApplication::translate("Porymap", "Import %1 Tileset Tiles Image").arg(descriptorCaps), "", "Image Files (*.png *.bmp *.jpg *.dib)");
     if (filepath.isEmpty()) {
         return;
     }
 
-    logInfo(QString("Importing %1 tileset tiles '%2'").arg(descriptor).arg(filepath));
+    logInfo(QCoreApplication::translate("Porymap", "Importing %1 tileset tiles '%2'").arg(descriptor).arg(filepath));
 
     // Read image data from buffer so that the built-in QImage doesn't try to detect file format
     // purely from the extension name. Advance Map exports ".png" files that are actually BMP format, for example.
@@ -775,11 +776,11 @@ void TilesetEditor::importTilesetTiles(Tileset *tileset) {
         QByteArray imageData = file.readAll();
         image = QImage::fromData(imageData);
     } else {
-        logError(QString("Failed to open image file: '%1'").arg(filepath));
+        logError(QCoreApplication::translate("Porymap", "Failed to open image file: '%1'").arg(filepath));
     }
     if (image.width() == 0 || image.height() == 0 || image.width() % Tile::pixelWidth() != 0 || image.height() % Tile::pixelHeight() != 0) {
-        ErrorMessage::show(QStringLiteral("Failed to import tiles."),
-                           QString("The image dimensions (%1x%2) are invalid. The dimensions must be a multiple of %3x%4 pixels.")
+        ErrorMessage::show(QCoreApplication::translate("Porymap", "Failed to import tiles."),
+                           QCoreApplication::translate("Porymap", "The image dimensions (%1x%2) are invalid. The dimensions must be a multiple of %3x%4 pixels.")
                                   .arg(image.width())
                                   .arg(image.height())
                                   .arg(Tile::pixelWidth())
@@ -794,8 +795,8 @@ void TilesetEditor::importTilesetTiles(Tileset *tileset) {
     int totalTiles = numTilesHigh * numTilesWide;
     int maxAllowedTiles = primary ? Project::getNumTilesPrimary() : Project::getNumTilesSecondary();
     if (totalTiles > maxAllowedTiles) {
-        ErrorMessage::show(QStringLiteral("Failed to import tiles."),
-                           QString("The maximum number of tiles allowed in the %1 tileset is %2, but the provided image contains %3 total tiles.")
+        ErrorMessage::show(QCoreApplication::translate("Porymap", "Failed to import tiles."),
+                           QCoreApplication::translate("Porymap", "The maximum number of tiles allowed in the %1 tileset is %2, but the provided image contains %3 total tiles.")
                                   .arg(descriptor)
                                   .arg(maxAllowedTiles)
                                   .arg(totalTiles),
@@ -805,14 +806,14 @@ void TilesetEditor::importTilesetTiles(Tileset *tileset) {
 
     // Ask user to provide a palette for the un-indexed image.
     if (image.colorCount() == 0) {
-        auto msgBox = new QuestionMessage(QStringLiteral("Select a palette file for this image?"), this);
+        auto msgBox = new QuestionMessage(QCoreApplication::translate("Porymap", "Select a palette file for this image?"), this);
         msgBox->setAttribute(Qt::WA_DeleteOnClose);
-        msgBox->setInformativeText(QStringLiteral("The provided image is not indexed. "
+        msgBox->setInformativeText(QCoreApplication::translate("Porymap", "The provided image is not indexed. "
                                                   "An indexed image will be generated using the provided image and palette."));
         if (msgBox->exec() != QMessageBox::Yes)
             return;
 
-        QString filepath = FileDialog::getOpenFileName(this, "Select Palette for Tiles Image", "", "Palette Files (*.pal *.act *tpl *gpl)");
+        QString filepath = FileDialog::getOpenFileName(this, QCoreApplication::translate("Porymap", "Select Palette for Tiles Image"), "", "Palette Files (*.pal *.act *tpl *gpl)");
         if (filepath.isEmpty()) {
             return;
         }
@@ -820,7 +821,7 @@ void TilesetEditor::importTilesetTiles(Tileset *tileset) {
         bool error = false;
         QList<QRgb> palette = PaletteUtil::parse(filepath, &error);
         if (error) {
-            RecentErrorMessage::show(QStringLiteral("Failed to import palette."), this);
+            RecentErrorMessage::show(QCoreApplication::translate("Porymap", "Failed to import palette."), this);
             return;
         }
 
@@ -829,7 +830,7 @@ void TilesetEditor::importTilesetTiles(Tileset *tileset) {
     }
 
     if (!tileset->loadTilesImage(&image)) {
-        RecentErrorMessage::show(QStringLiteral("Failed to import tiles."), this);
+        RecentErrorMessage::show(QCoreApplication::translate("Porymap", "Failed to import tiles."), this);
         return;
     }
     this->refresh();
@@ -874,7 +875,7 @@ void TilesetEditor::closeEvent(QCloseEvent *event)
 void TilesetEditor::on_actionChange_Metatiles_Count_triggered()
 {
     QDialog dialog(this, Qt::WindowTitleHint | Qt::WindowCloseButtonHint);
-    dialog.setWindowTitle("Change Number of Metatiles");
+    dialog.setWindowTitle(QCoreApplication::translate("Porymap", "Change Number of Metatiles"));
     dialog.setWindowModality(Qt::WindowModal);
 
     QFormLayout form(&dialog);
@@ -887,8 +888,8 @@ void TilesetEditor::on_actionChange_Metatiles_Count_triggered()
     secondarySpinBox->setMaximum(Project::getNumMetatilesSecondary());
     primarySpinBox->setValue(this->primaryTileset->numMetatiles());
     secondarySpinBox->setValue(this->secondaryTileset->numMetatiles());
-    form.addRow(new QLabel("Primary Tileset"), primarySpinBox);
-    form.addRow(new QLabel("Secondary Tileset"), secondarySpinBox);
+    form.addRow(new QLabel(QCoreApplication::translate("Porymap", "Primary Tileset")), primarySpinBox);
+    form.addRow(new QLabel(QCoreApplication::translate("Porymap", "Secondary Tileset")), secondarySpinBox);
 
     QDialogButtonBox buttonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, Qt::Horizontal, &dialog);
     connect(&buttonBox, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
@@ -1054,7 +1055,7 @@ void TilesetEditor::pasteMetatile(const Metatile &toPaste, QString newLabel) {
 void TilesetEditor::exportTilesImage(Tileset *tileset) {
     bool primary = !tileset->is_secondary;
     QString defaultFilepath = QString("%1/%2_Tiles_Pal%3.png").arg(FileDialog::getDirectory()).arg(tileset->name).arg(this->paletteId());
-    QString filepath = FileDialog::getSaveFileName(this, QString("Export %1 Tiles Image").arg(primary ? "Primary" : "Secondary"), defaultFilepath, "Image Files (*.png)");
+    QString filepath = FileDialog::getSaveFileName(this, QCoreApplication::translate("Porymap", "Export %1 Tiles Image").arg(primary ? "Primary" : "Secondary"), defaultFilepath, "Image Files (*.png)");
     if (!filepath.isEmpty()) {
         QImage image = primary ? this->tileSelector->buildPrimaryTilesIndexedImage() : this->tileSelector->buildSecondaryTilesIndexedImage();
         exportIndexed4BPPPng(image, filepath);
@@ -1072,7 +1073,7 @@ void TilesetEditor::exportMetatilesImage() {
 }
 
 void TilesetEditor::exportPorytilesLayerImages(Tileset *tileset) {
-    QString dir = FileDialog::getExistingDirectory(this, QStringLiteral("Choose Folder to Export Images"));
+    QString dir = FileDialog::getExistingDirectory(this, QCoreApplication::translate("Porymap", "Choose Folder to Export Images"));
     if (dir.isEmpty()) {
         return;
     }
@@ -1098,7 +1099,7 @@ void TilesetEditor::exportPorytilesLayerImages(Tileset *tileset) {
     }
 
     if (!pathCollisions.isEmpty()) {
-        QString message = QString("The following files will be overwritten, are you sure you want to export?\n\n%1").arg(pathCollisions.join("\n"));
+        QString message = QCoreApplication::translate("Porymap", "The following files will be overwritten, are you sure you want to export?\n\n%1").arg(pathCollisions.join("\n"));
         auto reply = QuestionMessage::show(message, this);
         if (reply != QMessageBox::Yes) {
             return;
@@ -1108,7 +1109,7 @@ void TilesetEditor::exportPorytilesLayerImages(Tileset *tileset) {
     for (auto it = images.constBegin(); it != images.constEnd(); it++) {
         QString path = it.key();
         if (!it.value().save(path)) {
-            logError(QString("Failed to save Porytiles layer image '%1'.").arg(path));
+            logError(QCoreApplication::translate("Porymap", "Failed to save Porytiles layer image '%1'.").arg(path));
         }
     }
 }
@@ -1117,7 +1118,7 @@ void TilesetEditor::importAdvanceMapMetatiles(Tileset *tileset) {
     bool primary = !tileset->is_secondary;
     QString descriptorCaps = primary ? "Primary" : "Secondary";
 
-    QString filepath = FileDialog::getOpenFileName(this, QString("Import %1 Tileset Metatiles from Advance Map 1.92").arg(descriptorCaps), "", "Advance Map 1.92 Metatile Files (*.bvd)");
+    QString filepath = FileDialog::getOpenFileName(this, QCoreApplication::translate("Porymap", "Import %1 Tileset Metatiles from Advance Map 1.92").arg(descriptorCaps), "", "Advance Map 1.92 Metatile Files (*.bvd)");
     if (filepath.isEmpty()) {
         return;
     }
@@ -1125,7 +1126,7 @@ void TilesetEditor::importAdvanceMapMetatiles(Tileset *tileset) {
     bool error = false;
     QList<Metatile*> metatiles = AdvanceMapParser::parseMetatiles(filepath, &error, primary);
     if (error) {
-        RecentErrorMessage::show(QStringLiteral("Failed to import metatiles from Advance Map 1.92 .bvd file."), this);
+        RecentErrorMessage::show(QCoreApplication::translate("Porymap", "Failed to import metatiles from Advance Map 1.92 .bvd file."), this);
         qDeleteAll(metatiles);
         return;
     }
@@ -1274,7 +1275,7 @@ void TilesetEditor::on_copyButton_MetatileLabel_clicked() {
     if (tileset)
         label.prepend(tileset->getMetatileLabelPrefix());
     QGuiApplication::clipboard()->setText(label);
-    QToolTip::showText(this->ui->copyButton_MetatileLabel->mapToGlobal(QPoint(0, 0)), "Copied!");
+    QToolTip::showText(this->ui->copyButton_MetatileLabel->mapToGlobal(QPoint(0, 0)), QCoreApplication::translate("Porymap", "Copied!"));
 }
 
 void TilesetEditor::on_horizontalSlider_MetatilesZoom_valueChanged(int value) {
@@ -1345,7 +1346,7 @@ bool TilesetEditor::swapMetatiles(uint16_t metatileIdA, uint16_t metatileIdB) {
         if (metatile) {
             metatiles.append(metatile);
         } else {
-            logError(QString("Failed to load metatile %1 for swap.").arg(Metatile::getMetatileIdString(metatileId)));
+            logError(QCoreApplication::translate("Porymap", "Failed to load metatile %1 for swap.").arg(Metatile::getMetatileIdString(metatileId)));
         }
     }
     if (metatiles.length() < 2)
@@ -1384,7 +1385,7 @@ void TilesetEditor::applyMetatileSwapsToLayouts() {
     progress.setValue(progress.minimum());
 
     for (const auto &swapPair : this->metatileIdSwaps) {
-        progress.setLabelText(QString("Swapping metatiles %1 and %2 in map layouts...")
+        progress.setLabelText(QCoreApplication::translate("Porymap", "Swapping metatiles %1 and %2 in map layouts...")
                                         .arg(Metatile::getMetatileIdString(swapPair.first))
                                         .arg(Metatile::getMetatileIdString(swapPair.second)));
         applyMetatileSwapToLayouts(swapPair.first, swapPair.second);

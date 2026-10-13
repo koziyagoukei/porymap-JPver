@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #include "regionmapeditor.h"
 #include "ui_regionmapeditor.h"
 #include "regionmappropertiesdialog.h"
@@ -67,7 +68,7 @@ void RegionMapEditor::initShortcuts() {
     auto *shortcut_RM_Options_delete = new Shortcut(
             {QKeySequence("Del"), QKeySequence("Backspace")}, this, SLOT(on_pushButton_RM_Options_delete_clicked()));
     shortcut_RM_Options_delete->setObjectName("shortcut_RM_Options_delete");
-    shortcut_RM_Options_delete->setWhatsThis("Map Layout: Delete Square");
+    shortcut_RM_Options_delete->setWhatsThis(QCoreApplication::translate("Porymap", "Map Layout: Delete Square"));
 
     QAction *undoAction = this->history.createUndoAction(this, tr("&Undo"));
     undoAction->setObjectName("action_RegionMap_Undo");
@@ -161,7 +162,7 @@ bool RegionMapEditor::buildConfigDialog() {
     poryjson::Json rmConfigJsonUpdate = this->rmConfigJson;
 
     QDialog dialog(this);
-    dialog.setWindowTitle("Configure Region Maps");
+    dialog.setWindowTitle(QCoreApplication::translate("Porymap", "Configure Region Maps"));
     dialog.setWindowModality(Qt::WindowModal);
 
     QFormLayout form(&dialog);
@@ -169,7 +170,7 @@ bool RegionMapEditor::buildConfigDialog() {
     // need to display current region map(s) if there are some
     QListWidget *regionMapList = new QListWidget(&dialog);
 
-    form.addRow(new QLabel("Region Map List:"));
+    form.addRow(new QLabel(QCoreApplication::translate("Porymap", "Region Map List:")));
     form.addRow(regionMapList);
 
     // lambda to update the current map list displayed in the config window with a
@@ -228,7 +229,7 @@ bool RegionMapEditor::buildConfigDialog() {
         }
     });
 
-    QPushButton *addMapButton = new QPushButton("Add Region Map...");
+    QPushButton *addMapButton = new QPushButton(QCoreApplication::translate("Porymap", "Add Region Map..."));
     form.addRow(addMapButton);
 
     // allow user to add region maps
@@ -247,7 +248,7 @@ bool RegionMapEditor::buildConfigDialog() {
         updateJsonFromList();
     });
 
-    QPushButton *delMapButton = new QPushButton("Delete Selected Region Map");
+    QPushButton *delMapButton = new QPushButton(QCoreApplication::translate("Porymap", "Delete Selected Region Map"));
     form.addRow(delMapButton);
 
     connect(delMapButton, &QPushButton::clicked, [regionMapList, &updateJsonFromList] {
@@ -264,7 +265,7 @@ bool RegionMapEditor::buildConfigDialog() {
     // // TODO: double clicking can delete them? bring up the tiny menu thing like sory by maps
     // //cityMapList->setSelectionMode(QAbstractItemView::NoSelection);
     // //cityMapList->setFocusPolicy(Qt::NoFocus);
-    // form.addRow(new QLabel("City Map List:"));
+    // form.addRow(new QLabel(QCoreApplication::translate("Porymap", "City Map List:")));
     // form.addRow(cityMapList);
     //
     // for (int i = 0; i < 20; i++) {
@@ -273,7 +274,7 @@ bool RegionMapEditor::buildConfigDialog() {
     //     cityMapList->addItem(newItem);
     // }
     //
-    // QPushButton *addCitiesButton = new QPushButton("Configure City Maps...");
+    // QPushButton *addCitiesButton = new QPushButton(QCoreApplication::translate("Porymap", "Configure City Maps..."));
     // form.addRow(addCitiesButton);
     // // needs to pick tilemaps and such here too
 
@@ -282,13 +283,13 @@ bool RegionMapEditor::buildConfigDialog() {
     QPushButton *config_useProjectDefault = nullptr;
     switch (projectConfig.baseGameVersion) {
         case BaseGameVersion::pokefirered:
-            config_useProjectDefault = new QPushButton("\nUse pokefirered defaults\n");
+            config_useProjectDefault = new QPushButton(QCoreApplication::translate("Porymap", "\nUse pokefirered defaults\n"));
             break;
         case BaseGameVersion::pokeemerald:
-            config_useProjectDefault = new QPushButton("\nUse pokeemerald defaults\n");
+            config_useProjectDefault = new QPushButton(QCoreApplication::translate("Porymap", "\nUse pokeemerald defaults\n"));
             break;
         case BaseGameVersion::pokeruby:
-            config_useProjectDefault = new QPushButton("\nUse pokeruby defaults\n");
+            config_useProjectDefault = new QPushButton(QCoreApplication::translate("Porymap", "\nUse pokeruby defaults\n"));
             break;
         default:
             break;
@@ -446,8 +447,8 @@ bool RegionMapEditor::load(bool silent) {
         // show popup explaining next window
         QMessageBox warning;
         warning.setIcon(QMessageBox::Warning);
-        warning.setText("Region map configuration not found.");
-        warning.setInformativeText("In order to continue, you must setup porymap to use your region map.");
+        warning.setText(QCoreApplication::translate("Porymap", "Region map configuration not found."));
+        warning.setInformativeText(QCoreApplication::translate("Porymap", "In order to continue, you must setup porymap to use your region map."));
         warning.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
         warning.setDefaultButton(QMessageBox::Ok);
 
@@ -506,7 +507,7 @@ void RegionMapEditor::saveConfig() {
     OrderedJson newConfigJson(mapsObject);
     QFile file(this->configFilepath);
     if (!file.open(QIODevice::WriteOnly)) {
-        logError(QString("Could not open %1 for writing").arg(this->configFilepath));
+        logError(QCoreApplication::translate("Porymap", "Could not open %1 for writing").arg(this->configFilepath));
         return;
     }
     OrderedJsonDoc jsonDoc(&newConfigJson);
@@ -543,8 +544,8 @@ bool RegionMapEditor::reconfigure() {
     if (this->modified()) {
         QMessageBox warning;
         warning.setIcon(QMessageBox::Warning);
-        warning.setText("Reconfiguring region maps will discard any unsaved changes.");
-        warning.setInformativeText("Continue?");
+        warning.setText(QCoreApplication::translate("Porymap", "Reconfiguring region maps will discard any unsaved changes."));
+        warning.setInformativeText(QCoreApplication::translate("Porymap", "Continue?"));
         warning.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
         warning.setDefaultButton(QMessageBox::Ok);
 
@@ -730,7 +731,7 @@ void RegionMapEditor::updateRegionMapEntryOptions(QString section) {
     this->ui->spinBox_RM_Entry_width->setEnabled(enabled);
     this->ui->spinBox_RM_Entry_height->setEnabled(enabled);
     this->ui->pushButton_entryActivate->setEnabled(section != this->region_map->default_map_section);
-    this->ui->pushButton_entryActivate->setText(enabled ? "Remove" : "Add");
+    this->ui->pushButton_entryActivate->setText(enabled ? QCoreApplication::translate("Porymap", "Remove") : QCoreApplication::translate("Porymap", "Add"));
 
     this->ui->comboBox_RM_Entry_MapSection->setTextItem(section);
     this->activeEntry = section;
@@ -869,7 +870,7 @@ void RegionMapEditor::mouseEvent_region_map(QGraphicsSceneMouseEvent *event, Reg
             item->fill(event);
             QByteArray newTilemap = this->region_map->getTilemap();
             EditTilemap *command = new EditTilemap(this->region_map, oldTilemap, newTilemap, actionId_);
-            command->setText("Fill Tilemap");
+            command->setText(QCoreApplication::translate("Porymap", "Fill Tilemap"));
             this->region_map->commit(command);
         }
     } else {
@@ -1024,7 +1025,7 @@ void RegionMapEditor::on_pushButton_RM_Options_delete_clicked() {
     this->region_map->resetSquare(index);
     QList<LayoutSquare> newLayout = this->region_map->getLayout(this->region_map->getLayer());
     EditLayout *commit = new EditLayout(this->region_map, this->region_map->getLayer(), this->currIndex, oldLayout, newLayout);
-    commit->setText("Reset Layout Square");
+    commit->setText(QCoreApplication::translate("Porymap", "Reset Layout Square"));
     this->region_map->editHistory.push(commit);
     updateRegionMapLayoutOptions(this->currIndex);
     this->region_map_layout_item->draw();
@@ -1049,7 +1050,7 @@ void RegionMapEditor::setTileVFlip(bool enabled) {
 
 void RegionMapEditor::on_action_RegionMap_Resize_triggered() {
     QDialog popup(this, Qt::WindowTitleHint | Qt::WindowCloseButtonHint);
-    popup.setWindowTitle("New Tilemap Dimensions");
+    popup.setWindowTitle(QCoreApplication::translate("Porymap", "New Tilemap Dimensions"));
     popup.setWindowModality(Qt::NonModal);
 
     QFormLayout form(&popup);
@@ -1063,8 +1064,8 @@ void RegionMapEditor::on_action_RegionMap_Resize_triggered() {
     heightSpinBox->setMaximum(128);
     widthSpinBox->setValue(this->region_map->tilemapWidth());
     heightSpinBox->setValue(this->region_map->tilemapHeight());
-    form.addRow(new QLabel("Width"), widthSpinBox);
-    form.addRow(new QLabel("Height"), heightSpinBox);
+    form.addRow(new QLabel(QCoreApplication::translate("Porymap", "Width")), widthSpinBox);
+    form.addRow(new QLabel(QCoreApplication::translate("Porymap", "Height")), heightSpinBox);
 
     QDialogButtonBox buttonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, Qt::Horizontal, &popup);
 
@@ -1093,17 +1094,17 @@ void RegionMapEditor::resizeTilemap(int width, int height) {
 
 void RegionMapEditor::on_action_Swap_triggered() {
     QDialog popup(this, Qt::WindowTitleHint | Qt::WindowCloseButtonHint);
-    popup.setWindowTitle("Swap Map Sections");
+    popup.setWindowTitle(QCoreApplication::translate("Porymap", "Swap Map Sections"));
     popup.setWindowModality(Qt::NonModal);
 
     QFormLayout form(&popup);
 
     QComboBox *oldSecBox = new QComboBox();
     oldSecBox->addItems(this->project->locationNames());
-    form.addRow(new QLabel("Map Section 1:"), oldSecBox);
+    form.addRow(new QLabel(QCoreApplication::translate("Porymap", "Map Section 1:")), oldSecBox);
     QComboBox *newSecBox = new QComboBox();
     newSecBox->addItems(this->project->locationNames());
-    form.addRow(new QLabel("Map Section 2:"), newSecBox);
+    form.addRow(new QLabel(QCoreApplication::translate("Porymap", "Map Section 2:")), newSecBox);
 
     QDialogButtonBox buttonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, Qt::Horizontal, &popup);
     form.addRow(&buttonBox);
@@ -1123,7 +1124,7 @@ void RegionMapEditor::on_action_Swap_triggered() {
         this->region_map->swapSections(beforeSection, afterSection);
         QList<LayoutSquare> newLayout = this->region_map->getLayout(this->region_map->getLayer());
         EditLayout *commit = new EditLayout(this->region_map, this->region_map->getLayer(), -5, oldLayout, newLayout);
-        commit->setText("Swap Layout Sections " + beforeSection + " <<>> " + afterSection);
+        commit->setText(QCoreApplication::translate("Porymap", "Swap Layout Sections ") + beforeSection + " <<>> " + afterSection);
         this->region_map->editHistory.push(commit);
         displayRegionMapLayout();
         this->region_map_layout_item->select(this->region_map_layout_item->selectedTile);
@@ -1132,17 +1133,17 @@ void RegionMapEditor::on_action_Swap_triggered() {
 
 void RegionMapEditor::on_action_Replace_triggered() {
     QDialog popup(this, Qt::WindowTitleHint | Qt::WindowCloseButtonHint);
-    popup.setWindowTitle("Replace Map Section");
+    popup.setWindowTitle(QCoreApplication::translate("Porymap", "Replace Map Section"));
     popup.setWindowModality(Qt::NonModal);
 
     QFormLayout form(&popup);
 
     QComboBox *oldSecBox = new QComboBox();
     oldSecBox->addItems(this->project->locationNames());
-    form.addRow(new QLabel("Old Map Section:"), oldSecBox);
+    form.addRow(new QLabel(QCoreApplication::translate("Porymap", "Old Map Section:")), oldSecBox);
     QComboBox *newSecBox = new QComboBox();
     newSecBox->addItems(this->project->locationNames());
-    form.addRow(new QLabel("New Map Section:"), newSecBox);
+    form.addRow(new QLabel(QCoreApplication::translate("Porymap", "New Map Section:")), newSecBox);
 
     QDialogButtonBox buttonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, Qt::Horizontal, &popup);
     form.addRow(&buttonBox);
@@ -1162,7 +1163,7 @@ void RegionMapEditor::on_action_Replace_triggered() {
         this->region_map->replaceSection(beforeSection, afterSection);
         QList<LayoutSquare> newLayout = this->region_map->getLayout(this->region_map->getLayer());
         EditLayout *commit = new EditLayout(this->region_map, this->region_map->getLayer(), -2, oldLayout, newLayout);
-        commit->setText("Replace Layout Section " + beforeSection + " >> " + afterSection);
+        commit->setText(QCoreApplication::translate("Porymap", "Replace Layout Section ") + beforeSection + " >> " + afterSection);
         this->region_map->editHistory.push(commit);
         displayRegionMapLayout();
         this->region_map_layout_item->select(this->region_map_layout_item->selectedTile);
@@ -1175,7 +1176,7 @@ void RegionMapEditor::on_action_RegionMap_ClearImage_triggered() {
     QByteArray newTilemap = this->region_map->getTilemap();
     
     EditTilemap *commit = new EditTilemap(this->region_map, oldTilemap, newTilemap, -1);
-    commit->setText("Clear Tilemap");
+    commit->setText(QCoreApplication::translate("Porymap", "Clear Tilemap"));
     this->region_map->editHistory.push(commit);
 
     displayRegionMapImage();
@@ -1185,8 +1186,8 @@ void RegionMapEditor::on_action_RegionMap_ClearImage_triggered() {
 void RegionMapEditor::on_action_RegionMap_ClearLayout_triggered() {
     QMessageBox::StandardButton result = QMessageBox::question(
         this,
-        "WARNING",
-        QString("This action will reset the entire map layout to %1. Continue?").arg(this->region_map->default_map_section),
+        QCoreApplication::translate("Porymap", "WARNING"),
+        QCoreApplication::translate("Porymap", "This action will reset the entire map layout to %1. Continue?").arg(this->region_map->default_map_section),
         QMessageBox::Yes | QMessageBox::Cancel,
         QMessageBox::Yes
     );
@@ -1196,7 +1197,7 @@ void RegionMapEditor::on_action_RegionMap_ClearLayout_triggered() {
         this->region_map->clearLayout();
         QList<LayoutSquare> newLayout = this->region_map->getLayout(this->region_map->getLayer());
         EditLayout *commit = new EditLayout(this->region_map, this->region_map->getLayer(), -1, oldLayout, newLayout);
-        commit->setText("Clear Layout");
+        commit->setText(QCoreApplication::translate("Porymap", "Clear Layout"));
         this->region_map->editHistory.push(commit);
         displayRegionMapLayout();
     } else {
@@ -1207,7 +1208,7 @@ void RegionMapEditor::on_action_RegionMap_ClearLayout_triggered() {
 void RegionMapEditor::on_action_RegionMap_ClearEntries_triggered() {
     QMessageBox::StandardButton result = QMessageBox::question(
         this,
-        "WARNING",
+        QCoreApplication::translate("Porymap", "WARNING"),
         "This action will clear all the data on the Map Entries tab. Continue?",
         QMessageBox::Yes | QMessageBox::Cancel,
         QMessageBox::Yes

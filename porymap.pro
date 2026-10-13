@@ -323,6 +323,7 @@ FORMS    += forms/mainwindow.ui \
     forms/resizelayoutpopup.ui
 
 RESOURCES += \
+    resources/translations.qrc \
     resources/images.qrc \
     resources/themes.qrc \
     resources/text.qrc
@@ -334,3 +335,5 @@ INCLUDEPATH += include/lib
 INCLUDEPATH += forms
 
 include(src/vendor/QtGifImage/gifimage/qtgifimage.pri)
+
+TRANSLATIONS += translations/porymap_ja.ts

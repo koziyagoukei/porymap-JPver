@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #include "palettecolorsearch.h"
 #include "ui_palettecolorsearch.h"
 #include "project.h"
@@ -38,7 +39,7 @@ PaletteColorSearch::PaletteColorSearch(Project *project, const Tileset *primaryT
     connect(ui->spinBox_PaletteId, QOverload<int>::of(&QSpinBox::valueChanged), this, &PaletteColorSearch::paletteIdChanged);
 
     // Set up table header
-    static const QStringList labels = {"Tileset", "Metatile"};
+    static const QStringList labels = {QCoreApplication::translate("Porymap", "Tileset"), QCoreApplication::translate("Porymap", "Metatile")};
     ui->table_Results->setHorizontalHeaderLabels(labels);
     ui->table_Results->horizontalHeader()->setSectionResizeMode(ResultsColumn::TilesetName, QHeaderView::ResizeToContents);
     ui->table_Results->horizontalHeader()->setSectionResizeMode(ResultsColumn::Metatile,    QHeaderView::Stretch);
@@ -150,7 +151,7 @@ void PaletteColorSearch::updateResults() {
     ui->frame_Color->setStyleSheet(QString("background-color: rgb(%1, %2, %3);").arg(qRed(color)).arg(qGreen(color)).arg(qBlue(color)));
 
     // Update title
-    ui->label_Title->setText(QString("Searching for usage of %1's palette %2.").arg(tileset->name).arg(paletteId));
+    ui->label_Title->setText(QCoreApplication::translate("Porymap", "Searching for usage of %1's palette %2.").arg(tileset->name).arg(paletteId));
 
     // Update table
     ui->table_Results->clearContents();
@@ -163,7 +164,7 @@ void PaletteColorSearch::updateResults() {
 
     if (results.isEmpty()) {
         static const RowData noResults = {
-            .tilesetName = QStringLiteral("This color is unused."),
+            .tilesetName = QCoreApplication::translate("Porymap", "This color is unused."),
             .pairedTilesetName = "",
             .metatileId = QStringLiteral("--"),
             .metatileIcon = QIcon(),

@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #ifdef QT_QML_LIB
 #include "overlay.h"
 #include "scripting.h"
@@ -69,7 +70,7 @@ int Overlay::getOpacity() {
 
 void Overlay::setOpacity(int opacity) {
     if (opacity < 0 || opacity > 100) {
-        logError(QString("Invalid overlay opacity '%1', must be in range 0-100").arg(opacity));
+        logError(QCoreApplication::translate("Porymap", "Invalid overlay opacity '%1', must be in range 0-100").arg(opacity));
         return;
     }
     this->opacity = static_cast<qreal>(opacity) / 100;
@@ -163,7 +164,7 @@ QColor Overlay::getColor(QString colorStr) {
         colorStr = "transparent";
     QColor color = QColor(colorStr);
     if (!color.isValid()) {
-        logWarn(QString("Invalid overlay color \"%1\". Colors can be in the format \"#RRGGBB\" or \"#AARRGGBB\"").arg(colorStr));
+        logWarn(QCoreApplication::translate("Porymap", "Invalid overlay color \"%1\". Colors can be in the format \"#RRGGBB\" or \"#AARRGGBB\"").arg(colorStr));
         color = QColor("transparent");
     }
     return color;
@@ -175,7 +176,7 @@ void Overlay::addText(const QString text, int x, int y, QString colorStr, int fo
 
 bool Overlay::addRect(int x, int y, int width, int height, QString borderColorStr, QString fillColorStr, int rounding) {
     if (rounding < 0 || rounding > 100) {
-        logError(QString("Invalid rectangle rounding '%1', must be in range 0-100").arg(rounding));
+        logError(QCoreApplication::translate("Porymap", "Invalid rectangle rounding '%1', must be in range 0-100").arg(rounding));
         return false;
     }
 
@@ -205,7 +206,7 @@ bool Overlay::addPath(QList<int> xCoords, QList<int> yCoords, QString borderColo
 bool Overlay::addImage(int x, int y, QString filepath, bool useCache, int width, int height, int xOffset, int yOffset, qreal hScale, qreal vScale, QList<QRgb> palette, bool setTransparency) {
     const QImage * baseImage = Scripting::getImage(filepath, useCache);
     if (!baseImage || baseImage->isNull()) {
-        logError(QString("Failed to load image '%1'").arg(filepath));
+        logError(QCoreApplication::translate("Porymap", "Failed to load image '%1'").arg(filepath));
         return false;
     }
     QImage image = *baseImage;
@@ -223,7 +224,7 @@ bool Overlay::addImage(int x, int y, QString filepath, bool useCache, int width,
     if (yOffset < 0) yOffset = 0;
 
     if (width + xOffset > fullWidth || height + yOffset > fullHeight) {
-        logError(QString("%1x%2 image starting at (%3,%4) exceeds the image size for '%5'")
+        logError(QCoreApplication::translate("Porymap", "%1x%2 image starting at (%3,%4) exceeds the image size for '%5'")
                  .arg(width)
                  .arg(height)
                  .arg(xOffset)
@@ -251,7 +252,7 @@ bool Overlay::addImage(int x, int y, QString filepath, bool useCache, int width,
 
 bool Overlay::addImage(int x, int y, QImage image) {
     if (image.isNull()) {
-        logError(QString("Failed to load custom image"));
+        logError(QCoreApplication::translate("Porymap", "Failed to load custom image"));
         return false;
     }
     this->items.append(new OverlayPixmap(x, y, QPixmap::fromImage(image)));

@@ -2,6 +2,7 @@
 #include "loadingscreen.h"
 
 #include <QApplication>
+#include <QTranslator>
 
 int main(int argc, char *argv[])
 {
@@ -9,6 +10,12 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_UseStyleSheetPropagationInWidgetStyles, true);
 
     QApplication a(argc, argv);
+    QTranslator qtJapanese;
+    if (qtJapanese.load(QStringLiteral(":/translations/qtbase_ja.qm")))
+        a.installTranslator(&qtJapanese);
+    QTranslator japanese;
+    if (japanese.load(QStringLiteral(":/translations/porymap_ja.qm")))
+        a.installTranslator(&japanese);
     a.setStyle("fusion");
 
     porysplash = new PorymapLoadingScreen;

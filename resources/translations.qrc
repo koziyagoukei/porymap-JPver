@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/translations">
+        <file alias="porymap_ja.qm">../translations/porymap_ja.qm</file>
+        <file alias="qtbase_ja.qm">../translations/qtbase_ja.qm</file>
+    </qresource>
+</RCC>

@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #include "newdefinedialog.h"
 #include "ui_newdefinedialog.h"
 #include "validator.h"
@@ -32,7 +33,7 @@ bool NewDefineDialog::validateName(bool allowEmpty) {
 
     QString errorText;
     if (name.isEmpty() && !allowEmpty) {
-        errorText = QString("%1 cannot be empty.").arg(ui->label_Name->text());
+        errorText = QCoreApplication::translate("Porymap", "%1 cannot be empty.").arg(ui->label_Name->text());
     }
 
     bool isValid = errorText.isEmpty();

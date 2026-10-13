@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #include "events.h"
 
 #include "eventframes.h"
@@ -82,7 +83,14 @@ const QMap<Event::Group, QString> groupToStringMap = {
 };
 
 QString Event::groupToString(Event::Group group) {
-    return groupToStringMap.value(group);
+    switch (group) {
+    case Group::Object: return QCoreApplication::translate("Porymap", "Object");
+    case Group::Warp: return QCoreApplication::translate("Porymap", "Warp");
+    case Group::Coord: return QCoreApplication::translate("Porymap", "Trigger");
+    case Group::Bg: return QCoreApplication::translate("Porymap", "BG");
+    case Group::Heal: return QCoreApplication::translate("Porymap", "Heal Location");
+    default: return QString();
+    }
 }
 
 QList<Event::Group> Event::groups() {
@@ -119,15 +127,15 @@ QList<Event::Type> Event::types() {
 
 QString Event::typeToString(Event::Type type) {
     static const QMap<Event::Type, QString> typeToStringMap = {
-        {Event::Type::Object, "Object"},
-        {Event::Type::CloneObject, "Clone Object"},
-        {Event::Type::Warp, "Warp"},
-        {Event::Type::Trigger, "Trigger"},
-        {Event::Type::WeatherTrigger, "Weather Trigger"},
-        {Event::Type::Sign, "Sign"},
-        {Event::Type::HiddenItem, "Hidden Item"},
-        {Event::Type::SecretBase, "Secret Base"},
-        {Event::Type::HealLocation, "Heal Location"},
+        {Event::Type::Object, QCoreApplication::translate("Porymap", "Object")},
+        {Event::Type::CloneObject, QCoreApplication::translate("Porymap", "Clone Object")},
+        {Event::Type::Warp, QCoreApplication::translate("Porymap", "Warp")},
+        {Event::Type::Trigger, QCoreApplication::translate("Porymap", "Trigger")},
+        {Event::Type::WeatherTrigger, QCoreApplication::translate("Porymap", "Weather Trigger")},
+        {Event::Type::Sign, QCoreApplication::translate("Porymap", "Sign")},
+        {Event::Type::HiddenItem, QCoreApplication::translate("Porymap", "Hidden Item")},
+        {Event::Type::SecretBase, QCoreApplication::translate("Porymap", "Secret Base")},
+        {Event::Type::HealLocation, QCoreApplication::translate("Porymap", "Heal Location")},
     };
     return typeToStringMap.value(type);
 }

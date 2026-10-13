@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #include "newlayoutdialog.h"
 #include "maplayout.h"
 #include "ui_newlayoutdialog.h"
@@ -86,9 +87,9 @@ bool NewLayoutDialog::validateLayoutID(bool allowEmpty) {
 
     QString errorText;
     if (id.isEmpty()) {
-        if (!allowEmpty) errorText = QString("%1 cannot be empty.").arg(ui->label_LayoutID->text());
+        if (!allowEmpty) errorText = QCoreApplication::translate("Porymap", "%1 cannot be empty.").arg(ui->label_LayoutID->text());
     } else if (!this->project->isIdentifierUnique(id)) {
-        errorText = QString("%1 '%2' is not unique.").arg(ui->label_LayoutID->text()).arg(id);
+        errorText = QCoreApplication::translate("Porymap", "%1 '%2' is not unique.").arg(ui->label_LayoutID->text()).arg(id);
     }
 
     bool isValid = errorText.isEmpty();
@@ -107,9 +108,9 @@ bool NewLayoutDialog::validateName(bool allowEmpty) {
 
     QString errorText;
     if (name.isEmpty()) {
-        if (!allowEmpty) errorText = QString("%1 cannot be empty.").arg(ui->label_Name->text());
+        if (!allowEmpty) errorText = QCoreApplication::translate("Porymap", "%1 cannot be empty.").arg(ui->label_Name->text());
     } else if (!this->project->isIdentifierUnique(name)) {
-        errorText = QString("%1 '%2' is not unique.").arg(ui->label_Name->text()).arg(name);
+        errorText = QCoreApplication::translate("Porymap", "%1 '%2' is not unique.").arg(ui->label_Name->text()).arg(name);
     }
 
     bool isValid = errorText.isEmpty();
@@ -152,7 +153,7 @@ void NewLayoutDialog::accept() {
 
     Layout *layout = this->project->createNewLayout(this->project->newLayoutSettings, this->layoutToCopy);
     if (!layout) {
-        ui->label_GenericError->setText(QString("Failed to create layout. See %1 for details.").arg(getLogPath()));
+        ui->label_GenericError->setText(QCoreApplication::translate("Porymap", "Failed to create layout. See %1 for details.").arg(getLogPath()));
         ui->label_GenericError->setVisible(true);
         return;
     }

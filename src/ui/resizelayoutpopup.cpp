@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #include "resizelayoutpopup.h"
 #include "editor.h"
 #include "movablerect.h"
@@ -117,8 +118,8 @@ void ResizeLayoutPopup::setupLayoutView() {
         int maxSize = this->project->getMaxMapDataSize();
         if (size > maxSize) {
             QSize addition = this->project->getMapSizeAddition();
-            WarningMessage::show(QStringLiteral("The specified width and height are too large."),
-                                 QString("The maximum layout width and height is the following: (width + %1) * (height + %2) <= %3\n"
+            WarningMessage::show(QCoreApplication::translate("Porymap", "The specified width and height are too large."),
+                                 QCoreApplication::translate("Porymap", "The maximum layout width and height is the following: (width + %1) * (height + %2) <= %3\n"
                                          "The specified layout width and height was: (%4 + %1) * (%5 + %2) = %6")
                                             .arg(addition.width())
                                             .arg(addition.height())

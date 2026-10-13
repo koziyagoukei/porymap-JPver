@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #include "montabwidget.h"
 #include "noscrollcombobox.h"
 #include "editor.h"
@@ -73,12 +74,12 @@ void MonTabWidget::paste(int index) {
 void MonTabWidget::actionCopyTab(int index) {
     QMenu contextMenu(this);
 
-    QAction *actionCopy = new QAction("Copy", &contextMenu);
+    QAction *actionCopy = new QAction(QCoreApplication::translate("Porymap", "Copy"), &contextMenu);
     connect(actionCopy, &QAction::triggered, [=]() { copy(index); });
     contextMenu.addAction(actionCopy);
 
     if (encounterClipboard.active) {
-        QAction *actionPaste = new QAction("Paste", &contextMenu);
+        QAction *actionPaste = new QAction(QCoreApplication::translate("Porymap", "Paste"), &contextMenu);
         connect(actionPaste, &QAction::triggered, [=]() { paste(index); });
         contextMenu.addAction(actionPaste);
     }

@@ -1,3 +1,4 @@
+#include <QCoreApplication>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "project.h"
@@ -75,8 +76,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     logInit();
-    logInfo(QString("Launching Porymap v%1 (%2)").arg(QCoreApplication::applicationVersion()).arg(QStringLiteral(PORYMAP_LATEST_COMMIT)));
-    logInfo(QString("Using Qt v%2 (%3)").arg(QStringLiteral(QT_VERSION_STR)).arg(QSysInfo::buildCpuArchitecture()));
+    logInfo(QCoreApplication::translate("Porymap", "Launching Porymap v%1 (%2)").arg(QCoreApplication::applicationVersion()).arg(QStringLiteral(PORYMAP_LATEST_COMMIT)));
+    logInfo(QCoreApplication::translate("Porymap", "Using Qt v%2 (%3)").arg(QStringLiteral(QT_VERSION_STR)).arg(QSysInfo::buildCpuArchitecture()));
 }
 
 void MainWindow::initialize() {
@@ -237,43 +238,43 @@ void MainWindow::initExtraShortcuts() {
 
     auto *shortcutReset_Zoom = new Shortcut(QKeySequence("Ctrl+0"), this, SLOT(resetMapViewScale()));
     shortcutReset_Zoom->setObjectName("shortcutZoom_Reset");
-    shortcutReset_Zoom->setWhatsThis("Zoom Reset");
+    shortcutReset_Zoom->setWhatsThis(QCoreApplication::translate("Porymap", "Zoom Reset"));
 
     auto *shortcutDuplicate_Events = new Shortcut(QKeySequence("Ctrl+D"), this, SLOT(duplicate()));
     shortcutDuplicate_Events->setObjectName("shortcutDuplicate_Events");
-    shortcutDuplicate_Events->setWhatsThis("Duplicate Selected Event(s)");
+    shortcutDuplicate_Events->setWhatsThis(QCoreApplication::translate("Porymap", "Duplicate Selected Event(s)"));
 
     auto *shortcutToggle_Border = new Shortcut(QKeySequence(), ui->checkBox_ToggleBorder, SLOT(toggle()));
     shortcutToggle_Border->setObjectName("shortcutToggle_Border");
-    shortcutToggle_Border->setWhatsThis("Toggle Border");
+    shortcutToggle_Border->setWhatsThis(QCoreApplication::translate("Porymap", "Toggle Border"));
 
     auto *shortcutToggle_Smart_Paths = new Shortcut(QKeySequence(), ui->checkBox_smartPaths, SLOT(toggle()));
     shortcutToggle_Smart_Paths->setObjectName("shortcutToggle_Smart_Paths");
-    shortcutToggle_Smart_Paths->setWhatsThis("Toggle Smart Paths");
+    shortcutToggle_Smart_Paths->setWhatsThis(QCoreApplication::translate("Porymap", "Toggle Smart Paths"));
 
     auto *shortcutHide_Show = new Shortcut(QKeySequence(), this, SLOT(mapListShortcut_ToggleEmptyFolders()));
     shortcutHide_Show->setObjectName("shortcutHide_Show");
-    shortcutHide_Show->setWhatsThis("Map List: Hide/Show Empty Folders");
+    shortcutHide_Show->setWhatsThis(QCoreApplication::translate("Porymap", "Map List: Hide/Show Empty Folders"));
 
     auto *shortcutExpand_All = new Shortcut(QKeySequence(), this, SLOT(mapListShortcut_ExpandAll()));
     shortcutExpand_All->setObjectName("shortcutExpand_All");
-    shortcutExpand_All->setWhatsThis("Map List: Expand all folders");
+    shortcutExpand_All->setWhatsThis(QCoreApplication::translate("Porymap", "Map List: Expand all folders"));
 
     auto *shortcutCollapse_All = new Shortcut(QKeySequence(), this, SLOT(mapListShortcut_CollapseAll()));
     shortcutCollapse_All->setObjectName("shortcutCollapse_All");
-    shortcutCollapse_All->setWhatsThis("Map List: Collapse all folders");
+    shortcutCollapse_All->setWhatsThis(QCoreApplication::translate("Porymap", "Map List: Collapse all folders"));
 
     auto *shortcut_Open_Scripts = new Shortcut(QKeySequence(), ui->toolButton_Open_Scripts, SLOT(click()));
     shortcut_Open_Scripts->setObjectName("shortcut_Open_Scripts");
-    shortcut_Open_Scripts->setWhatsThis("Open Map Scripts");
+    shortcut_Open_Scripts->setWhatsThis(QCoreApplication::translate("Porymap", "Open Map Scripts"));
 
-    copyAction = new QAction("Copy", this);
+    copyAction = new QAction(QCoreApplication::translate("Porymap", "Copy"), this);
     copyAction->setShortcut(QKeySequence("Ctrl+C"));
     connect(copyAction, &QAction::triggered, this, &MainWindow::copy);
     ui->menuEdit->addSeparator();
     ui->menuEdit->addAction(copyAction);
 
-    pasteAction = new QAction("Paste", this);
+    pasteAction = new QAction(QCoreApplication::translate("Porymap", "Paste"), this);
     pasteAction->setShortcut(QKeySequence("Ctrl+V"));
     connect(pasteAction, &QAction::triggered, this, &MainWindow::paste);
     ui->menuEdit->addAction(pasteAction);
@@ -311,11 +312,11 @@ void MainWindow::initLogStatusBar() {
 
 void MainWindow::initCustomUI() {
     static const QMap<int, QString> mainTabNames = {
-        {MainTab::Map, "Map"},
-        {MainTab::Events, "Events"},
-        {MainTab::Header, "Header"},
-        {MainTab::Connections, "Connections"},
-        {MainTab::WildPokemon, "Wild Pokemon"},
+        {MainTab::Map, QCoreApplication::translate("Porymap", "Map")},
+        {MainTab::Events, QCoreApplication::translate("Porymap", "Events")},
+        {MainTab::Header, QCoreApplication::translate("Porymap", "Header")},
+        {MainTab::Connections, QCoreApplication::translate("Porymap", "Connections")},
+        {MainTab::WildPokemon, QCoreApplication::translate("Porymap", "Wild Pokemon")},
     };
 
     static const QMap<int, QIcon> mainTabIcons = {
@@ -463,7 +464,7 @@ void MainWindow::initEditor() {
     this->undoView->setAttribute(Qt::WA_QuitOnClose, false);
 
     // Show the EditHistory dialog with Ctrl+E
-    QAction *showHistory = new QAction("Show Edit History...", this);
+    QAction *showHistory = new QAction(QCoreApplication::translate("Porymap", "Show Edit History..."), this);
     showHistory->setObjectName("action_ShowEditHistory");
     showHistory->setShortcut(QKeySequence("Ctrl+E"));
     connect(showHistory, &QAction::triggered, this, &MainWindow::openEditHistory);
@@ -516,7 +517,7 @@ void MainWindow::initMapList() {
 
     // Create add map/layout button
     QPushButton *buttonAdd = new QPushButton(QIcon(":/icons/add.ico"), "");
-    buttonAdd->setToolTip("Create new map");
+    buttonAdd->setToolTip(QCoreApplication::translate("Porymap", "Create new map"));
     connect(buttonAdd, &QPushButton::clicked, this, &MainWindow::openNewMapDialog);
     buttonLayout->addWidget(buttonAdd);
 
@@ -539,7 +540,7 @@ void MainWindow::initMapList() {
 
     auto backArrow = new QToolButton(navigationFrame);
     backArrow->setArrowType(Qt::LeftArrow);
-    backArrow->setToolTip("Open previous map");
+    backArrow->setToolTip(QCoreApplication::translate("Porymap", "Open previous map"));
     backArrow->setEnabled(false);
     connect(backArrow, &QToolButton::clicked, this, &MainWindow::openPreviousMap);
     connect(ui->actionBack, &QAction::triggered, this, &MainWindow::openPreviousMap);
@@ -548,7 +549,7 @@ void MainWindow::initMapList() {
 
     auto forwardArrow = new QToolButton(navigationFrame);
     forwardArrow->setArrowType(Qt::RightArrow);
-    forwardArrow->setToolTip("Open next map");
+    forwardArrow->setToolTip(QCoreApplication::translate("Porymap", "Open next map"));
     forwardArrow->setEnabled(false);
     connect(forwardArrow, &QToolButton::clicked, this, &MainWindow::openNextMap);
     connect(ui->actionForward, &QAction::triggered, this, &MainWindow::openNextMap);
@@ -747,7 +748,7 @@ void MainWindow::restoreWindowState() {
     const QRect screenGeometry = screen->availableGeometry();
     if (this->width() > screenGeometry.width() || this->height() > screenGeometry.height()) {
         auto pixelRatio = screen->devicePixelRatio();
-        logInfo(QString("Resizing main window. Dimensions of %1x%2 exceed available screen size of %3x%4")
+        logInfo(QCoreApplication::translate("Porymap", "Resizing main window. Dimensions of %1x%2 exceed available screen size of %3x%4")
                         .arg(qRound(this->width() * pixelRatio))
                         .arg(qRound(this->height() * pixelRatio))
                         .arg(qRound(screenGeometry.width() * pixelRatio))
@@ -783,7 +784,7 @@ bool MainWindow::openProject(QString dir, bool initial) {
     const QString projectString = QString("%1project '%2'").arg(initial ? "recent " : "").arg(QDir::toNativeSeparators(dir));
 
     if (!QDir(dir).exists()) {
-        const QString errorMsg = QString("Failed to open %1: No such directory").arg(projectString);
+        const QString errorMsg = QCoreApplication::translate("Porymap", "Failed to open %1: No such directory").arg(projectString);
         if (initial) {
             // Graceful startup if recent project directory is missing
             logWarn(errorMsg);
@@ -830,7 +831,7 @@ bool MainWindow::openProject(QString dir, bool initial) {
     this->editor->setProject(project);
 
     // Make sure project looks reasonable before attempting to load it
-    porysplash->showMessage("Verifying project");
+    porysplash->showMessage(QCoreApplication::translate("Porymap", "Verifying project"));
     if (isInvalidProject(this->editor->project)) {
         delete this->editor->project;
         porysplash->stop();
@@ -881,13 +882,13 @@ bool MainWindow::checkProjectSanity(Project *project) {
     if (project->sanityCheck())
         return true;
 
-    logWarn(QString("The directory '%1' failed the project sanity check.").arg(project->root));
+    logWarn(QCoreApplication::translate("Porymap", "The directory '%1' failed the project sanity check.").arg(project->root));
 
-    ErrorMessage msgBox(QStringLiteral("The selected directory appears to be invalid."), porysplash);
-    msgBox.setInformativeText(QString("The directory '%1' is missing key files.\n\n"
+    ErrorMessage msgBox(QCoreApplication::translate("Porymap", "The selected directory appears to be invalid."), porysplash);
+    msgBox.setInformativeText(QCoreApplication::translate("Porymap", "The directory '%1' is missing key files.\n\n"
                                       "Make sure you selected the correct project directory "
                                       "(the one used to make your .gba file, e.g. 'pokeemerald').").arg(project->root));
-    auto tryAnyway = msgBox.addButton("Try Anyway", QMessageBox::ActionRole);
+    auto tryAnyway = msgBox.addButton(QCoreApplication::translate("Porymap", "Try Anyway"), QMessageBox::ActionRole);
     msgBox.exec();
     if (msgBox.clickedButton() == tryAnyway) {
         // The user has chosen to try to load this project anyway.
@@ -903,12 +904,12 @@ bool MainWindow::checkProjectVersion(Project *project) {
     if (projectVersion < 0) {
         // Failed to identify a supported major version.
         // We can't draw any conclusions from this, so we don't consider the project to be invalid.
-        QString msg = QStringLiteral("Failed to check project version");
+        QString msg = QCoreApplication::translate("Porymap", "Failed to check project version");
         logWarn(error.isEmpty() ? msg : QString("%1: '%2'").arg(msg).arg(error));
     } else {
-        QString msg = QStringLiteral("Successfully checked project version. ");
-        logInfo(msg + ((projectVersion != 0) ? QString("Supports at least Porymap v%1").arg(projectVersion)
-                                             : QStringLiteral("Too old for any Porymap version")));
+        QString msg = QCoreApplication::translate("Porymap", "Successfully checked project version. ");
+        logInfo(msg + ((projectVersion != 0) ? QCoreApplication::translate("Porymap", "Supports at least Porymap v%1").arg(projectVersion)
+                                             : QCoreApplication::translate("Porymap", "Too old for any Porymap version")));
 
         if (projectVersion < porymapVersion.majorVersion() && projectConfig.forcedMajorVersion < porymapVersion.majorVersion()) {
             // We were unable to find the necessary changes for Porymap's current major version.
@@ -917,13 +918,13 @@ bool MainWindow::checkProjectVersion(Project *project) {
             //       It is very plausible that the user may have reproduced the required changes in an
             //       unknown commit, rather than merging the required changes directly from the base repo.
             //       In this case the 'projectVersion' may actually be too old to use for their repo.
-            ErrorMessage msgBox(QStringLiteral("Your project may be incompatible!"), porysplash);
+            ErrorMessage msgBox(QCoreApplication::translate("Porymap", "Your project may be incompatible!"), porysplash);
             msgBox.setTextFormat(Qt::RichText);
             msgBox.setInformativeText(QString("Make sure '%1' has all the required changes for Porymap version %2.<br>"
                                               "See <a href=\"https://huderlem.github.io/porymap/manual/breaking-changes.html\">Breaking Changes</a> in the manual for more details")
                                               .arg(project->getProjectTitle())
                                               .arg(porymapVersion.majorVersion()));
-            auto tryAnyway = msgBox.addButton("Try Anyway", QMessageBox::ActionRole);
+            auto tryAnyway = msgBox.addButton(QCoreApplication::translate("Porymap", "Try Anyway"), QMessageBox::ActionRole);
             msgBox.exec();
             if (msgBox.clickedButton() != tryAnyway){
                 return false;
@@ -942,7 +943,7 @@ void MainWindow::showProjectOpenFailure() {
         restoreWindowState();
         show();
     }
-    RecentErrorMessage::show(QStringLiteral("There was an error opening the project."), this);
+    RecentErrorMessage::show(QCoreApplication::translate("Porymap", "There was an error opening the project."), this);
 }
 
 bool MainWindow::isProjectOpen() {
@@ -950,7 +951,7 @@ bool MainWindow::isProjectOpen() {
 }
 
 bool MainWindow::setInitialMap() {
-    porysplash->showMessage("Opening initial map");
+    porysplash->showMessage(QCoreApplication::translate("Porymap", "Opening initial map"));
 
     const QString recent = userConfig.recentMapOrLayout;
     if (editor->project->isKnownMap(recent)) {
@@ -1002,7 +1003,7 @@ void MainWindow::refreshRecentProjectsMenu() {
     // Add action to clear list of paths
     if (!ui->menuOpen_Recent_Project->actions().isEmpty())
          ui->menuOpen_Recent_Project->addSeparator();
-    QAction *clearAction = ui->menuOpen_Recent_Project->addAction("Clear Items", [this](){
+    QAction *clearAction = ui->menuOpen_Recent_Project->addAction(QCoreApplication::translate("Porymap", "Clear Items"), [this](){
         QStringList paths = QStringList();
         if (isProjectOpen())
             paths.append(this->editor->project->root);
@@ -1043,13 +1044,13 @@ void MainWindow::showFileWatcherWarning() {
     }
 
     if (modifiedFiles.count() == 1) {
-        this->fileWatcherWarning->setText(QString("The file %1 has changed on disk. Would you like to reload the project?").arg(modifiedFiles.first()));
+        this->fileWatcherWarning->setText(QCoreApplication::translate("Porymap", "The file %1 has changed on disk. Would you like to reload the project?").arg(modifiedFiles.first()));
     } else {
-        this->fileWatcherWarning->setText(QStringLiteral("Some project files have changed on disk. Would you like to reload the project?"));
-        this->fileWatcherWarning->setDetailedText(QStringLiteral("The following files have changed:\n") + modifiedFiles.join("\n"));
+        this->fileWatcherWarning->setText(QCoreApplication::translate("Porymap", "Some project files have changed on disk. Would you like to reload the project?"));
+        this->fileWatcherWarning->setDetailedText(QCoreApplication::translate("Porymap", "The following files have changed:\n") + modifiedFiles.join("\n"));
     }
 
-    this->fileWatcherWarning->setCheckBox(new QCheckBox("Do not ask again."));
+    this->fileWatcherWarning->setCheckBox(new QCheckBox(QCoreApplication::translate("Porymap", "Do not ask again.")));
     connect(this->fileWatcherWarning->checkBox(), &QCheckBox::toggled, [this](bool checked) {
         porymapConfig.monitorFiles = !checked;
         if (this->preferenceEditor)
@@ -1060,7 +1061,7 @@ void MainWindow::showFileWatcherWarning() {
 }
 
 void MainWindow::on_action_Open_Project_triggered() {
-    QString dir = FileDialog::getExistingDirectory(this, QStringLiteral("Choose Project Folder"));
+    QString dir = FileDialog::getExistingDirectory(this, QCoreApplication::translate("Porymap", "Choose Project Folder"));
     if (!dir.isEmpty())
         openProject(dir);
 }
@@ -1146,14 +1147,14 @@ void MainWindow::resetMapNavigation() {
 // Use when the user is specifically requesting a map to open.
 bool MainWindow::userSetMap(const QString &mapName) {
     if (mapName.isEmpty()) {
-        WarningMessage::show(QStringLiteral("Cannot open map with empty name."), this);
+        WarningMessage::show(QCoreApplication::translate("Porymap", "Cannot open map with empty name."), this);
         return false;
     }
 
     if (mapName == editor->project->getDynamicMapName()) {
-        auto msgBox = new WarningMessage(QString("Cannot open map '%1'.").arg(mapName), this);
+        auto msgBox = new WarningMessage(QCoreApplication::translate("Porymap", "Cannot open map '%1'.").arg(mapName), this);
         msgBox->setAttribute(Qt::WA_DeleteOnClose);
-        msgBox->setInformativeText(QStringLiteral("This map name is a placeholder to indicate that the warp's map will be set programmatically."));
+        msgBox->setInformativeText(QCoreApplication::translate("Porymap", "This map name is a placeholder to indicate that the warp's map will be set programmatically."));
         msgBox->open();
         return false;
     }
@@ -1163,7 +1164,7 @@ bool MainWindow::userSetMap(const QString &mapName) {
         return true; // Already set
 
     if (!setMap(mapName)) {
-        RecentErrorMessage::show(QString("There was an error opening map '%1'.").arg(mapName), this);
+        RecentErrorMessage::show(QCoreApplication::translate("Porymap", "There was an error opening map '%1'.").arg(mapName), this);
         return false;
     }
     recordMapNavigation(prevItem);
@@ -1172,13 +1173,13 @@ bool MainWindow::userSetMap(const QString &mapName) {
 
 bool MainWindow::setMap(const QString &mapName) {
     if (!editor || !editor->project || mapName.isEmpty() || mapName == editor->project->getDynamicMapName()) {
-        logWarn(QString("Ignored setting map to '%1'").arg(mapName));
+        logWarn(QCoreApplication::translate("Porymap", "Ignored setting map to '%1'").arg(mapName));
         return false;
     }
 
-    logInfo(QString("Setting map to '%1'").arg(mapName));
+    logInfo(QCoreApplication::translate("Porymap", "Setting map to '%1'").arg(mapName));
     if (!editor->setMap(mapName)) {
-        logWarn(QString("Failed to set map to '%1'").arg(mapName));
+        logWarn(QCoreApplication::translate("Porymap", "Failed to set map to '%1'").arg(mapName));
         return false;
     }
 
@@ -1219,7 +1220,7 @@ void MainWindow::setLayoutOnlyMode(bool layoutOnly) {
     ui->mainTabBar->setTabEnabled(MainTab::WildPokemon, mapEditingEnabled && this->editor->project->wildEncountersLoaded);
 
     // Set a tool tip to explain why the tabs are disabled.
-    static const QString disabledToolTip = Util::toHtmlParagraph("You are in layout-only mode. This tab is only enabled when a map is open.");
+    static const QString disabledToolTip = Util::toHtmlParagraph(QCoreApplication::translate("Porymap", "You are in layout-only mode. This tab is only enabled when a map is open."));
     QString toolTip = mapEditingEnabled ? QString() : disabledToolTip;
     ui->mainTabBar->setTabToolTip(MainTab::Events, toolTip);
     ui->mainTabBar->setTabToolTip(MainTab::Header, toolTip);
@@ -1234,7 +1235,7 @@ void MainWindow::setLayoutOnlyMode(bool layoutOnly) {
 // Use when the user is specifically requesting a layout to open.
 bool MainWindow::userSetLayout(const QString &layoutId) {
     if (layoutId.isEmpty()) {
-        WarningMessage::show(QStringLiteral("Cannot open layout with empty ID."), this);
+        WarningMessage::show(QCoreApplication::translate("Porymap", "Cannot open layout with empty ID."), this);
         return false;
     }
 
@@ -1243,7 +1244,7 @@ bool MainWindow::userSetLayout(const QString &layoutId) {
         return true; // Already set
 
     if (!setLayout(layoutId)) {
-        RecentErrorMessage::show(QString("There was an error opening layout '%1'.").arg(layoutId), this);
+        RecentErrorMessage::show(QCoreApplication::translate("Porymap", "There was an error opening layout '%1'.").arg(layoutId), this);
         return false;
     }
 
@@ -1258,7 +1259,7 @@ bool MainWindow::userSetLayout(const QString &layoutId) {
 bool MainWindow::setLayout(const QString &layoutId) {
     // Prefer logging the name of the layout as displayed in the map list.
     QString layoutName = this->editor->project ? this->editor->project->getLayoutName(layoutId) : QString();
-    logInfo(QString("Setting layout to '%1'").arg(layoutName.isEmpty() ? layoutId : layoutName));
+    logInfo(QCoreApplication::translate("Porymap", "Setting layout to '%1'").arg(layoutName.isEmpty() ? layoutId : layoutName));
 
     if (!this->editor->setLayout(layoutId)) {
         return false;
@@ -1357,7 +1358,7 @@ void MainWindow::openEventMap(Event *sourceEvent) {
             return;
         targetMapName = this->editor->project->secretBaseIdToMapName(baseId);
         if (targetMapName.isEmpty()) {
-            WarningMessage::show(QString("Failed to determine which map '%1' refers to.").arg(baseId), this);
+            WarningMessage::show(QCoreApplication::translate("Porymap", "Failed to determine which map '%1' refers to.").arg(baseId), this);
             return;
         }
 
@@ -1406,7 +1407,7 @@ void MainWindow::on_comboBox_LayoutSelector_currentTextChanged(const QString &te
 
     Layout* layout = this->editor->project->loadLayout(text);
     if (!layout) {
-        RecentErrorMessage::show(QString("Unable to set layout '%1'.").arg(text), this);
+        RecentErrorMessage::show(QCoreApplication::translate("Porymap", "Unable to set layout '%1'.").arg(text), this);
 
         // New layout failed to load, restore previous layout
         const QSignalBlocker b(ui->comboBox_LayoutSelector);
@@ -1509,7 +1510,7 @@ bool MainWindow::setProjectUI() {
     if (!projectConfig.eventsTabIconPath.isEmpty()) {
         eventTabIcon = QIcon(project->getExistingFilepath(projectConfig.eventsTabIconPath));
         if (eventTabIcon.isNull()) {
-            logWarn(QString("Failed to load custom Events tab icon '%1'.").arg(projectConfig.eventsTabIconPath));
+            logWarn(QCoreApplication::translate("Porymap", "Failed to load custom Events tab icon '%1'.").arg(projectConfig.eventsTabIconPath));
         }
     }
     if (eventTabIcon.isNull()) {
@@ -1620,54 +1621,54 @@ void MainWindow::onOpenMapListContextMenu(const QPoint &point) {
 
     if (itemType == "map_name") {
         // Right-clicking on a map.
-        openItemAction = menu.addAction("Open Map");
-        connect(menu.addAction("Open JSON file"), &QAction::triggered, [this, itemName] {
+        openItemAction = menu.addAction(QCoreApplication::translate("Porymap", "Open Map"));
+        connect(menu.addAction(QCoreApplication::translate("Porymap", "Open JSON file")), &QAction::triggered, [this, itemName] {
             this->editor->openMapJson(itemName);
         });
         menu.addSeparator();
-        copyListNameAction = menu.addAction("Copy Map Name");
-        copyToolTipAction = menu.addAction("Copy Map ID");
+        copyListNameAction = menu.addAction(QCoreApplication::translate("Porymap", "Copy Map Name"));
+        copyToolTipAction = menu.addAction(QCoreApplication::translate("Porymap", "Copy Map ID"));
         menu.addSeparator();
-        connect(menu.addAction("Duplicate Map"), &QAction::triggered, [this, itemName] {
+        connect(menu.addAction(QCoreApplication::translate("Porymap", "Duplicate Map")), &QAction::triggered, [this, itemName] {
             openDuplicateMapDialog(itemName);
         });
         //menu.addSeparator();
-        //connect(menu.addAction("Delete Map"), &QAction::triggered, [this, index] { deleteMapListItem(index); }); // TODO: No support for deleting maps
+        //connect(menu.addAction(QCoreApplication::translate("Porymap", "Delete Map")), &QAction::triggered, [this, index] { deleteMapListItem(index); }); // TODO: No support for deleting maps
     } else if (itemType == "map_group") {
         // Right-clicking on a map group folder
-        addToFolderAction = menu.addAction("Add New Map to Group");
+        addToFolderAction = menu.addAction(QCoreApplication::translate("Porymap", "Add New Map to Group"));
         menu.addSeparator();
-        deleteFolderAction = menu.addAction("Delete Map Group");
+        deleteFolderAction = menu.addAction(QCoreApplication::translate("Porymap", "Delete Map Group"));
     } else if (itemType == "map_section") {
         // Right-clicking on a MAPSEC folder
-        addToFolderAction = menu.addAction("Add New Map to Location");
+        addToFolderAction = menu.addAction(QCoreApplication::translate("Porymap", "Add New Map to Location"));
         menu.addSeparator();
-        copyListNameAction = menu.addAction("Copy Location ID Name");
-        copyToolTipAction = menu.addAction("Copy Location In-Game Name");
+        copyListNameAction = menu.addAction(QCoreApplication::translate("Porymap", "Copy Location ID Name"));
+        copyToolTipAction = menu.addAction(QCoreApplication::translate("Porymap", "Copy Location In-Game Name"));
         menu.addSeparator();
-        deleteFolderAction = menu.addAction("Delete Location");
+        deleteFolderAction = menu.addAction(QCoreApplication::translate("Porymap", "Delete Location"));
         if (itemName == this->editor->project->getEmptyMapsecName())
             deleteFolderAction->setEnabled(false); // Disallow deleting the default name
         menu.addSeparator();
-        sortFoldersAction = menu.addAction(list->isSortingEnabled() ? "Sort List by Value" : "Sort List Alphabetically");
+        sortFoldersAction = menu.addAction(list->isSortingEnabled() ? QCoreApplication::translate("Porymap", "Sort List by Value") : QCoreApplication::translate("Porymap", "Sort List Alphabetically"));
     } else if (itemType == "map_layout") {
         // Right-clicking on a map layout
-        openItemAction = menu.addAction("Open Layout");
-        connect(menu.addAction("Open JSON file"), &QAction::triggered, [this, itemName] {
+        openItemAction = menu.addAction(QCoreApplication::translate("Porymap", "Open Layout"));
+        connect(menu.addAction(QCoreApplication::translate("Porymap", "Open JSON file")), &QAction::triggered, [this, itemName] {
             this->editor->openLayoutJson(itemName);
         });
         menu.addSeparator();
-        copyListNameAction = menu.addAction("Copy Layout Name");
-        copyToolTipAction = menu.addAction("Copy Layout ID");
+        copyListNameAction = menu.addAction(QCoreApplication::translate("Porymap", "Copy Layout Name"));
+        copyToolTipAction = menu.addAction(QCoreApplication::translate("Porymap", "Copy Layout ID"));
         menu.addSeparator();
-        connect(menu.addAction("Duplicate Layout"), &QAction::triggered, [this, itemName] {
+        connect(menu.addAction(QCoreApplication::translate("Porymap", "Duplicate Layout")), &QAction::triggered, [this, itemName] {
             openDuplicateLayoutDialog(itemName);
         });
-        addToFolderAction = menu.addAction("Add New Map with Layout");
+        addToFolderAction = menu.addAction(QCoreApplication::translate("Porymap", "Add New Map with Layout"));
         //menu.addSeparator();
-        //deleteFolderAction = menu.addAction("Delete Layout"); // TODO: No support for deleting layouts
+        //deleteFolderAction = menu.addAction(QCoreApplication::translate("Porymap", "Delete Layout")); // TODO: No support for deleting layouts
         menu.addSeparator();
-        sortFoldersAction = menu.addAction(list->isSortingEnabled() ? "Sort List by Value" : "Sort List Alphabetically");
+        sortFoldersAction = menu.addAction(list->isSortingEnabled() ? QCoreApplication::translate("Porymap", "Sort List by Value") : QCoreApplication::translate("Porymap", "Sort List Alphabetically"));
     }
 
     if (addToFolderAction) {
@@ -1714,7 +1715,7 @@ void MainWindow::onOpenMapListContextMenu(const QPoint &point) {
 }
 
 void MainWindow::onNewMapCreated(Map *newMap, const QString &groupName) {
-    logInfo(QString("Created a new map named %1.").arg(newMap->name()));
+    logInfo(QCoreApplication::translate("Porymap", "Created a new map named %1.").arg(newMap->name()));
 
     if (newMap->needsHealLocation()) {
         this->editor->addNewEvent(Event::Type::HealLocation);
@@ -1738,7 +1739,7 @@ void MainWindow::onNewMapCreated(Map *newMap, const QString &groupName) {
 
 // Called any time a new layout is created (including as a byproduct of creating a new map)
 void MainWindow::onNewLayoutCreated(Layout *layout) {
-    logInfo(QString("Created a new layout named %1.").arg(layout->name));
+    logInfo(QCoreApplication::translate("Porymap", "Created a new layout named %1.").arg(layout->name));
 
     // Refresh layout combo box
     int layoutIndex = this->editor->project->layoutIds().indexOf(layout->id);
@@ -1768,7 +1769,7 @@ void MainWindow::onMapSectionDisplayNameChanged(const QString &idName, const QSt
 }
 
 void MainWindow::onNewTilesetCreated(Tileset *tileset) {
-    logInfo(QString("Created a new tileset named %1.").arg(tileset->name));
+    logInfo(QCoreApplication::translate("Porymap", "Created a new tileset named %1.").arg(tileset->name));
 
     // Refresh tileset combo boxes
     if (!tileset->is_secondary) {
@@ -1801,7 +1802,7 @@ void MainWindow::openDuplicateMapDialog(const QString &mapName) {
         auto dialog = new NewMapDialog(this->editor->project, map, this);
         dialog->open();
     } else {
-        RecentErrorMessage::show(QString("Unable to duplicate '%1'.").arg(mapName), this);
+        RecentErrorMessage::show(QCoreApplication::translate("Porymap", "Unable to duplicate '%1'.").arg(mapName), this);
     }
 }
 
@@ -1822,7 +1823,7 @@ void MainWindow::openDuplicateLayoutDialog(const QString &layoutId) {
         auto dialog = createNewLayoutDialog(layout);
         dialog->open();
     } else {
-        RecentErrorMessage::show(QString("Unable to duplicate '%1'.").arg(layoutId), this);
+        RecentErrorMessage::show(QCoreApplication::translate("Porymap", "Unable to duplicate '%1'.").arg(layoutId), this);
     }
 }
 
@@ -1832,7 +1833,7 @@ void MainWindow::on_actionNew_Tileset_triggered() {
         // Unlike creating a new map or layout (which immediately opens the new item)
         // creating a new tileset has no visual feedback that it succeeded, so we show a message.
         // It's important that we do this after the dialog has closed (sheet modal dialogs on macOS don't seem to play nice together).
-        InfoMessage::show(QString("New tileset created at '%1'!").arg(tileset->getExpectedDir()), this);
+        InfoMessage::show(QCoreApplication::translate("Porymap", "New tileset created at '%1'!").arg(tileset->getExpectedDir()), this);
     });
     dialog->open();
 }
@@ -2000,15 +2001,15 @@ void MainWindow::on_action_Save_triggered() {
 bool MainWindow::save(bool currentOnly) {
     bool success = currentOnly ? this->editor->saveCurrent() : this->editor->saveAll();
     if (!success) {
-        RecentErrorMessage::show(QStringLiteral("Failed to save some project changes."), this);
+        RecentErrorMessage::show(QCoreApplication::translate("Porymap", "Failed to save some project changes."), this);
     }
     updateWindowTitle();
     updateMapList();
 
     if (success && !porymapConfig.shownInGameReloadMessage) {
         // Show a one-time warning that the user may need to reload their map to see their new changes.
-        InfoMessage::show(QStringLiteral("Reload your map in-game!"),
-                          QStringLiteral("If your game is currently saved on a map you have edited, "
+        InfoMessage::show(QCoreApplication::translate("Porymap", "Reload your map in-game!"),
+                          QCoreApplication::translate("Porymap", "If your game is currently saved on a map you have edited, "
                                          "the changes may not appear until you leave the map and return."),
                           this);
         porymapConfig.shownInGameReloadMessage = true;
@@ -2217,7 +2218,7 @@ void MainWindow::paste() {
                     return;
 
                 if (!this->editor->canAddEvents(newEvents)) {
-                    WarningMessage::show(QStringLiteral("Unable to paste, the maximum number of events would be exceeded."), this);
+                    WarningMessage::show(QCoreApplication::translate("Porymap", "Unable to paste, the maximum number of events would be exceeded."), this);
                     qDeleteAll(newEvents);
                     return;
                 }
@@ -2421,7 +2422,7 @@ void MainWindow::resetMapViewScale() {
 void MainWindow::tryAddEventTab(QWidget * tab) {
     auto group = getEventGroupFromTabWidget(tab);
     if (this->editor->map && this->editor->map->getNumEvents(group))
-        ui->tabWidget_EventType->addTab(tab, QString("%1s").arg(Event::groupToString(group)));
+        ui->tabWidget_EventType->addTab(tab, QCoreApplication::translate("Porymap", "%1").arg(Event::groupToString(group)));
 }
 
 void MainWindow::displayEventTabs() {
@@ -2545,7 +2546,7 @@ void MainWindow::updateSelectedEvents() {
         ui->tabWidget_EventType->removeTab(ui->tabWidget_EventType->indexOf(ui->tab_Multiple));
     }
     else if (events.length() > 1) {
-        ui->tabWidget_EventType->addTab(ui->tab_Multiple, "Multiple");
+        ui->tabWidget_EventType->addTab(ui->tab_Multiple, QCoreApplication::translate("Porymap", "Multiple"));
         ui->tabWidget_EventType->setCurrentWidget(ui->tab_Multiple);
     }
 
@@ -2596,11 +2597,11 @@ void MainWindow::updateSelectedEvents() {
         ui->tabWidget_EventType->hide();
 
         if (this->editor->map && this->editor->map->isInheritingEvents()) {
-            QString message = QString("<span style=\"color:red;\">NOTE:</span> This map inherits events from %1."
+            QString message = QCoreApplication::translate("Porymap", "<span style=\"color:red;\">NOTE:</span> This map inherits events from %1."
                                       "<br>Adding any events will separate it from that map.").arg(this->editor->map->sharedEventsMap());
             ui->label_NoEvents->setText(message);
         } else {
-            ui->label_NoEvents->setText(QStringLiteral("There are no events on the current map."));
+            ui->label_NoEvents->setText(QCoreApplication::translate("Porymap", "There are no events on the current map."));
         }
         ui->label_NoEvents->show();
     }
@@ -2763,7 +2764,7 @@ void MainWindow::on_action_Export_Map_Image_triggered() {
 
 void MainWindow::on_actionExport_Stitched_Map_Image_triggered() {
     if (!this->editor->map) {
-        WarningMessage::show(QStringLiteral("Map stitch images are not possible without a map selected."), this);
+        WarningMessage::show(QCoreApplication::translate("Porymap", "Map stitch images are not possible without a map selected."), this);
         return;
     }
     showExportMapImageWindow(ImageExporterMode::Stitch);
@@ -2774,7 +2775,7 @@ void MainWindow::on_actionExport_Map_Timelapse_Image_triggered() {
 }
 
 void MainWindow::on_actionImport_Map_from_Advance_Map_1_92_triggered() {
-    QString filepath = FileDialog::getOpenFileName(this, "Import Map from Advance Map 1.92", "", "Advance Map 1.92 Map Files (*.map)");
+    QString filepath = FileDialog::getOpenFileName(this, QCoreApplication::translate("Porymap", "Import Map from Advance Map 1.92"), "", "Advance Map 1.92 Map Files (*.map)");
     if (filepath.isEmpty()) {
         return;
     }
@@ -2782,7 +2783,7 @@ void MainWindow::on_actionImport_Map_from_Advance_Map_1_92_triggered() {
     bool error = false;
     Layout *mapLayout = AdvanceMapParser::parseLayout(filepath, &error, editor->project);
     if (error) {
-        RecentErrorMessage::show(QStringLiteral("Failed to import map from Advance Map 1.92 .map file."), this);
+        RecentErrorMessage::show(QCoreApplication::translate("Porymap", "Failed to import map from Advance Map 1.92 .map file."), this);
         delete mapLayout;
         return;
     }
@@ -3096,8 +3097,8 @@ void MainWindow::onWarpBehaviorWarningClicked() {
         "<br></html></body></p>"
     );
 
-    auto msgBox = new InfoMessage(QStringLiteral("Warp Events only function as exits on certain metatiles"), this);
-    auto settingsButton = msgBox->addButton("Open Settings...", QMessageBox::ActionRole);
+    auto msgBox = new InfoMessage(QCoreApplication::translate("Porymap", "Warp Events only function as exits on certain metatiles"), this);
+    auto settingsButton = msgBox->addButton(QCoreApplication::translate("Porymap", "Open Settings..."), QMessageBox::ActionRole);
     msgBox->setAttribute(Qt::WA_DeleteOnClose);
     msgBox->setTextFormat(Qt::RichText);
     msgBox->setInformativeText(informative);
@@ -3221,8 +3222,8 @@ bool MainWindow::initRegionMapEditor(bool silent) {
 }
 
 bool MainWindow::askToFixRegionMapEditor() {
-    RecentErrorMessage msgBox(QStringLiteral("There was an error opening the region map data."), this);
-    auto reconfigButton = msgBox.addButton("Reconfigure", QMessageBox::ActionRole);
+    RecentErrorMessage msgBox(QCoreApplication::translate("Porymap", "There was an error opening the region map data."), this);
+    auto reconfigButton = msgBox.addButton(QCoreApplication::translate("Porymap", "Reconfigure"), QMessageBox::ActionRole);
     msgBox.exec();
     if (msgBox.clickedButton() == reconfigButton) {
         if (this->regionMapEditor->reconfigure()) {
@@ -3256,9 +3257,9 @@ bool MainWindow::closeSupplementaryWindows() {
                 Util::show(widget);
             }
             if (!widget->close()) {
-                QString message = QStringLiteral("Aborted project close");
+                QString message = QCoreApplication::translate("Porymap", "Aborted project close");
                 if (widget && !widget->objectName().isEmpty()) {
-                    message.append(QString(": stopped by '%1'").arg(widget->objectName()));
+                    message.append(QCoreApplication::translate("Porymap", ": stopped by '%1'").arg(widget->objectName()));
                 }
                 logInfo(message);
                 return false;
@@ -3280,7 +3281,7 @@ bool MainWindow::closeProject() {
         return false;
 
     if (this->editor->project->hasUnsavedChanges()) {
-        auto reply = SaveChangesMessage::show(QStringLiteral("The project"), this);
+        auto reply = SaveChangesMessage::show(QCoreApplication::translate("Porymap", "The project"), this);
         if (reply == QMessageBox::Yes) {
             if (!save())
                 return false;
