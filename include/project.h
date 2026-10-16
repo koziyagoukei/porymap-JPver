@@ -8,6 +8,7 @@
 #include "parseutil.h"
 #include "orderedjson.h"
 #include "regionmap.h"
+#include "visualeventscript.h"
 
 #include <QStringList>
 #include <QList>
@@ -178,6 +179,11 @@ public:
     bool saveConfig();
     bool saveLayout(Layout *layout);
     bool saveMap(Map *map, bool skipLayout = false);
+    bool stageVisualScript(Map *, const VisualEvent::ScriptFile &, const VisualEvent::Document &, QString *error);
+    bool pendingVisualScript(const QString &label, VisualEvent::ScriptFile *, VisualEvent::Document *) const;
+    bool hasPendingVisualScript(const QString &label) const;
+    QString visualSaveError() const { return m_visualSaveError; }
+    QMap<QString, QSize> visualMapSizes() const;
     bool saveTextFile(const QString &path, const QString &text);
     bool saveRegionMapSections();
     bool saveTilesets(Tileset*, Tileset*);
@@ -276,6 +282,10 @@ public:
     static QString getMapGroupPrefix();
 
 private:
+    struct PendingVisualScript { QSet<Map *> maps; VisualEvent::ScriptFile source; VisualEvent::Document document; };
+    QVector<PendingVisualScript> m_visualScripts;
+    QHash<Map *, VisualEvent::FileChange> m_visualMapSnapshots;
+    QString m_visualSaveError;
     QPointer<QFileSystemWatcher> fileWatcher;
     QMap<QString, qint64> modifiedFileTimestamps;
     QMap<QString, QString> facingDirections;

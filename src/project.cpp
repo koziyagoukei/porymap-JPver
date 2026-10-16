@@ -266,6 +266,8 @@ QString Project::getProjectTitle() const {
 }
 
 void Project::clearMaps() {
+    m_visualScripts.clear();
+    m_visualMapSnapshots.clear();
     qDeleteAll(this->maps);
     this->maps.clear();
     this->loadedMapNames.clear();
@@ -1326,6 +1328,56 @@ bool Project::saveAll() {
     return success;
 }
 
+QMap<QString, QSize> Project::visualMapSizes() const {
+    QMap<QString, QSize> sizes;
+    for (auto it = mapConstantsToMapNames.begin(); it != mapConstantsToMapNames.end(); ++it) {
+        const auto layout = getLayout(getMapLayoutId(it.value()));
+        if (layout) sizes[it.key()] = QSize(layout->width, layout->height);
+    }
+    return sizes;
+}
+bool Project::hasPendingVisualScript(const QString &label) const {
+    for (const auto &entry : m_visualScripts) if (entry.document.label == label) return true;
+    return false;
+}
+bool Project::pendingVisualScript(const QString &label, VisualEvent::ScriptFile *source, VisualEvent::Document *document) const {
+    for (const auto &entry : m_visualScripts) if (entry.document.label == label) {
+        *source = entry.source; *document = entry.document; return true;
+    }
+    return false;
+}
+bool Project::stageVisualScript(Map *map, const VisualEvent::ScriptFile &source, const VisualEvent::Document &document, QString *error) {
+    VisualEvent::ScriptPatch patch;
+    if (!source.prepare(document, &patch, error)) return false;
+    for (const auto &entry : m_visualScripts) if (entry.document.label != document.label &&
+        (entry.document.label.startsWith(document.label + "_") || document.label.startsWith(entry.document.label + "_"))) {
+        if (error) *error = tr("This script label is already used by another pending event.");
+        return false;
+    }
+    if (!m_visualMapSnapshots.contains(map)) {
+        QFile file(map->getJsonFilepath());
+        const bool exists = file.exists();
+        if (exists && !file.open(QIODevice::ReadOnly)) {
+            if (error) *error = tr("Cannot read the map before staging event commands.");
+            return false;
+        }
+        m_visualMapSnapshots.insert(map, {file.fileName(), exists ? file.readAll() : QByteArray(), {}, exists});
+    }
+    for (auto &entry : m_visualScripts) if (entry.document.label == document.label) {
+        if (entry.source.path() != source.path()) {
+            if (error) *error = tr("This script label is already used by another pending event.");
+            return false;
+        }
+        if (source.document.label != entry.source.document.label) {
+            if (error) *error = tr("This script label is already used by another pending event.");
+            return false;
+        }
+        entry.maps.insert(map); entry.document = document; map->setHasUnsavedDataChanges(true); map->modify(); return true;
+    }
+    m_visualScripts.append({{map}, source, document});
+    map->setHasUnsavedDataChanges(true); map->modify();
+    return true;
+}
 bool Project::saveMap(Map *map, bool skipLayout) {
     if (!map || !isLoadedMap(map->name())) return true;
 
@@ -1357,11 +1409,7 @@ bool Project::saveMap(Map *map, bool skipLayout) {
 
     // Create map.json for map data.
     QString mapFilepath = map->getJsonFilepath();
-    QFile mapFile(mapFilepath);
-    if (!mapFile.open(QIODevice::WriteOnly)) {
-        logError(QString("Could not open '%1' for writing: %2").arg(mapFilepath).arg(mapFile.errorString()));
-        return false;
-    }
+    // Build everything in memory. Never truncate map.json before the script is ready.
 
     OrderedJson::object mapObj;
     // Header values.
@@ -1438,16 +1486,49 @@ bool Project::saveMap(Map *map, bool skipLayout) {
     ignoreWatchedFileTemporarily(mapFilepath);
 
     OrderedJson mapJson(mapObj);
-    OrderedJsonDoc jsonDoc(&mapJson);
-    jsonDoc.dump(&mapFile);
-    mapFile.close();
+    m_visualSaveError.clear();
+    QVector<VisualEvent::ScriptPatch> patches;
+    for (const auto &entry : m_visualScripts) if (entry.maps.contains(map)) {
+        VisualEvent::ScriptPatch patch;
+        auto source = entry.source; source.setMapSizes(visualMapSizes());
+        if (!source.prepare(entry.document, &patch, &m_visualSaveError)) {
+            logError(m_visualSaveError); return false;
+        }
+        patches.append(patch);
+    }
+    QVector<VisualEvent::FileChange> changes;
+    if (!VisualEvent::combinePatches(patches, &changes, &m_visualSaveError)) { logError(m_visualSaveError); return false; }
+    auto snapshot = m_visualMapSnapshots.value(map);
+    if (snapshot.path.isEmpty()) {
+        QFile original(mapFilepath); const bool exists = original.exists();
+        if (exists && !original.open(QIODevice::ReadOnly)) return false;
+        snapshot = {mapFilepath, exists ? original.readAll() : QByteArray(), {}, exists};
+    }
+    int indent = 0;
+    snapshot.after = (mapJson.dump(&indent) + "\n").toUtf8();
+    changes.append(snapshot); // References become visible only after all scripts commit.
+    if (!skipLayout && !saveLayout(map->layout())) return false;
+    for (const auto &change : changes) ignoreWatchedFileTemporarily(change.path);
+    if (!VisualEvent::commitChanges(root, changes, &m_visualSaveError)) {
+        logError(m_visualSaveError); return false;
+    }
+    for (int i = m_visualScripts.size() - 1; i >= 0; --i)
+        if (m_visualScripts[i].maps.contains(map)) m_visualScripts.removeAt(i);
+    m_visualMapSnapshots.remove(map);
+    map->invalidateScripts();
+    // Another map may have staged a different label in the same source file.
+    for (auto &entry : m_visualScripts) for (const auto &change : changes) if (entry.source.path() == change.path) {
+        QFile current(change.path);
+        if (!current.open(QIODevice::ReadOnly) || current.readAll() != change.after) continue;
+        VisualEvent::ScriptFile refreshed;
+        if (refreshed.open(root, change.path, entry.document.label, getAllEventScriptsFilepaths(), entry.source.isPoryscript()))
+            entry.source = refreshed;
+    }
 
     // Try to record the MAPSEC name in case this is a new name.
     addNewMapsec(map->header()->location());
     map->setClean();
 
-    if (!skipLayout && !saveLayout(map->layout()))
-        return false;
     return true;
 }
 

@@ -27,6 +27,7 @@ try {
     Check-Exit 'windeployqt'
     Copy-Item -LiteralPath "$projectRoot\README-JA.md" -Destination "$packageDir\README-JA.md"
     Copy-Item -LiteralPath "$projectRoot\VISUAL-EVENT-EDITOR-JA.md" -Destination "$packageDir\VISUAL-EVENT-EDITOR-JA.md"
+    Copy-Item -LiteralPath "$projectRoot\POKEMON-EVENTS-JA.md" -Destination "$packageDir\POKEMON-EVENTS-JA.md"
     Copy-Item -LiteralPath "$projectRoot\LICENSE.md" -Destination "$packageDir\LICENSE.md"
     Copy-Item -LiteralPath "$projectRoot\licenses" -Destination $packageDir -Recurse -Force
     if ($SmokeTest) {

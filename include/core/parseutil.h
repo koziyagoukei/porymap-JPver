@@ -64,6 +64,7 @@ public:
     QHash<QString, int> readCDefinesByRegex(const QString &filename, const QSet<QString> &regexList, QString *error = nullptr);
     QHash<QString, int> readCDefinesByName(const QString &filename, const QSet<QString> &names, QString *error = nullptr);
     QStringList readCDefineNames(const QString &filename, const QSet<QString> &regexList, QString *error = nullptr);
+    QHash<QString, QString> readCDefineExpressions(const QString &filename, const QSet<QString> &regexList, QString *error = nullptr);
     void loadGlobalCDefinesFromFile(const QString &filename, QString *error = nullptr);
     void loadGlobalCDefines(const QMap<QString,QString> &defines);
     void loadGlobalCDefines(const QHash<QString,QString> &defines);

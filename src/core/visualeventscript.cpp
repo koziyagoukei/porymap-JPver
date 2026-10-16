@@ -1,4 +1,5 @@
 #include "visualeventscript.h"
+#include "pokemonevent.h"
 
 #include <QCoreApplication>
 #include <QDateTime>
@@ -12,6 +13,8 @@
 #include <QSaveFile>
 #include <QUuid>
 #include <algorithm>
+#include <memory>
+#include <vector>
 
 namespace VisualEvent {
 static bool identifier(const QString &s) {
@@ -42,6 +45,16 @@ const QVector<CommandSpec> &commandSpecs() {
         {"endif", QT_TRANSLATE_NOOP("Porymap", "End Condition")},
         {"giveitem", QT_TRANSLATE_NOOP("Porymap", "Give Item"), Field::Item, Field::Number},
         {"faceplayer", QT_TRANSLATE_NOOP("Porymap", "Face Player")},
+        {"movement", QT_TRANSLATE_NOOP("Porymap", "Move NPC / Player"), Field::Object},
+        {"warp", QT_TRANSLATE_NOOP("Porymap", "Transfer to Map"), Field::Map},
+        {"removeobject", QT_TRANSLATE_NOOP("Porymap", "Hide NPC"), Field::Object},
+        {"wildpokemon", QT_TRANSLATE_NOOP("Porymap", "Wild Pokemon Battle")},
+        {"trainerpokemon", QT_TRANSLATE_NOOP("Porymap", "Trainer Battle")},
+        {"trainerstatus", QT_TRANSLATE_NOOP("Porymap", "Check Trainer Defeated")},
+        {"healpokemon", QT_TRANSLATE_NOOP("Porymap", "Heal Party Pokemon")},
+        {"giftpokemon", QT_TRANSLATE_NOOP("Porymap", "Give Pokemon")},
+        {"eggPokemon", QT_TRANSLATE_NOOP("Porymap", "Give Pokemon Egg")},
+        {"partypokemon", QT_TRANSLATE_NOOP("Porymap", "Select / Modify Party Pokemon")},
         {"delay", QT_TRANSLATE_NOOP("Porymap", "Wait Frames"), Field::Number},
         {"playse", QT_TRANSLATE_NOOP("Porymap", "Play Sound Effect"), Field::Sound},
         {"playbgm", QT_TRANSLATE_NOOP("Porymap", "Play BGM"), Field::Music},
@@ -58,6 +71,7 @@ QString commandName(const QString &id) {
     return spec ? QCoreApplication::translate("Porymap", spec->name) : id;
 }
 Command defaultCommand(const QString &id) {
+    if (isPokemonCommand(id)) return pokemonCommand(id);
     Command c; c.id = id;
     const auto spec = commandSpec(id);
     if (!spec) return c;
@@ -68,42 +82,107 @@ Command defaultCommand(const QString &id) {
     case Field::Sound: c.argument = "SE_SELECT"; break;
     case Field::Music: c.argument = "MUS_LITTLEROOT"; break;
     case Field::Number: c.argument = "30"; break;
+    case Field::Object: c.argument = "VAR_LAST_TALKED"; break;
     default: break;
     }
     if (spec->second != Field::None) c.value = "1";
+    if (id == "movement") c.options = {{"route", QJsonArray{QJsonObject{{"action", "walk"}, {"direction", "down"}, {"speed", "normal"}, {"count", 1}}}}};
+    if (id == "warp") c.options = {{"x", 0}, {"y", 0}};
     return c;
 }
 QString summary(const Command &c) {
+    if (isPokemonCommand(c.id)) return commandName(c.id) + ": " + c.options.value("species").toString(c.options.value("trainer").toString(c.options.value("operation").toString()));
     QString detail = c.text.isEmpty() ? c.argument : QString(c.text).replace('\n', " / ");
     if (c.id == "ifvar") detail += " " + c.comparison;
     if (!c.value.isEmpty()) detail += " " + (c.id=="ifflag" ? (c.value=="1"?"ON":"OFF") : c.value);
+    if (c.id == "movement") detail += " (" + QString::number(c.options["route"].toArray().size()) + ")";
+    if (c.id == "warp") detail += QString(" (%1, %2)").arg(c.options["x"].toInt()).arg(c.options["y"].toInt());
     return commandName(c.id) + (detail.isEmpty() ? "" : ": " + detail.left(100));
 }
 QJsonObject Document::toJson() const {
     QJsonArray list;
-    for (const auto &c : commands)
-        list.append(QJsonObject{{"id", c.id}, {"argument", c.argument}, {"value", c.value},
-                                {"text", c.text}, {"comparison", c.comparison}});
-    return {{"version", 1}, {"label", label}, {"lockPlayer", lockPlayer}, {"commands", list}};
+    for (const auto &c : commands) {
+        QJsonObject object{{"id", c.id}, {"argument", c.argument}, {"value", c.value},
+                           {"text", c.text}, {"comparison", c.comparison}};
+        // Keep legacy blocks byte-for-byte reproducible. Extensions are optional.
+        if (!c.options.isEmpty()) object["options"] = c.options;
+        list.append(object);
+    }
+    QJsonObject result{{"version", 1}, {"label", label}, {"lockPlayer", lockPlayer}, {"commands", list}};
+    if (!objectFlag.isEmpty()) result["objectFlag"] = objectFlag;
+    if (!npcTrainer.isEmpty()) result["npcTrainer"] = npcTrainer;
+    return result;
 }
 bool Document::fromJson(const QJsonObject &o, Document *out) {
-    const QSet<QString> keys = {"version", "label", "lockPlayer", "commands"};
+    const QSet<QString> keys = {"version", "label", "lockPlayer", "commands", "objectFlag", "npcTrainer"};
     for (auto it=o.begin(); it!=o.end(); ++it) if (!keys.contains(it.key())) return false;
     if (o["version"].toInt() != 1 || !o["label"].isString() || !o["lockPlayer"].isBool()
         || !o["commands"].isArray() || o["commands"].toArray().size() > 1000) return false;
     Document d; d.label = o["label"].toString(); d.lockPlayer = o["lockPlayer"].toBool();
+    if (o.contains("objectFlag") && (!o["objectFlag"].isString() || !identifier(o["objectFlag"].toString()))) return false;
+    d.objectFlag = o["objectFlag"].toString();
+    if (o.contains("npcTrainer")) {
+        if (!o["npcTrainer"].isObject()) return false;
+        d.npcTrainer = o["npcTrainer"].toObject();
+        if (d.npcTrainer.size() != 2 || !QStringList{"TRAINER_TYPE_NONE", "TRAINER_TYPE_NORMAL"}.contains(d.npcTrainer["type"].toString())
+            || !d.npcTrainer["sight"].isDouble() || d.npcTrainer["sight"].toDouble() != d.npcTrainer["sight"].toInt() || d.npcTrainer["sight"].toInt() < 1 || d.npcTrainer["sight"].toInt() > 16) return false;
+    }
     for (const auto &v : o["commands"].toArray()) {
         if (!v.isObject()) return false;
         auto a = v.toObject();
         const QSet<QString> fields = {"id", "argument", "value", "text", "comparison"};
-        if (a.size() != fields.size()) return false;
+        if (a.size() != fields.size() + (a.contains("options") ? 1 : 0)) return false;
+        if (a.contains("options") && !a["options"].isObject()) return false;
         for (const auto &key : fields) if (!a[key].isString()) return false;
         if (!commandSpec(a["id"].toString())) return false;
         d.commands.append({a["id"].toString(), a["argument"].toString(), a["value"].toString(),
-                           a["text"].toString(), a["comparison"].toString()});
+                           a["text"].toString(), a["comparison"].toString(), a["options"].toObject()});
     }
     *out = d;
     return true;
+}
+QStringList movementActions(const Command &c, QString *error) {
+    auto fail = [&]() { if (error) *error = QCoreApplication::translate("Porymap", "Choose a valid movement route (1 to 256 steps; waits of 1, 2, 4, 8 or 16 frames)."); return QStringList(); };
+    if (c.options.size() != 1 || !c.options["route"].isArray()) return fail();
+    const auto route = c.options["route"].toArray();
+    if (route.isEmpty() || route.size() > 256) return fail();
+    QStringList actions;
+    for (const auto &value : route) {
+        if (!value.isObject()) return fail();
+        const auto step = value.toObject();
+        if (step.size() != 4 || !step["action"].isString() || !step["direction"].isString() || !step["speed"].isString()
+            || !step["count"].isDouble() || step["count"].toDouble() != step["count"].toInt()) return fail();
+        const auto action = step["action"].toString(), direction = step["direction"].toString(), speed = step["speed"].toString();
+        const int count = step["count"].toInt();
+        if (!QStringList{"down", "up", "left", "right"}.contains(direction) || !QStringList{"slow", "normal", "fast"}.contains(speed)) return fail();
+        if (action == "wait") {
+            if (!QList<int>{1, 2, 4, 8, 16}.contains(count)) return fail();
+            actions.append("delay_" + QString::number(count));
+        } else if (action == "walk" || action == "face") {
+            if (count < 1 || count > 64) return fail();
+            const QString macro = action == "face" ? "face_" + direction : (speed == "normal" ? "walk_" : "walk_" + speed + "_") + direction;
+            for (int i = 0; i < count; ++i) actions.append(macro);
+        } else return fail();
+        if (actions.size() > 256) return fail();
+    }
+    return actions;
+}
+QVector<Command> templateCommands(const QString &id, const QString &flag, const QString &item, const QString &text, const QString &target) {
+    auto make = [](const QString &id, const QString &argument = QString(), const QString &value = QString()) {
+        auto c = defaultCommand(id); c.argument = argument; c.value = value; return c;
+    };
+    if (!QStringList{"item", "once", "disappear"}.contains(id)) return {};
+    QVector<Command> result{make("ifflag", flag, "0")};
+    if (id == "item") {
+        result.append(make("giveitem", item, "1"));
+        // A full bag must not consume the item or set its flag.
+        result.append(make("ifvar", "VAR_RESULT", "1"));
+    } else { auto c = make("message"); c.text = text; result.append(c); }
+    result.append(make("setflag", flag));
+    if (id == "item" || id == "disappear") result.append(make("removeobject", target));
+    if (id == "item") result.append(make("endif"));
+    result.append(make("endif"));
+    return result;
 }
 
 static QByteArray read(const QString &path, bool *ok = nullptr) {
@@ -314,15 +393,45 @@ static QString textError(const QString &root,const QString &text) {
 }
 QString ScriptFile::validate(const Document &d) const {
     if(!m_editable) return m_reason;
+    if (!d.objectFlag.isEmpty() && !identifier(d.objectFlag)) return QCoreApplication::translate("Porymap", "Unsupported event command.");
     if(!identifier(d.label) || (!m_originalLabel.isEmpty()&&d.label!=m_originalLabel)) return QCoreApplication::translate("Porymap", "Use a valid script label. Existing labels cannot be renamed here.");
     if(d.commands.isEmpty()||d.commands.size()>1000||d.commands.last().id!="end") return QCoreApplication::translate("Porymap", "The last command must be End Script (maximum 1000 commands).");
+    if(d.npcTrainer.value("type").toString()=="TRAINER_TYPE_NORMAL"&&d.commands.first().id!="trainerpokemon")return QCoreApplication::translate("PokemonEvent", "NPC sight detection requires Trainer Battle as the first command.");
     QString scanError;const auto used=otherLabels(&scanError);if(!scanError.isEmpty()) return scanError;
     // Reserve a namespace for local labels emitted by either backend/Poryscript.
     for(const auto &label:used) if(label==d.label||label.startsWith(d.label+"_")) return QCoreApplication::translate("Porymap", "This label or its generated labels conflict with another script.");
+    const bool pokemon = std::any_of(d.commands.begin(), d.commands.end(), [](const auto &c) { return isPokemonCommand(c.id); });
+    const auto engine = pokemon ? PokemonEngine::inspect(m_root) : PokemonEngine();
     QVector<bool> conditions;
     for(int i=0;i<d.commands.size();++i) {
         const auto &c=d.commands[i];const auto spec=commandSpec(c.id);
+        if (pokemon && m_pory && c.text.contains('`')) return QCoreApplication::translate("PokemonEvent", "Pokemon dialogue is too long or contains a raw Poryscript delimiter.");
         if(!spec) return QCoreApplication::translate("Porymap", "Unsupported event command.");
+        if (isPokemonCommand(c.id)) {
+            const auto issue = validatePokemon(c, engine); if (!issue.isEmpty()) return issue;
+            if (c.id == "trainerpokemon" && (i != 0 || d.lockPlayer)) return QCoreApplication::translate("PokemonEvent", "Trainer Battle must be the first command, with automatic player locking disabled, so NPC sight detection can read the native battle opcode.");
+            for (const auto &text : pokemonTexts(c)) {
+                if (text.size() > 8192 || (m_pory && text.contains('`'))) return QCoreApplication::translate("PokemonEvent", "Pokemon dialogue is too long or contains a raw Poryscript delimiter.");
+                const auto issue = textError(m_root, text); if (!issue.isEmpty()) return issue;
+            }
+            continue;
+        }
+        if (c.id == "movement") {
+            QString error; const auto actions = movementActions(c, &error); if (!error.isEmpty()) return error;
+            bool ok; const auto movement = read(m_root + "/asm/macros/movement.inc", &ok);
+            if (!ok) return QCoreApplication::translate("Porymap", "Cannot read this project's movement macros.");
+            auto required = actions; required.append("step_end");
+            for (const auto &name : required) if (!QRegularExpression("(?:create_movement_action\\s+|\\.macro\\s+)" + name + "(?:[,\\s]|$)").match(QString::fromUtf8(movement)).hasMatch())
+                return QCoreApplication::translate("Porymap", "A required movement is missing from this project: %1").arg(name);
+        } else if (c.id == "warp") {
+            const auto size = m_mapSizes.value(c.argument);
+            if (!identifier(c.argument) || size.isEmpty() || c.options.size() != 2
+                || !c.options["x"].isDouble() || !c.options["y"].isDouble()
+                || c.options["x"].toDouble() != c.options["x"].toInt() || c.options["y"].toDouble() != c.options["y"].toInt()
+                || c.options["x"].toInt() < 0 || c.options["x"].toInt() >= qMin(size.width(), 65536)
+                || c.options["y"].toInt() < 0 || c.options["y"].toInt() >= qMin(size.height(), 65536))
+                return QCoreApplication::translate("Porymap", "Choose a known destination map and coordinates within its layout.");
+        } else if (!c.options.isEmpty()) return QCoreApplication::translate("Porymap", "Unsupported event command.");
         if ((spec->first==Field::None||spec->first==Field::Text) && !c.argument.isEmpty()) return QCoreApplication::translate("Porymap", "Unsupported event command.");
         if (spec->second==Field::None && !c.value.isEmpty()) return QCoreApplication::translate("Porymap", "Unsupported event command.");
         if (spec->first!=Field::Text && !c.text.isEmpty()) return QCoreApplication::translate("Porymap", "Unsupported event command.");
@@ -351,14 +460,18 @@ QString ScriptFile::validate(const Document &d) const {
     bool macroOk;const auto macros=read(m_root+"/asm/macros/event.inc",&macroOk);
     if(!macroOk) return QCoreApplication::translate("Porymap", "Cannot verify this project's asm/macros/event.inc commands.");
     QSet<QString> required={"end"};
+    if (!d.commands.isEmpty() && d.commands.first().id == "trainerpokemon") required.insert("releaseall");
     if(d.lockPlayer) required.unite({"lockall","releaseall"});
     for(const auto &c:d.commands) {
+        if (isPokemonCommand(c.id)) continue;
         if(c.id=="message"||c.id=="question") required.insert("msgbox");
         else if(c.id=="ifflag") {
             required.unite({"checkflag","goto_if_eq","goto"});
             if(m_pory) required.unite({"goto_if_set","goto_if_unset"});
         }
         else if(c.id=="ifvar") required.unite({"compare","goto_if_eq","goto_if_ne","goto_if_lt","goto_if_le","goto_if_gt","goto_if_ge","goto"});
+        else if(c.id=="movement") required.unite({"applymovement", "waitmovement"});
+        else if(c.id=="warp") required.unite({"warp", "waitstate"});
         else if(c.id!="else"&&c.id!="endif") required.insert(c.id);
     }
     for(const auto &name:required) if(!QRegularExpression("\\.macro\\s+"+name+"(?:\\s|$)").match(QString::fromUtf8(macros)).hasMatch())
@@ -366,24 +479,42 @@ QString ScriptFile::validate(const Document &d) const {
     return {};
 }
 static QString quotedText(QString s) {return s.replace('"',"\\\"").replace('\n',"\\n");}
-QString ScriptFile::generate(const Document &d) const {
-    QString out;QStringList texts;
+QString ScriptFile::generate(const Document &d, bool native) const {
+    // Raw is Poryscript's native escape hatch. Keep trainerbattle as the first opcode,
+    // and preserve optional/named macro parameters without changing the game engine.
+    const bool pokemon = std::any_of(d.commands.begin(), d.commands.end(), [](const auto &c) { return isPokemonCommand(c.id); });
+    if (m_pory && pokemon && !native) return "raw `\n" + generate(d, true) + "`\n";
+    const bool pory = m_pory && !native;
+    QString out;QStringList texts, movements;
     struct Branch {QString alternate,done;bool hasElse=false;};QVector<Branch> branches;
-    int sequence=0,textIndex=0,depth=1;
+    int sequence=0,textIndex=0,movementIndex=0,pokemonIndex=0,depth=1;
     auto line=[&](const QString &s){out+=QString(depth,'\t')+s+"\n";};
-    out=m_pory?"script "+d.label+" {\n":d.label+"::\n";
+    out=pory?"script "+d.label+" {\n":d.label+"::\n";
     if(d.lockPlayer) line("lockall");
     for(const auto &c:d.commands) {
-        if(c.id=="message"||c.id=="question") {
+        if (isPokemonCommand(c.id)) out += generatePokemon(c, d.label + "_Pokemon_" + QString::number(++pokemonIndex), &texts);
+        else if(c.id=="message"||c.id=="question") {
             QString type=c.id=="question"?"MSGBOX_YESNO":"MSGBOX_DEFAULT";
-            if(m_pory) line("msgbox(\""+quotedText(c.text)+"\", "+type+")");
+            if(pory) line("msgbox(\""+quotedText(c.text)+"\", "+type+")");
             else {
                 QString textLabel=d.label+"_Text_"+QString::number(++textIndex);
                 line("msgbox "+textLabel+", "+type);
                 texts.append(textLabel+":\n\t.string \""+quotedText(c.text)+"$\"\n");
             }
+        } else if (c.id == "movement") {
+            const QString label = d.label + "_Movement_" + QString::number(++movementIndex);
+            const auto actions = movementActions(c);
+            line(pory ? "applymovement(" + c.argument + ", " + label + ")" : "applymovement " + c.argument + ", " + label);
+            line(pory ? "waitmovement(" + c.argument + ")" : "waitmovement " + c.argument);
+            movements.append(pory ? "movement " + label + " {\n\t" + actions.join("\n\t") + "\n}\n"
+                                    : label + ":\n\t" + actions.join("\n\t") + "\n\tstep_end\n");
+        } else if (c.id == "warp") {
+            // Coordinates use the existing map,x,y macro overload (WARP_ID_NONE).
+            const QString args = c.argument + ", " + QString::number(c.options["x"].toInt()) + ", " + QString::number(c.options["y"].toInt());
+            line(pory ? "warp(" + args + ")" : "warp " + args);
+            line("waitstate");
         } else if(c.id=="ifflag"||c.id=="ifvar") {
-            if(m_pory) {
+            if(pory) {
                 const QString cond=c.id=="ifflag"?"flag("+c.argument+") == "+(c.value=="1"?"true":"false")
                     :"var("+c.argument+") "+c.comparison+" "+c.value;
                 line("if ("+cond+") {");++depth;branches.append({{}, {}, false});
@@ -399,22 +530,23 @@ QString ScriptFile::generate(const Document &d) const {
         } else if(c.id=="else") {
             if(branches.isEmpty()) continue;
             auto &branch=branches.last();branch.hasElse=true;
-            if(m_pory) {--depth;line("} else {");++depth;}
+            if(pory) {--depth;line("} else {");++depth;}
             else {line("goto "+branch.done);out+=branch.alternate+":\n";}
         } else if(c.id=="endif") {
             if(branches.isEmpty()) continue;
             auto branch=branches.takeLast();
-            if(m_pory) {--depth;line("}");}
+            if(pory) {--depth;line("}");}
             else out+=(branch.hasElse?branch.done:branch.alternate)+":\n";
         } else {
-            if(c.id=="end"&&d.lockPlayer) line("releaseall");
+            if(c.id=="end"&&(d.lockPlayer || (!d.commands.isEmpty() && d.commands.first().id=="trainerpokemon"))) line("releaseall");
             QStringList args;if(!c.argument.isEmpty()) args.append(c.argument);if(!c.value.isEmpty()) args.append(c.value);
             if(c.id=="playbgm") args.append("0");
-            line(c.id+(args.isEmpty()?"":m_pory?"("+args.join(", ")+")":" "+args.join(", ")));
+            line(c.id+(args.isEmpty()?"":pory?"("+args.join(", ")+")":" "+args.join(", ")));
         }
     }
-    if(m_pory) out+="}\n";
+    if(pory) out+="}\n";
     if(!texts.isEmpty()) out+="\n"+texts.join("\n");
+    if(!movements.isEmpty()) out+="\n"+movements.join("\n");
     return out;
 }
 QByteArray ScriptFile::block(const Document &d) const {
@@ -427,39 +559,100 @@ QString ScriptFile::preview(const Document &d,QString *error) const {
     const QString issue=validate(d);if(error) *error=issue;
     return issue.isEmpty()?normalized(block(d)):QString();
 }
-bool ScriptFile::save(const Document &d,QString *error,QString *backupPath) {
-    auto fail=[&](const QString &s){if(error) *error=s;return false;};
-    const QString issue=validate(d);if(!issue.isEmpty()) return fail(issue);
-    if(!inside(m_root,m_path)) return fail(QCoreApplication::translate("Porymap", "The script path is outside the project."));
-    QLockFile lock(m_path+".porymap-visual.lock");
-    if(!lock.tryLock(0)) return fail(QCoreApplication::translate("Porymap", "Another visual editor is saving this script."));
-    bool ok;const auto current=QFileInfo::exists(m_path)?read(m_path,&ok):QByteArray();
-    if(QFileInfo::exists(m_path)!=m_exists || (m_exists&&(!ok||current!=m_original)))
-        return fail(QCoreApplication::translate("Porymap", "The source file changed after opening. Close and reopen the editor before saving."));
-    QByteArray replacement=block(d);
-    if(m_original.contains("\r\n")) replacement.replace("\n","\r\n");
-    QByteArray output=m_original;
-    if(m_start>=0) output.replace(m_start,m_length,replacement);
-    else {
-        const QByteArray newline=m_original.contains("\r\n")?"\r\n":"\n";
-        if(!output.isEmpty()&&!output.endsWith('\n')) output+=newline;
-        output+=newline;output+=replacement;
-    }
-    if(output==m_original) return true;
-    QString backup;
-    if(m_exists) {
-        backup=m_path+".porymap-visual-"+QDateTime::currentDateTimeUtc().toString("yyyyMMdd-HHmmsszzz")+"-"+QUuid::createUuid().toString(QUuid::Id128)+".bak";
-        if(!QFile::copy(m_path,backup)) return fail(QCoreApplication::translate("Porymap", "Could not create the backup. Nothing was saved."));
-    }
-    QSaveFile file(m_path);
-    if(!file.open(QIODevice::WriteOnly)||file.write(output)!=output.size())
-        return fail(QCoreApplication::translate("Porymap", "Could not save the script atomically. The original file is preserved."));
-    // Check again after preparing the temporary file; do not replace a newer edit.
-    if(!inside(m_root,m_path)||QFileInfo::exists(m_path)!=m_exists||(m_exists&&read(m_path)!=m_original))
-        return fail(QCoreApplication::translate("Porymap", "The source file changed after opening. Close and reopen the editor before saving."));
-    if(!file.commit()) return fail(QCoreApplication::translate("Porymap", "Could not save the script atomically. The original file is preserved."));
-    if(backupPath) *backupPath=backup;
-    document=d;
+bool ScriptFile::prepare(const Document &d,ScriptPatch *patch,QString *error) const {
+    const QString issue=validate(d);
+    if(!issue.isEmpty()) {if(error) *error=issue;return false;}
+    if(!inside(m_root,m_path)) {if(error) *error=QCoreApplication::translate("Porymap", "The script path is outside the project.");return false;}
+    patch->file={m_path,m_original,{},m_exists};
+    patch->start=m_start;patch->length=m_length;patch->block=block(d);
+    if(m_original.contains("\r\n")) patch->block.replace("\n","\r\n");
     return true;
+}
+bool combinePatches(const QVector<ScriptPatch> &patches,QVector<FileChange> *changes,QString *error) {
+    QMap<QString,QVector<ScriptPatch>> groups;
+    for(const auto &patch:patches) groups[patch.file.path].append(patch);
+    for(auto it=groups.begin();it!=groups.end();++it) {
+        auto entries=it.value();const auto base=entries.first().file;
+        for(const auto &patch:entries) if(patch.file.before!=base.before||patch.file.existed!=base.existed) {
+            if(error) *error=QCoreApplication::translate("Porymap", "Pending scripts use different source versions. Reopen the editor before saving.");
+            return false;
+        }
+        std::stable_sort(entries.begin(),entries.end(),[](const ScriptPatch&a,const ScriptPatch&b){return a.start>b.start;});
+        QByteArray output=base.before;int boundary=base.before.size();
+        for(const auto &patch:entries) {
+            if(patch.start>=0) {
+                if(patch.start+patch.length>boundary||patch.length<=0) {if(error) *error=QCoreApplication::translate("Porymap", "Visual script editing ranges overlap.");return false;}
+                output.replace(patch.start,patch.length,patch.block);boundary=patch.start;
+            } else {
+                const QByteArray newline=base.before.contains("\r\n")?"\r\n":"\n";
+                if(!output.isEmpty()&&!output.endsWith('\n')) output+=newline;
+                output+=newline;output+=patch.block;
+            }
+        }
+        changes->append({base.path,base.before,output,base.existed});
+    }
+    return true;
+}
+bool commitChanges(const QString &root,const QVector<FileChange> &input,QString *error,
+                   QStringList *backups,const std::function<bool(int)> &permitCommit) {
+    auto fail=[&](QString message){if(error) *error=message;return false;};
+    QVector<FileChange> changes;QSet<QString> targets;
+    for(const auto &change:input) {
+        const QString key=QFileInfo(change.path).absoluteFilePath().toLower();
+        if(!inside(root,change.path)||targets.contains(key)) return fail(QCoreApplication::translate("Porymap", "The transaction contains an unsafe or duplicate file path."));
+        targets.insert(key);changes.append(change);
+    }
+    auto unchanged=[](const FileChange &c) {bool ok=false;const bool exists=QFileInfo::exists(c.path);
+        const auto data=exists?read(c.path,&ok):QByteArray();return exists==c.existed&&(!exists||(ok&&data==c.before));};
+    std::vector<std::unique_ptr<QLockFile>> locks;
+    // Stable ordering avoids two saves acquiring the same locks in opposite orders.
+    QStringList paths;for(const auto &c:changes) paths.append(c.path);paths.sort();
+    for(const auto &path:paths) {
+        auto lock=std::make_unique<QLockFile>(path+".porymap-visual.lock");
+        if(!lock->tryLock(0)) return fail(QCoreApplication::translate("Porymap", "Another visual editor is saving this script."));
+        locks.push_back(std::move(lock));
+    }
+    for(const auto &c:changes) if(!unchanged(c)) return fail(QCoreApplication::translate("Porymap", "The source file changed after opening. Close and reopen the editor before saving."));
+    std::vector<std::unique_ptr<QSaveFile>> files;
+    QStringList recovery;
+    for(const auto &c:changes) {
+        if(c.existed) {
+            const QString backup=c.path+".porymap-visual-"+QDateTime::currentDateTimeUtc().toString("yyyyMMdd-HHmmsszzz")+"-"+QUuid::createUuid().toString(QUuid::Id128)+".bak";
+            if(!QFile::copy(c.path,backup)) return fail(QCoreApplication::translate("Porymap", "Could not create the backup. Nothing was saved."));
+            recovery.append(backup);
+        }
+        auto file=std::make_unique<QSaveFile>(c.path);file->setDirectWriteFallback(false);
+        if(!file->open(QIODevice::WriteOnly)||file->write(c.after)!=c.after.size())
+            return fail(QCoreApplication::translate("Porymap", "Could not prepare the save. The original files are preserved."));
+        files.push_back(std::move(file));
+    }
+    int committed=0;
+    for(int i=0;i<changes.size();++i) {
+        if(!inside(root,changes[i].path)||!unchanged(changes[i])||(permitCommit&&!permitCommit(i))||!files[i]->commit()) break;
+        ++committed;
+    }
+    if(committed!=changes.size()) {
+        bool restored=true;
+        for(int i=committed-1;i>=0;--i) {
+            const auto &c=changes[i];
+            if(!inside(root,c.path)||read(c.path)!=c.after) {restored=false;continue;}
+            if(!c.existed) {if(!QFile::remove(c.path)) restored=false;continue;}
+            QSaveFile rollback(c.path);rollback.setDirectWriteFallback(false);
+            if(!rollback.open(QIODevice::WriteOnly)||rollback.write(c.before)!=c.before.size()||!rollback.commit()) restored=false;
+        }
+        if(backups) *backups=recovery;
+        return fail(restored?QCoreApplication::translate("Porymap", "Save failed. Original files were restored; your edits remain unsaved.")
+                    :QCoreApplication::translate("Porymap", "Save failed and automatic recovery was incomplete. Keep the unsaved edits and recover from these backups: %1").arg(recovery.join("\n")));
+    }
+    if(backups) *backups=recovery;
+    return true;
+}
+bool ScriptFile::save(const Document &d,QString *error,QString *backupPath) {
+    ScriptPatch patch;QVector<FileChange> changes;
+    if(!prepare(d,&patch,error)||!combinePatches({patch},&changes,error)) return false;
+    QStringList backups;
+    if(!commitChanges(m_root,changes,error,&backups)) return false;
+    if(backupPath) *backupPath=backups.value(0);
+    document=d;return true;
 }
 }

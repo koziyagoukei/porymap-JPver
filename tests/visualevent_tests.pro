@@ -5,3 +5,5 @@ TEMPLATE = app
 TARGET = visualevent-tests
 INCLUDEPATH += $$PWD/../include/core
 SOURCES += $$PWD/visualeventscript_test.cpp $$PWD/../src/core/visualeventscript.cpp
+SOURCES += $$PWD/../src/core/pokemonevent.cpp
+HEADERS += $$PWD/pokemonevent_checks.h $$PWD/pokemon_engine_fixture.h $$PWD/../include/core/pokemonevent.h $$PWD/../include/core/visualeventscript.h

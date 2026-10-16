@@ -1949,6 +1949,687 @@
         </message>
     </context>
     <context>
+        <name>PokemonEvent</name>
+        <message>
+            <location filename="../src/core/pokemonevent.cpp" line="91" />
+            <source>A required engine macro is unavailable: %1</source>
+            <translation>必要なイベントマクロがありません: %1</translation>
+        </message>
+        <message>
+            <location filename="../src/core/pokemonevent.cpp" line="93" />
+            <source>The required macro signature, special or C implementation could not be verified for: %1</source>
+            <translation>必要なマクロの引数、special、またはC実装を確認できませんでした: %1</translation>
+        </message>
+        <message>
+            <location filename="../src/core/pokemonevent.cpp" line="96" />
+            <source>Battles</source>
+            <translation>戦闘</translation>
+        </message>
+        <message>
+            <location filename="../src/core/pokemonevent.cpp" line="97" />
+            <source>Pokemon Healing</source>
+            <translation>ポケモンの回復</translation>
+        </message>
+        <message>
+            <location filename="../src/core/pokemonevent.cpp" line="98" />
+            <source>Pokemon Gifts</source>
+            <translation>ポケモンの入手</translation>
+        </message>
+        <message>
+            <location filename="../src/core/pokemonevent.cpp" line="99" />
+            <source>Party Pokemon</source>
+            <translation>ポケモンの操作</translation>
+        </message>
+        <message>
+            <location filename="../src/core/pokemonevent.cpp" line="162" />
+            <location filename="../src/core/pokemonevent.cpp" line="163" />
+            <source>Invalid Pokemon command data.</source>
+            <translation>ポケモン用コマンドのデータが不正です。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/pokemonevent.cpp" line="165" />
+            <source>Choose an actual Pokemon species, not NONE or EGG.</source>
+            <translation>NONEやEGGではなく、実際のポケモンの種族を選択してください。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/pokemonevent.cpp" line="166" />
+            <source>Choose an actual trainer ID, not TRAINER_NONE.</source>
+            <translation>TRAINER_NONEではなく、実際のトレーナーIDを選択してください。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/pokemonevent.cpp" line="167" />
+            <source>Enter a constant identifier for species, item, trainer or move.</source>
+            <translation>種族・持ち物・トレーナー・技には定数名を入力してください。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/pokemonevent.cpp" line="168" />
+            <source>The level must be an integer from 1 to 100.</source>
+            <translation>レベルは1～100の整数で指定してください。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/pokemonevent.cpp" line="169" />
+            <source>Choose a result variable from VAR_0x8008 to VAR_0x800B.</source>
+            <translation>結果の保存先はVAR_0x8008～VAR_0x800Bから選択してください。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/pokemonevent.cpp" line="170" />
+            <source>Choose an unused persistent FLAG_ constant.</source>
+            <translation>未使用の永続フラグ（FLAG_定数）を指定してください。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/pokemonevent.cpp" line="171" />
+            <source>The healing animation macros are unavailable.</source>
+            <translation>回復演出に必要なマクロがありません。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/pokemonevent.cpp" line="173" />
+            <source>Enter the trainer's intro, defeat dialogue and, for doubles, the insufficient-party dialogue.</source>
+            <translation>トレーナーの開始前・敗北時の台詞を入力してください。ダブルバトルでは手持ち不足時の台詞も必要です。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/pokemonevent.cpp" line="174" />
+            <source>This project's rematch macro is unavailable.</source>
+            <translation>このプロジェクトの再戦マクロを確認できませんでした。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/pokemonevent.cpp" line="175" />
+            <source>Official rematches use the engine's rematch table. Distinct first-victory dialogue is only available for normal trainer battles.</source>
+            <translation>公式の再戦処理はゲーム側の再戦表を使用します。初勝利専用の台詞は通常のトレーナー戦で設定できます。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/pokemonevent.cpp" line="178" />
+            <source>The project's givemon signature changed. Reconfigure this Pokemon command.</source>
+            <translation>givemonの引数が変更されています。このポケモン用コマンドを設定し直してください。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/pokemonevent.cpp" line="179" />
+            <source>The safe nickname workflow is unavailable or its wait behavior changed.</source>
+            <translation>安全なニックネーム設定処理を確認できないか、待機方法が変更されています。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/pokemonevent.cpp" line="181" />
+            <source>Detailed Pokemon creation requires a verified extended givemon implementation.</source>
+            <translation>ポケモン生成の詳細設定には、確認済みの拡張givemon実装が必要です。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/pokemonevent.cpp" line="185" />
+            <source>Invalid detailed Pokemon parameter.</source>
+            <translation>ポケモンの詳細パラメーターが不正です。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/pokemonevent.cpp" line="186" />
+            <source>This engine's shiny override accepts only 0 or 1; leave it blank for normal generation.</source>
+            <translation>この実装で色違いを固定する値は0または1です。通常の生成方法に従う場合は既定値にしてください。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/pokemonevent.cpp" line="189" />
+            <source>Use the matching BALL_, NATURE_, TYPE_ or MOVE_ constant for this field.</source>
+            <translation>この項目に対応するBALL_・NATURE_・TYPE_・MOVE_定数を指定してください。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/pokemonevent.cpp" line="190" />
+            <location filename="../src/core/pokemonevent.cpp" line="221" />
+            <source>Choose a usable Tera type.</source>
+            <translation>有効なテラスタイプを選択してください。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/pokemonevent.cpp" line="193" />
+            <source>IV, EV, ability slot or Dynamax values are out of range.</source>
+            <translation>個体値・努力値・特性スロット・ダイマックス関連の値が範囲外です。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/pokemonevent.cpp" line="197" />
+            <source>Total EVs must not exceed 510.</source>
+            <translation>努力値の合計は510以下にしてください。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/pokemonevent.cpp" line="201" />
+            <source>This ability slot is unavailable or could not be verified for the species.</source>
+            <translation>この種族では指定の特性スロットを使用できないか、定義を確認できませんでした。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/pokemonevent.cpp" line="210" />
+            <source>The selected gender is incompatible with the species or could not be verified.</source>
+            <translation>指定した性別はこの種族に対応していないか、性別の定義を確認できませんでした。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/pokemonevent.cpp" line="212" />
+            <source>Gigantamax eligibility could not be verified for this species.</source>
+            <translation>この種族のキョダイマックス適性を確認できませんでした。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/pokemonevent.cpp" line="217" />
+            <source>Choose a valid party target, operation, move slot and distinct result variables.</source>
+            <translation>手持ちの対象・操作・技スロットを正しく指定し、結果変数が重複しないようにしてください。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/pokemonevent.cpp" line="218" />
+            <source>The party selector's wait behavior changed. Reconfigure this command.</source>
+            <translation>手持ち選択画面の待機方法が変更されています。コマンドを設定し直してください。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/pokemonevent.cpp" line="219" />
+            <source>The safe move replacement implementation is unavailable.</source>
+            <translation>安全な技変更処理を確認できませんでした。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/pokemonevent.cpp" line="220" />
+            <source>The selected party operation has no verified engine implementation.</source>
+            <translation>選択した手持ち操作に対応するゲーム側の実装を確認できませんでした。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/visualeventscript.cpp" line="399" />
+            <source>NPC sight detection requires Trainer Battle as the first command.</source>
+            <translation>NPCの視界判定を使用するには、トレーナー戦を先頭に置いてください。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/visualeventscript.cpp" line="408" />
+            <location filename="../src/core/visualeventscript.cpp" line="414" />
+            <source>Pokemon dialogue is too long or contains a raw Poryscript delimiter.</source>
+            <translation>文章が長すぎるか、Poryscriptのraw区切り文字が含まれています。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/visualeventscript.cpp" line="412" />
+            <source>Trainer Battle must be the first command, with automatic player locking disabled, so NPC sight detection can read the native battle opcode.</source>
+            <translation>視界判定が戦闘コマンドを読み取れるよう、トレーナー戦を先頭に置き、移動の自動固定を無効にしてください。</translation>
+        </message>
+    </context>
+    <context>
+        <name>PokemonEventDialog</name>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="10" />
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="13" />
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="84" />
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="114" />
+            <source>Pokemon Event Settings</source>
+            <translation>ポケモンイベントの設定</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="10" />
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="124" />
+            <source>Trainer battles require an NPC event so the engine can identify the trainer object.</source>
+            <translation>ゲーム側がトレーナーを正しく特定できるよう、トレーナー戦はNPCのイベントから作成してください。</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="17" />
+            <source>Basic Settings</source>
+            <translation>基本設定</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="26" />
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="79" />
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="91" />
+            <source>Search</source>
+            <translation>検索</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="43" />
+            <source>Result Variable</source>
+            <translation>結果の保存先変数</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="45" />
+            <source>Pokemon Species</source>
+            <translation>ポケモンの種類</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="46" />
+            <source>Level</source>
+            <translation>レベル</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="47" />
+            <source>Held Item</source>
+            <translation>持ち物</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="48" />
+            <source>Trainer ID</source>
+            <translation>トレーナーID</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="52" />
+            <source>Message Before Battle</source>
+            <translation>戦闘開始前の文章</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="53" />
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="58" />
+            <source>After Battle</source>
+            <translation>戦闘終了後</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="53" />
+            <source>After Winning</source>
+            <translation>勝利した場合</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="53" />
+            <source>After Catching</source>
+            <translation>捕獲した場合</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="53" />
+            <source>After Running Away</source>
+            <translation>逃げた場合</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="54" />
+            <source>The result variable receives B_OUTCOME_* from GetBattleOutcome. Add If Variable for further processing. A total defeat normally causes a whiteout, so this event cannot run a defeat branch.</source>
+            <translation>GetBattleOutcomeのB_OUTCOME_*を結果変数に保存します。追加処理には「条件分岐（変数）」を使用してください。全滅すると通常はホワイトアウトするため、このイベント内で敗北後の分岐は実行できません。</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="56" />
+            <source>Double Battle</source>
+            <translation>ダブルバトル</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="56" />
+            <source>Use Official Rematch Rules</source>
+            <translation>ゲーム標準の再戦処理を使用する</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="57" />
+            <source>Trainer's Intro Dialogue</source>
+            <translation>トレーナーの開始前の台詞</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="57" />
+            <source>Trainer's Defeat Dialogue</source>
+            <translation>トレーナーの敗北時の台詞</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="58" />
+            <source>Not Enough Usable Pokemon</source>
+            <translation>戦闘可能なポケモンが不足しているときの台詞</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="58" />
+            <source>First Victory Dialogue</source>
+            <translation>初めて勝利したときの台詞</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="58" />
+            <source>Already Defeated / Rematch Dialogue</source>
+            <translation>戦闘済み・再戦後の台詞</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="60" />
+            <source>NPC Sight Detection</source>
+            <translation>NPCの視界判定</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="60" />
+            <source>Start Automatically When the Player Enters Sight</source>
+            <translation>プレイヤーが視界に入ると自動で戦闘を始める</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="61" />
+            <source>Sight Range (Tiles)</source>
+            <translation>視界の範囲（マス）</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="62" />
+            <source>Trainer Battle must be first. The engine handles locking, defeated flags, usable-party checks and whiteouts. Result: 1 = first victory, 0 = already defeated, 2 = official rematch flow. Rematches need the project's rematch table.</source>
+            <translation>トレーナー戦は先頭に置いてください。移動固定、戦闘済み判定、手持ち不足、全滅時の処理はゲーム側に従います。結果は1＝初勝利、0＝戦闘済み、2＝公式の再戦処理です。再戦にはゲーム側の再戦表への登録が必要です。</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="64" />
+            <source>Pokemon Center Style Fade and Healing Fanfare</source>
+            <translation>ポケモンセンター風の画面フェード・回復音を付ける</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="64" />
+            <source>Message After Healing</source>
+            <translation>回復後の文章</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="65" />
+            <source>HealPlayerParty restores HP, PP and status using the engine. The center-style effect uses a fade and fanfare; it does not require a healing-machine object. Individual healing is unavailable without a verified engine helper.</source>
+            <translation>HealPlayerPartyでHP・PP・状態異常を回復します。センター風の演出はフェードと回復音を使用し、回復装置の配置は不要です。個別回復には専用のゲーム側処理が必要です。</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="67" />
+            <source>Required Unused Persistent Flag</source>
+            <translation>未使用の永続フラグ（必須）</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="67" />
+            <source>Success Flag (Optional, Once Only)</source>
+            <translation>受け取り成功フラグ（任意・一度だけ）</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="68" />
+            <source>Messages and Results</source>
+            <translation>文章・処理結果</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="68" />
+            <source>Message on Successful Receipt</source>
+            <translation>受け取り成功時の文章</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="68" />
+            <source>Message When Party and PC Are Full</source>
+            <translation>手持ち・PCが満杯で受け取れないときの文章</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="70" />
+            <source>Ask About Nickname (Blank to Skip)</source>
+            <translation>ニックネームを尋ねる文章（空欄なら省略）</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="71" />
+            <source>A safe party/PC nickname implementation was not found.</source>
+            <translation>手持ち・PCに対応した安全なニックネーム変更処理を確認できませんでした。</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="73" />
+            <source>Result: 0 = party, 1 = PC, 2 = cannot receive, 3 = already received. The success flag is set only after receipt. Existing party slots are never overwritten.</source>
+            <translation>結果は0＝手持ち、1＝PC、2＝受け取り失敗、3＝受け取り済みです。成功時だけフラグをONにします。既存の手持ちポケモンは上書きしません。</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="75" />
+            <source>Creation Details</source>
+            <translation>生成の詳細設定</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="75" />
+            <source>IVs and EVs</source>
+            <translation>個体値・努力値</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="75" />
+            <source>Moves</source>
+            <translation>覚えている技</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="78" />
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="82" />
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="85" />
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="87" />
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="92" />
+            <source>Engine Default</source>
+            <translation>ゲームの既定値</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="81" />
+            <source>Poke Ball</source>
+            <translation>モンスターボール</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="81" />
+            <source>Nature</source>
+            <translation>性格</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="81" />
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="103" />
+            <source>Tera Type</source>
+            <translation>テラスタイプ</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="82" />
+            <source>Ability Slot %1</source>
+            <translation>特性スロット%1</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="82" />
+            <source>Ability Slot</source>
+            <translation>特性スロット</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="83" />
+            <source>Search Species Abilities</source>
+            <translation>種族の特性を検索</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="84" />
+            <source>This ability could not be verified for the selected species.</source>
+            <translation>選択した種族でこの特性を使用できることを確認できませんでした。</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="85" />
+            <source>Male</source>
+            <translation>オス</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="85" />
+            <source>Female</source>
+            <translation>メス</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="85" />
+            <source>Genderless</source>
+            <translation>性別不明</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="85" />
+            <source>Gender</source>
+            <translation>性別</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="86" />
+            <source>Engine Default / Random</source>
+            <translation>ゲームの既定値・ランダム</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="86" />
+            <source>Always Shiny</source>
+            <translation>色違いに固定</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="86" />
+            <source>Never Shiny</source>
+            <translation>通常色に固定</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="86" />
+            <source>Shininess</source>
+            <translation>色違い設定</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="88" />
+            <source>Dynamax Level</source>
+            <translation>ダイマックスレベル</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="88" />
+            <source>Gigantamax Factor (0 / 1)</source>
+            <translation>キョダイマックス適性（0＝なし・1＝あり）</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="89" />
+            <source>HP</source>
+            <translation>HP</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="89" />
+            <source>Attack</source>
+            <translation>こうげき</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="89" />
+            <source>Defense</source>
+            <translation>ぼうぎょ</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="89" />
+            <source>Speed</source>
+            <translation>速度</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="89" />
+            <source>Sp. Atk</source>
+            <translation>とくこう</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="89" />
+            <source>Sp. Def</source>
+            <translation>とくぼう</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="89" />
+            <source>%1 IV</source>
+            <translation>%1の個体値</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="89" />
+            <source>%1 EV</source>
+            <translation>%1の努力値</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="90" />
+            <source>Blank/default IVs use engine generation. EVs are limited to 252 per stat and 510 total. Species ability slots, fixed genders and Gigantamax eligibility are checked when metadata is available.</source>
+            <translation>個体値を既定値にするとゲーム側で生成します。努力値は各252・合計510までです。種族データを取得できる場合は特性スロット、固定の性別、キョダイマックス適性も確認します。</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="91" />
+            <source>Move %1</source>
+            <translation>技%1</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="95" />
+            <source>Target Selection</source>
+            <translation>対象の選び方</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="95" />
+            <source>First Party Pokemon</source>
+            <translation>手持ちの先頭</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="95" />
+            <source>Specified Party Slot</source>
+            <translation>手持ちの指定スロット</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="95" />
+            <source>Let Player Choose</source>
+            <translation>プレイヤーに選ばせる</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="95" />
+            <source>Find First Matching Species</source>
+            <translation>指定種族を先頭から検索</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="96" />
+            <source>Party Position (1 to 6)</source>
+            <translation>手持ちの位置（1～6匹目）</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="97" />
+            <source>Cure Status Condition</source>
+            <translation>状態異常を回復</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="97" />
+            <source>Change Tera Type</source>
+            <translation>テラスタイプを変更</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="100" />
+            <source>Enabled only when this project's macro and C implementation are verified.</source>
+            <translation>このプロジェクトのマクロとC実装を確認できる場合だけ使用できます。</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="101" />
+            <source>Change IVs / EVs / Ability / Friendship</source>
+            <translation>個体値・努力値・特性・なつき度の変更</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="102" />
+            <source>Move Position (1 to 4)</source>
+            <translation>技の位置（1～4番目）</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="104" />
+            <source>VAR_0x8009 receives the zero-based slot (6 = none/cancel/egg). Species reads return SPECIES_* or 0; other operations return 1 or 0. Missing targets and eggs are skipped. Unsupported changes require a separate game-side helper.</source>
+            <translation>VAR_0x8009には0始まりの位置を保存します（6＝対象なし・キャンセル・タマゴ）。種族取得はSPECIES_*または0、それ以外の操作は成功1・失敗0を返します。対象が存在しない場合やタマゴは操作せず、未対応の変更にはゲーム側の専用処理が必要です。</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="97" />
+            <source>Operation</source>
+            <translation>操作内容</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="97" />
+            <source>Read Species</source>
+            <translation>種族を取得</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="97" />
+            <source>Replace Move</source>
+            <translation>技を変更</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="101" />
+            <source>Heal Selected Pokemon</source>
+            <translation>選択したポケモンを回復</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="101" />
+            <source>Change Held Item / Level / Nature</source>
+            <translation>持ち物・レベル・性格の変更</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="101" />
+            <source>This operation needs a separately implemented game-side helper.</source>
+            <translation>この操作には、別途ゲーム側に専用処理を実装する必要があります。</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="102" />
+            <source>New Move</source>
+            <translation>変更後の技</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="113" />
+            <source>This template requires an unused persistent flag.</source>
+            <translation>このテンプレートには未使用の永続フラグが必要です。</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="121" />
+            <source>Pokemon Event Templates</source>
+            <translation>ポケモンイベントのテンプレート</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="123" />
+            <source>Static Wild Battle</source>
+            <translation>野生ポケモンとの固定戦闘</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="123" />
+            <source>Trainer Battle</source>
+            <translation>トレーナーとの戦闘</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="123" />
+            <source>Pokemon Center Style Healing</source>
+            <translation>ポケモンセンター風の回復</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="123" />
+            <source>Receive Pokemon from NPC</source>
+            <translation>NPCからポケモンをもらう</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="123" />
+            <source>One-time Gift Pokemon</source>
+            <translation>一度きりのプレゼントポケモン</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="123" />
+            <source>Receive Pokemon Egg</source>
+            <translation>ポケモンのタマゴをもらう</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/pokemoneventdialog.cpp" line="123" />
+            <source>Choose and Operate on Party Pokemon</source>
+            <translation>手持ちポケモンを選択して操作する</translation>
+        </message>
+    </context>
+    <context>
         <name>Porymap</name>
         <message>
             <location filename="../src/editor.cpp" line="329" />
@@ -2731,164 +3412,164 @@ Make sure you selected the correct project directory (the one used to make your 
         </message>
         <message>
             <location filename="../src/ui/eventframes.cpp" line="229" />
-            <location filename="../src/ui/visualeventeditor.cpp" line="24" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="27" />
             <source>Edit Event Commands</source>
             <translation>イベントコマンド編集</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="269" />
-            <location filename="../src/ui/eventframes.cpp" line="495" />
+            <location filename="../src/ui/eventframes.cpp" line="277" />
+            <location filename="../src/ui/eventframes.cpp" line="503" />
             <source>An optional, unique name to use to refer to this object in scripts. If no name is given you can refer to this object using its 'object id' number.</source>
             <translation>スクリプトからこのオブジェクトを参照するための一意な名前です（任意）。省略した場合はオブジェクト ID の番号で参照できます。</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="273" />
-            <location filename="../src/ui/eventframes.cpp" line="499" />
+            <location filename="../src/ui/eventframes.cpp" line="281" />
+            <location filename="../src/ui/eventframes.cpp" line="507" />
             <source>Local ID</source>
             <translation>ローカル ID</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="279" />
+            <location filename="../src/ui/eventframes.cpp" line="287" />
             <source>The sprite graphics to use for this object.</source>
             <translation>このオブジェクトに使用するスプライト画像です。</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="281" />
-            <location filename="../src/ui/eventframes.cpp" line="509" />
+            <location filename="../src/ui/eventframes.cpp" line="289" />
+            <location filename="../src/ui/eventframes.cpp" line="517" />
             <source>Sprite</source>
             <translation>スプライト</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="287" />
+            <location filename="../src/ui/eventframes.cpp" line="295" />
             <source>The object's natural movement behavior when the player is not interacting with it.</source>
             <translation>プレイヤーが話しかけていないときのオブジェクトの移動方法です。</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="289" />
+            <location filename="../src/ui/eventframes.cpp" line="297" />
             <source>Movement</source>
             <translation>移動方法</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="297" />
+            <location filename="../src/ui/eventframes.cpp" line="305" />
             <source>The maximum number of metatiles this object is allowed to move left or right during its normal movement behavior actions.</source>
             <translation>通常の移動で左右に動ける最大距離をメタタイル単位で指定します。</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="303" />
+            <location filename="../src/ui/eventframes.cpp" line="311" />
             <source>The maximum number of metatiles this object is allowed to move up or down during its normal movement behavior actions.</source>
             <translation>通常の移動で上下に動ける最大距離をメタタイル単位で指定します。</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="306" />
+            <location filename="../src/ui/eventframes.cpp" line="314" />
             <source>Movement Radius X</source>
             <translation>横方向の移動範囲</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="307" />
+            <location filename="../src/ui/eventframes.cpp" line="315" />
             <source>Movement Radius Y</source>
             <translation>縦方向の移動範囲</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="313" />
-            <location filename="../src/ui/eventframes.cpp" line="724" />
-            <location filename="../src/ui/eventframes.cpp" line="869" />
+            <location filename="../src/ui/eventframes.cpp" line="321" />
+            <location filename="../src/ui/eventframes.cpp" line="732" />
+            <location filename="../src/ui/eventframes.cpp" line="877" />
             <source>The script that is executed with this event.</source>
             <translation>このイベントで実行するスクリプトです。</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="318" />
+            <location filename="../src/ui/eventframes.cpp" line="326" />
             <source>Go to this script definition in text editor.</source>
             <translation>テキストエディターでこのスクリプトの定義を開きます。</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="328" />
-            <location filename="../src/ui/eventframes.cpp" line="726" />
-            <location filename="../src/ui/eventframes.cpp" line="871" />
+            <location filename="../src/ui/eventframes.cpp" line="336" />
+            <location filename="../src/ui/eventframes.cpp" line="734" />
+            <location filename="../src/ui/eventframes.cpp" line="879" />
             <source>Script</source>
             <translation>スクリプト</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="335" />
+            <location filename="../src/ui/eventframes.cpp" line="343" />
             <source>The flag that hides the object when set.</source>
             <translation>このフラグが立つとオブジェクトが非表示になります。</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="337" />
+            <location filename="../src/ui/eventframes.cpp" line="345" />
             <source>Event Flag</source>
             <translation>イベントフラグ</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="343" />
+            <location filename="../src/ui/eventframes.cpp" line="351" />
             <source>The trainer type of this object event. If it is not a trainer, use NONE. SEE ALL DIRECTIONS should only be used with a sight radius of 1.</source>
             <translation>トレーナーの種類です。トレーナーでない場合は NONE を使用します。SEE ALL DIRECTIONS は視界の範囲が 1 の場合にのみ使用してください。</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="346" />
+            <location filename="../src/ui/eventframes.cpp" line="354" />
             <source>Trainer Type</source>
             <translation>トレーナーの種類</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="352" />
+            <location filename="../src/ui/eventframes.cpp" line="360" />
             <source>The maximum sight range of a trainer, OR the unique id of the berry tree.</source>
             <translation>トレーナーの視界の最大範囲、またはきのみの木の一意な ID です。</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="354" />
+            <location filename="../src/ui/eventframes.cpp" line="362" />
             <source>Sight Radius / Berry Tree ID</source>
             <translation>視界の範囲 / きのみの木 ID</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="505" />
+            <location filename="../src/ui/eventframes.cpp" line="513" />
             <source>The sprite graphics to use for this object. This is updated automatically to match the target object, and so can't be edited. By default the games will get the graphics directly from the target object, so this field is ignored.</source>
             <translation>このオブジェクトのスプライト画像です。参照先に合わせて自動更新されるため編集できません。標準のゲームでは参照先から画像を直接取得するため、この項目は使用しません。</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="516" />
+            <location filename="../src/ui/eventframes.cpp" line="524" />
             <source>The name of the map that the object being cloned is on.</source>
             <translation>複製元のオブジェクトがあるマップの名前です。</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="518" />
+            <location filename="../src/ui/eventframes.cpp" line="526" />
             <source>Target Map</source>
             <translation>参照先マップ</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="524" />
+            <location filename="../src/ui/eventframes.cpp" line="532" />
             <source>The Local ID name or number of the object being cloned.</source>
             <translation>複製元オブジェクトのローカル ID の名前または番号です。</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="526" />
+            <location filename="../src/ui/eventframes.cpp" line="534" />
             <source>Target Local ID</source>
             <translation>参照先のローカル ID</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="612" />
+            <location filename="../src/ui/eventframes.cpp" line="620" />
             <source>An optional, unique name to use to refer to this warp from other warps. If no name is given you can refer to this warp using its 'warp id' number.</source>
             <translation>他のワープからこのワープを参照するための一意な名前です（任意）。省略した場合はワープ ID の番号で参照できます。</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="622" />
+            <location filename="../src/ui/eventframes.cpp" line="630" />
             <source>The destination map name of the warp.</source>
             <translation>ワープの移動先マップの名前です。</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="624" />
+            <location filename="../src/ui/eventframes.cpp" line="632" />
             <source>Destination Map</source>
             <translation>移動先マップ</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="630" />
+            <location filename="../src/ui/eventframes.cpp" line="638" />
             <source>The warp id on the destination map.</source>
             <translation>移動先マップ内のワープ ID です。</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="632" />
+            <location filename="../src/ui/eventframes.cpp" line="640" />
             <source>Destination Warp</source>
             <translation>移動先ワープ</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="636" />
+            <location filename="../src/ui/eventframes.cpp" line="644" />
             <source>Warning:
 This warp event is not positioned on a metatile with a warp behavior.
 Click this warning for more details.</source>
@@ -2897,87 +3578,87 @@ Click this warning for more details.</source>
 詳細はこの警告をクリックしてください。</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="733" />
+            <location filename="../src/ui/eventframes.cpp" line="741" />
             <source>The variable by which the script is triggered. The script is triggered when this variable's value matches 'Var Value'.</source>
             <translation>スクリプトの実行条件となる変数です。この変数が「変数の値」と一致すると実行します。</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="736" />
+            <location filename="../src/ui/eventframes.cpp" line="744" />
             <source>Var</source>
             <translation>変数</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="742" />
+            <location filename="../src/ui/eventframes.cpp" line="750" />
             <source>The variable's value that triggers the script.</source>
             <translation>スクリプトを実行する条件となる変数の値です。</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="744" />
+            <location filename="../src/ui/eventframes.cpp" line="752" />
             <source>Var Value</source>
             <translation>変数の値</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="812" />
+            <location filename="../src/ui/eventframes.cpp" line="820" />
             <source>The weather that starts when the player steps on this spot.</source>
             <translation>プレイヤーがこの場所に踏み入れたときに開始する天候です。</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="814" />
+            <location filename="../src/ui/eventframes.cpp" line="822" />
             <source>Weather</source>
             <translation>天候</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="861" />
+            <location filename="../src/ui/eventframes.cpp" line="869" />
             <source>The direction that the player must be facing to be able to interact with this event.</source>
             <translation>このイベントを調べるときに必要なプレイヤーの向きです。</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="863" />
+            <location filename="../src/ui/eventframes.cpp" line="871" />
             <source>Player Facing Direction</source>
             <translation>プレイヤーの向き</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="930" />
+            <location filename="../src/ui/eventframes.cpp" line="938" />
             <source>The item to be given.</source>
             <translation>入手するアイテムです。</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="932" />
+            <location filename="../src/ui/eventframes.cpp" line="940" />
             <source>Item</source>
             <translation>アイテム</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="938" />
+            <location filename="../src/ui/eventframes.cpp" line="946" />
             <source>The flag that is set when the hidden item is picked up.</source>
             <translation>隠しアイテムを拾ったときに立てるフラグです。</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="940" />
+            <location filename="../src/ui/eventframes.cpp" line="948" />
             <source>Flag</source>
             <translation>フラグ</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="948" />
+            <location filename="../src/ui/eventframes.cpp" line="956" />
             <source>The number of items received when the hidden item is picked up.</source>
             <translation>隠しアイテムを拾ったときに入手する個数です。</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="952" />
+            <location filename="../src/ui/eventframes.cpp" line="960" />
             <source>Quantity</source>
             <translation>個数</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="960" />
+            <location filename="../src/ui/eventframes.cpp" line="968" />
             <source>If checked, hidden item can only be picked up using the Itemfinder</source>
             <translation>ダウジングマシンを使用した場合のみ隠しアイテムを拾えるようにします。</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="962" />
+            <location filename="../src/ui/eventframes.cpp" line="970" />
             <source>Requires Itemfinder</source>
             <translation>ダウジングマシンが必要</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="1048" />
+            <location filename="../src/ui/eventframes.cpp" line="1056" />
             <source>The secret base id that is inside this secret base entrance. Secret base ids are meant to be unique to each and every secret base entrance.</source>
             <translation>この入口に対応するひみつきちの ID です。入口ごとに一意の ID を指定してください。</translation>
         </message>
@@ -3032,32 +3713,32 @@ Click this warning for more details.</source>
         </message>
         <message>
             <location filename="../src/core/events.cpp" line="137" />
-            <location filename="../src/ui/eventframes.cpp" line="1051" />
+            <location filename="../src/ui/eventframes.cpp" line="1059" />
             <source>Secret Base</source>
             <translation>ひみつきち</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="1100" />
+            <location filename="../src/ui/eventframes.cpp" line="1108" />
             <source>The unique identifier for this heal location.</source>
             <translation>この回復地点の一意な識別子です。</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="1111" />
+            <location filename="../src/ui/eventframes.cpp" line="1119" />
             <source>The map where the player will respawn after whiteout.</source>
             <translation>全滅後にプレイヤーが復帰するマップです。</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="1113" />
+            <location filename="../src/ui/eventframes.cpp" line="1121" />
             <source>Respawn Map</source>
             <translation>復帰先マップ</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="1121" />
+            <location filename="../src/ui/eventframes.cpp" line="1129" />
             <source>The Local ID name or number of the NPC the player interacts with upon respawning after whiteout.</source>
             <translation>全滅後の復帰時に対応する NPC のローカル ID の名前または番号です。</translation>
         </message>
         <message>
-            <location filename="../src/ui/eventframes.cpp" line="1124" />
+            <location filename="../src/ui/eventframes.cpp" line="1132" />
             <source>Respawn NPC</source>
             <translation>復帰先 NPC</translation>
         </message>
@@ -3861,271 +4542,366 @@ The specified layout width and height was: (%4 + %1) * (%5 + %2) = %6</source>
             <translation>ゲームのバージョン</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="32" />
+            <location filename="../src/core/visualeventscript.cpp" line="35" />
             <source>Show Message</source>
             <translation>文章の表示</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="33" />
+            <location filename="../src/core/visualeventscript.cpp" line="36" />
             <source>Ask Yes / No</source>
             <translation>選択肢の表示（はい／いいえ）</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="34" />
+            <location filename="../src/core/visualeventscript.cpp" line="37" />
             <source>Turn Flag ON</source>
             <translation>フラグを ON にする</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="35" />
+            <location filename="../src/core/visualeventscript.cpp" line="38" />
             <source>Turn Flag OFF</source>
             <translation>フラグを OFF にする</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="36" />
+            <location filename="../src/core/visualeventscript.cpp" line="39" />
             <source>Assign Variable</source>
             <translation>変数に代入</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="37" />
+            <location filename="../src/core/visualeventscript.cpp" line="40" />
             <source>Add to Variable</source>
             <translation>変数に加算</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="38" />
+            <location filename="../src/core/visualeventscript.cpp" line="41" />
             <source>Subtract from Variable</source>
             <translation>変数から減算</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="39" />
+            <location filename="../src/core/visualeventscript.cpp" line="42" />
             <source>If Flag</source>
             <translation>条件分岐（フラグ）</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="40" />
+            <location filename="../src/core/visualeventscript.cpp" line="43" />
             <source>If Variable</source>
             <translation>条件分岐（変数）</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="41" />
+            <location filename="../src/core/visualeventscript.cpp" line="44" />
             <source>Otherwise</source>
             <translation>それ以外の場合</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="42" />
+            <location filename="../src/core/visualeventscript.cpp" line="45" />
             <source>End Condition</source>
             <translation>分岐の終了</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="43" />
+            <location filename="../src/core/visualeventscript.cpp" line="46" />
             <source>Give Item</source>
             <translation>アイテムの入手</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="44" />
+            <location filename="../src/core/visualeventscript.cpp" line="47" />
             <source>Face Player</source>
             <translation>NPC をプレイヤーの方へ向ける</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="45" />
+            <location filename="../src/core/visualeventscript.cpp" line="48" />
+            <source>Move NPC / Player</source>
+            <translation>NPC・プレイヤーの移動</translation>
+        </message>
+        <message>
+            <location filename="../src/core/visualeventscript.cpp" line="49" />
+            <source>Transfer to Map</source>
+            <translation>ワープ・マップ移動</translation>
+        </message>
+        <message>
+            <location filename="../src/core/visualeventscript.cpp" line="50" />
+            <source>Hide NPC</source>
+            <translation>NPCを非表示にする</translation>
+        </message>
+        <message>
+            <location filename="../src/core/visualeventscript.cpp" line="51" />
+            <source>Wild Pokemon Battle</source>
+            <translation>野生ポケモンとの戦闘</translation>
+        </message>
+        <message>
+            <location filename="../src/core/visualeventscript.cpp" line="52" />
+            <source>Trainer Battle</source>
+            <translation>トレーナーとの戦闘</translation>
+        </message>
+        <message>
+            <location filename="../src/core/visualeventscript.cpp" line="53" />
+            <source>Check Trainer Defeated</source>
+            <translation>トレーナーの戦闘済み状態を取得</translation>
+        </message>
+        <message>
+            <location filename="../src/core/visualeventscript.cpp" line="54" />
+            <source>Heal Party Pokemon</source>
+            <translation>手持ちポケモンを回復</translation>
+        </message>
+        <message>
+            <location filename="../src/core/visualeventscript.cpp" line="55" />
+            <source>Give Pokemon</source>
+            <translation>ポケモンを入手</translation>
+        </message>
+        <message>
+            <location filename="../src/core/visualeventscript.cpp" line="56" />
+            <source>Give Pokemon Egg</source>
+            <translation>タマゴを入手</translation>
+        </message>
+        <message>
+            <location filename="../src/core/visualeventscript.cpp" line="57" />
+            <source>Select / Modify Party Pokemon</source>
+            <translation>手持ちポケモンを選択・操作</translation>
+        </message>
+        <message>
+            <location filename="../src/core/visualeventscript.cpp" line="58" />
             <source>Wait Frames</source>
             <translation>待機（フレーム）</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="46" />
+            <location filename="../src/core/visualeventscript.cpp" line="59" />
             <source>Play Sound Effect</source>
             <translation>効果音の再生</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="47" />
+            <location filename="../src/core/visualeventscript.cpp" line="60" />
             <source>Play BGM</source>
             <translation>BGM の再生</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="48" />
+            <location filename="../src/core/visualeventscript.cpp" line="61" />
             <source>End Script</source>
             <translation>スクリプトの終了</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="197" />
+            <location filename="../src/core/visualeventscript.cpp" line="145" />
+            <source>Choose a valid movement route (1 to 256 steps; waits of 1, 2, 4, 8 or 16 frames).</source>
+            <translation>移動ルートは1～256ステップにしてください。待機は1・2・4・8・16フレームから指定できます。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/visualeventscript.cpp" line="276" />
             <source>Cannot read a script source: %1</source>
             <translation>スクリプトのソースを読み込めません: %1</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="226" />
+            <location filename="../src/core/visualeventscript.cpp" line="305" />
             <source>The script label is defined more than once.</source>
             <translation>同じスクリプトラベルが複数の場所で定義されています。</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="230" />
+            <location filename="../src/core/visualeventscript.cpp" line="309" />
             <source>The script source must be an .inc or .pory file inside this project.</source>
             <translation>編集対象は、このプロジェクト内の .inc または .pory ソースにしてください。</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="234" />
+            <location filename="../src/core/visualeventscript.cpp" line="313" />
             <source>Poryscript is enabled, but its .pory source was not found. Generated .inc files cannot be edited.</source>
             <translation>Poryscript が有効ですが、元の .pory ファイルが見つかりません。生成された .inc は編集できません。</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="239" />
+            <location filename="../src/core/visualeventscript.cpp" line="318" />
             <source>The source is unreadable or is not valid UTF-8. Use the external editor to preserve its encoding.</source>
             <translation>ソースを読み込めないか、UTF-8 以外の文字コードです。文字コードを保持するため外部エディターを使用してください。</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="243" />
+            <location filename="../src/core/visualeventscript.cpp" line="322" />
             <source>This .inc was generated from Poryscript. Its .pory source is required for editing.</source>
             <translation>この .inc は Poryscript から生成されています。編集するには元の .pory ファイルが必要です。</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="257" />
+            <location filename="../src/core/visualeventscript.cpp" line="336" />
             <source>The visual editor block is incomplete or duplicated.</source>
             <translation>ビジュアルエディターの編集範囲が不完全、または重複しています。</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="260" />
-            <location filename="../src/core/visualeventscript.cpp" line="277" />
+            <location filename="../src/core/visualeventscript.cpp" line="339" />
+            <location filename="../src/core/visualeventscript.cpp" line="356" />
             <source>The script is not at a safe top-level editing position.</source>
             <translation>文字列・スクリプト・マクロ・条件の外側であることを確認できないため、安全に編集できません。</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="268" />
+            <location filename="../src/core/visualeventscript.cpp" line="347" />
             <source>This visual editor data version is unsupported or damaged.</source>
             <translation>再編集用のデータが未対応のバージョン、または破損しています。</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="272" />
+            <location filename="../src/core/visualeventscript.cpp" line="351" />
             <source>This script was changed outside the visual editor. It is read-only to preserve those changes.</source>
             <translation>外部でスクリプトが変更されています。変更を保護するため、読み取り専用で開きます。</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="281" />
+            <location filename="../src/core/visualeventscript.cpp" line="360" />
             <source>This existing script is not a visual editor script. Open it in the external editor.</source>
             <translation>この既存スクリプトは初期版では GUI に読み込めません。外部エディターで編集してください。</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="294" />
+            <location filename="../src/core/visualeventscript.cpp" line="373" />
             <source>A UTF-8 charmap.txt is required to validate dialogue in this project.</source>
             <translation>会話文を検証するには、プロジェクト直下に UTF-8 の charmap.txt が必要です。</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="307" />
+            <location filename="../src/core/visualeventscript.cpp" line="386" />
             <source>Dialogue contains a reserved terminator or unsupported control character.</source>
             <translation>会話文に終端記号「$」または未対応の制御文字が含まれています。</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="310" />
+            <location filename="../src/core/visualeventscript.cpp" line="389" />
             <source>Character or control code is missing from charmap.txt near: %1</source>
             <translation>charmap.txt にない文字・制御コードがあります。該当箇所: %1</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="311" />
+            <location filename="../src/core/visualeventscript.cpp" line="390" />
             <source>Dialogue exceeds 1000 encoded bytes. Split it into multiple Show Message commands.</source>
             <translation>会話文がゲーム用文字コードで 1000 バイトを超えています。複数の「文章の表示」に分けてください。</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="317" />
+            <location filename="../src/core/visualeventscript.cpp" line="397" />
             <source>Use a valid script label. Existing labels cannot be renamed here.</source>
             <translation>ラベルには半角英字・数字・アンダースコアを使用し、数字以外で始めてください。保存済みラベルの名前変更には対応していません。</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="318" />
+            <location filename="../src/core/visualeventscript.cpp" line="398" />
             <source>The last command must be End Script (maximum 1000 commands).</source>
             <translation>最後に「スクリプトの終了」を配置してください。コマンドは最大 1000 個です。</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="321" />
+            <location filename="../src/core/visualeventscript.cpp" line="402" />
             <source>This label or its generated labels conflict with another script.</source>
             <translation>このラベル、または生成する補助ラベルが他のスクリプトと重複します。</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="325" />
-            <location filename="../src/core/visualeventscript.cpp" line="326" />
-            <location filename="../src/core/visualeventscript.cpp" line="327" />
-            <location filename="../src/core/visualeventscript.cpp" line="328" />
+            <location filename="../src/core/visualeventscript.cpp" line="396" />
+            <location filename="../src/core/visualeventscript.cpp" line="409" />
+            <location filename="../src/core/visualeventscript.cpp" line="434" />
+            <location filename="../src/core/visualeventscript.cpp" line="435" />
+            <location filename="../src/core/visualeventscript.cpp" line="436" />
+            <location filename="../src/core/visualeventscript.cpp" line="437" />
             <source>Unsupported event command.</source>
             <translation>未対応のイベントコマンド、または不正なパラメーターがあります。</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="329" />
-            <location filename="../src/core/visualeventscript.cpp" line="330" />
+            <location filename="../src/core/visualeventscript.cpp" line="422" />
+            <source>Cannot read this project's movement macros.</source>
+            <translation>このプロジェクトの移動マクロを読み込めません。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/visualeventscript.cpp" line="425" />
+            <source>A required movement is missing from this project: %1</source>
+            <translation>このプロジェクトに必要な移動コマンドがありません: %1</translation>
+        </message>
+        <message>
+            <location filename="../src/core/visualeventscript.cpp" line="433" />
+            <source>Choose a known destination map and coordinates within its layout.</source>
+            <translation>プロジェクト内の移動先マップと、その範囲内の座標を選択してください。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/visualeventscript.cpp" line="438" />
+            <location filename="../src/core/visualeventscript.cpp" line="439" />
             <source>Choose a constant name or an integer from 0 to 65535.</source>
             <translation>定数名、または 0～65535 の整数を入力してください。</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="332" />
+            <location filename="../src/core/visualeventscript.cpp" line="441" />
             <source>Enter dialogue text (up to 8192 characters).</source>
             <translation>会話文を入力してください（最大 8192 文字）。</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="335" />
+            <location filename="../src/core/visualeventscript.cpp" line="444" />
             <source>Select ON or OFF for the flag condition.</source>
             <translation>フラグの条件には ON または OFF を指定してください。</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="336" />
+            <location filename="../src/core/visualeventscript.cpp" line="445" />
             <source>Select a valid comparison.</source>
             <translation>比較方法を選択してください。</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="338" />
+            <location filename="../src/core/visualeventscript.cpp" line="447" />
             <source>Conditions may be nested at most 16 levels deep.</source>
             <translation>条件分岐は最大 16 段まで入れ子にできます。</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="340" />
+            <location filename="../src/core/visualeventscript.cpp" line="449" />
             <source>Otherwise must occur once inside a condition.</source>
             <translation>「それ以外の場合」は、各条件分岐内に 1 回だけ配置できます。</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="344" />
+            <location filename="../src/core/visualeventscript.cpp" line="453" />
             <source>End Condition has no matching condition.</source>
             <translation>「分岐の終了」に対応する条件分岐がありません。</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="347" />
+            <location filename="../src/core/visualeventscript.cpp" line="456" />
             <source>End Script must occur once, outside conditions, at the end.</source>
             <translation>「スクリプトの終了」は、分岐の外側の末尾に 1 回だけ配置してください。</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="349" />
+            <location filename="../src/core/visualeventscript.cpp" line="458" />
             <source>Close every condition with End Condition.</source>
             <translation>すべての条件分岐を「分岐の終了」で閉じてください。</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="352" />
+            <location filename="../src/core/visualeventscript.cpp" line="461" />
             <source>Cannot verify this project's asm/macros/event.inc commands.</source>
             <translation>プロジェクトの asm/macros/event.inc を確認できません。</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="365" />
+            <location filename="../src/core/visualeventscript.cpp" line="478" />
             <source>A required script command is missing from this project: %1</source>
             <translation>このプロジェクトに必要なスクリプトコマンドが見つかりません: %1</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="433" />
+            <location filename="../src/core/visualeventscript.cpp" line="565" />
             <source>The script path is outside the project.</source>
             <translation>スクリプトのパスがプロジェクトの外側を指しています。</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="435" />
+            <location filename="../src/core/visualeventscript.cpp" line="577" />
+            <source>Pending scripts use different source versions. Reopen the editor before saving.</source>
+            <translation>保存待ちのスクリプト間で元ファイルの内容が一致しません。変更内容を控えてからエディタを開き直してください。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/visualeventscript.cpp" line="584" />
+            <source>Visual script editing ranges overlap.</source>
+            <translation>ビジュアルイベントの編集範囲が重複しています。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/visualeventscript.cpp" line="602" />
+            <source>The transaction contains an unsafe or duplicate file path.</source>
+            <translation>保存先のパスがプロジェクト外、または重複しています。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/visualeventscript.cpp" line="612" />
             <source>Another visual editor is saving this script.</source>
             <translation>他のビジュアルエディターがこのスクリプトを保存しています。</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="438" />
-            <location filename="../src/core/visualeventscript.cpp" line="459" />
+            <location filename="../src/core/visualeventscript.cpp" line="615" />
             <source>The source file changed after opening. Close and reopen the editor before saving.</source>
             <translation>開いた後にソースファイルが変更されました。一度閉じてから開き直してください。</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="452" />
+            <location filename="../src/core/visualeventscript.cpp" line="621" />
             <source>Could not create the backup. Nothing was saved.</source>
             <translation>バックアップを作成できなかったため、保存していません。</translation>
         </message>
         <message>
-            <location filename="../src/core/visualeventscript.cpp" line="456" />
-            <location filename="../src/core/visualeventscript.cpp" line="460" />
-            <source>Could not save the script atomically. The original file is preserved.</source>
-            <translation>スクリプトを安全に保存できませんでした。元ファイルは保持されています。</translation>
+            <location filename="../src/core/visualeventscript.cpp" line="626" />
+            <source>Could not prepare the save. The original files are preserved.</source>
+            <translation>保存の準備に失敗しました。元のファイルは変更されていません。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/visualeventscript.cpp" line="644" />
+            <source>Save failed. Original files were restored; your edits remain unsaved.</source>
+            <translation>保存に失敗しました。元のファイルに復元し、編集内容は未保存のまま保持しています。</translation>
+        </message>
+        <message>
+            <location filename="../src/core/visualeventscript.cpp" line="645" />
+            <source>Save failed and automatic recovery was incomplete. Keep the unsaved edits and recover from these backups: %1</source>
+            <translation>保存に失敗し、自動復元も完了しませんでした。未保存の編集内容を控え、次のバックアップから復元してください: %1</translation>
         </message>
     </context>
     <context>
@@ -4392,6 +5168,21 @@ The specified layout width and height was: (%4 + %1) * (%5 + %2) = %6</source>
             <location filename="../forms/preferenceeditor.ui" line="467" />
             <source>e.g. code --goto %F:%L</source>
             <translation>例: code --goto %F:%L</translation>
+        </message>
+    </context>
+    <context>
+        <name>Project</name>
+        <message>
+            <location filename="../src/project.cpp" line="1361" />
+            <source>Cannot read the map before staging event commands.</source>
+            <translation>イベントコマンドの適用前にマップファイルを読み込めませんでした。</translation>
+        </message>
+        <message>
+            <location filename="../src/project.cpp" line="1354" />
+            <location filename="../src/project.cpp" line="1368" />
+            <location filename="../src/project.cpp" line="1372" />
+            <source>This script label is already used by another pending event.</source>
+            <translation>このスクリプトラベルは、別の保存待ちイベントで使用されています。</translation>
         </message>
     </context>
     <context>
@@ -5851,210 +6642,544 @@ The specified layout width and height was: (%4 + %1) * (%5 + %2) = %6</source>
     <context>
         <name>VisualEventEditor</name>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="52" />
-            <location filename="../src/ui/visualeventeditor.cpp" line="242" />
-            <location filename="../src/ui/visualeventeditor.cpp" line="251" />
-            <location filename="../src/ui/visualeventeditor.cpp" line="255" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="56" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="303" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="305" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="314" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="318" />
             <source>Visual Event Editor</source>
             <translation>ビジュアルイベントエディター</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="58" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="62" />
             <source>Script Label</source>
             <translation>スクリプトラベル</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="60" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="64" />
             <source>Source File</source>
             <translation>保存先のソース</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="62" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="66" />
             <source>Lock player movement while this event runs</source>
             <translation>イベントの実行中はプレイヤーの移動を固定する</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="66" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="70" />
             <source>Event Commands</source>
             <translation>イベントコマンド一覧</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="69" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="71" />
+            <source>All Commands</source>
+            <translation>すべてのコマンド</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventeditor.cpp" line="71" />
+            <source>Basic Event Commands</source>
+            <translation>基本イベント</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventeditor.cpp" line="78" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="303" />
+            <source>Trainer battles must be edited from an NPC event.</source>
+            <translation>トレーナー戦はNPCのイベントから編集してください。</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventeditor.cpp" line="81" />
             <source>Add Command</source>
             <translation>コマンドを追加</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="71" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="82" />
+            <source>Event Templates</source>
+            <translation>イベントテンプレート</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventeditor.cpp" line="83" />
+            <source>Pokemon Event Templates</source>
+            <translation>ポケモンイベントのテンプレート</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventeditor.cpp" line="85" />
             <source>Processing Order</source>
             <translation>イベントの処理順</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="77" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="91" />
             <source>Delete Command</source>
             <translation>削除</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="78" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="92" />
             <source>Duplicate Command</source>
             <translation>複製</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="79" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="93" />
             <source>Move Up</source>
             <translation>上へ</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="80" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="94" />
             <source>Move Down</source>
             <translation>下へ</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="83" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="97" />
             <source>Command Settings</source>
             <translation>コマンドの設定</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="87" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="100" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="108" />
+            <source>Search Constants</source>
+            <translation>定数を検索</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventeditor.cpp" line="102" />
             <source>Equal to</source>
             <translation>等しい</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="87" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="102" />
             <source>Not equal to</source>
             <translation>等しくない</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="88" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="103" />
             <source>Less than</source>
             <translation>より小さい</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="88" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="103" />
             <source>Greater than</source>
             <translation>より大きい</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="89" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="104" />
             <source>Less than or equal to</source>
             <translation>以下</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="89" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="104" />
             <source>Greater than or equal to</source>
             <translation>以上</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="94" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="109" />
+            <source>Edit Movement Route</source>
+            <translation>移動ルートを設定</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventeditor.cpp" line="110" />
+            <source>Choose Destination</source>
+            <translation>移動先を選択</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventeditor.cpp" line="111" />
+            <source>Pokemon Event Settings</source>
+            <translation>ポケモンイベントの設定</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventeditor.cpp" line="113" />
             <source>Enter dialogue with line breaks. Use \l and \p to scroll or start a paragraph. Yes / No stores 1 / 0 in VAR_RESULT; branch with If Variable. Text is checked against the project's charmap.txt.</source>
             <translation>改行して会話文を入力できます。\l はスクロール、\p はページ送りです。「はい／いいえ」の結果は VAR_RESULT に 1／0 で入り、「条件分岐（変数）」で判定できます。会話文はプロジェクトの charmap.txt で確認します。</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="101" />
-            <location filename="../src/ui/visualeventeditor.cpp" line="103" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="120" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="122" />
             <source>Undo</source>
             <translation>元に戻す</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="102" />
-            <location filename="../src/ui/visualeventeditor.cpp" line="104" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="121" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="123" />
             <source>Redo</source>
             <translation>やり直す</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="106" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="125" />
             <source>Open in External Editor</source>
             <translation>外部エディターで開く</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="107" />
-            <location filename="../src/ui/visualeventeditor.cpp" line="243" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="126" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="306" />
             <source>Preview Generated Script</source>
             <translation>生成スクリプトのプレビュー</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="108" />
-            <source>Review and Save</source>
-            <translation>確認して保存</translation>
+            <location filename="../src/ui/visualeventeditor.cpp" line="127" />
+            <source>Review and Apply</source>
+            <translation>内容を確認して適用</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="109" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="150" />
+            <source>Apply keeps these commands in Porymap. Save the map to write both its Script reference and script source together.</source>
+            <translation>適用したコマンドはPorymap内に保持されます。マップを保存すると、Script参照とスクリプトをまとめて書き込みます。</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventeditor.cpp" line="308" />
+            <source>Apply these commands, then save the map in Porymap. Script sources and map references are saved together with backups. Cancel leaves the files unchanged.</source>
+            <translation>コマンドを適用した後、Porymapでマップを保存してください。スクリプトとマップの参照をまとめて保存し、バックアップも作成します。キャンセル時はファイルを変更しません。</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventeditor.cpp" line="128" />
             <source>Cancel</source>
             <translation>キャンセル</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="121" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="149" />
             <source>Save this new map in Porymap before editing its script.</source>
             <translation>新規マップは先に Porymap で保存してからスクリプトを編集してください。</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="122" />
-            <source>Edits stay in this window until you review and save. The map's script reference is saved with the map.</source>
-            <translation>「確認して保存」まではファイルを変更しません。ラベルの関連付けは、最後に Porymap でマップを保存すると反映されます。</translation>
-        </message>
-        <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="192" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="242" />
             <source>ON</source>
             <translation>ON</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="192" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="242" />
             <source>OFF</source>
             <translation>OFF</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="201" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="251" />
             <source>Flag</source>
             <translation>フラグ</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="201" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="251" />
             <source>Variable</source>
             <translation>変数</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="201" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="251" />
             <source>Item</source>
             <translation>アイテム</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="201" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="251" />
             <source>BGM</source>
             <translation>BGM</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="201" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="251" />
             <source>Sound Effect</source>
             <translation>効果音</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="201" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="251" />
             <source>Frames</source>
             <translation>フレーム数</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="203" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="252" />
+            <source>Target Local ID</source>
+            <translation>参照先のローカル ID</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventeditor.cpp" line="253" />
+            <source>Destination Map</source>
+            <translation>移動先マップ</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventeditor.cpp" line="260" />
             <source>1 = ON, 0 = OFF</source>
             <translation>フラグの状態（ON／OFF）</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="203" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="260" />
             <source>Quantity</source>
             <translation>個数</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="203" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="260" />
             <source>Value</source>
             <translation>値</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="245" />
-            <source>Only this event's visual editor block will be saved. A backup of the original file is created before replacement.</source>
-            <translation>このイベントの編集範囲だけを保存し、置き換え前のファイルをバックアップします。同じラベルを参照するイベントにも変更が反映されます。</translation>
+            <location filename="../src/ui/visualeventeditor.cpp" line="311" />
+            <source>Apply</source>
+            <translation>適用</translation>
         </message>
         <message>
-            <location filename="../src/ui/visualeventeditor.cpp" line="255" />
+            <location filename="../src/ui/visualeventeditor.cpp" line="318" />
             <source>Discard the unsaved event command edits?</source>
             <translation>保存していないイベントコマンドの変更を破棄しますか？</translation>
+        </message>
+    </context>
+    <context>
+        <name>VisualEventTools</name>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="18" />
+            <source>Search Project Constants</source>
+            <translation>プロジェクト内の定数を検索</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="20" />
+            <source>Filter by name or value</source>
+            <translation>名前・値で絞り込み</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="21" />
+            <location filename="../src/ui/visualeventtools.cpp" line="44" />
+            <source>Constant</source>
+            <translation>定数名</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="21" />
+            <location filename="../src/ui/visualeventtools.cpp" line="44" />
+            <source>Definition File</source>
+            <translation>定義ファイル</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="21" />
+            <location filename="../src/ui/visualeventtools.cpp" line="44" />
+            <source>Value / Expression</source>
+            <translation>値・式</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="44" />
+            <source>Display Name</source>
+            <translation>表示名</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="54" />
+            <source>Values are source expressions, not evaluated numbers. Only constant identifiers are inserted; the project's build tools resolve them.</source>
+            <translation>値は定義元の式を表示しています。入力欄には定数名を挿入し、式はプロジェクトのビルド時に評価されます。</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="65" />
+            <source>Player</source>
+            <translation>プレイヤー</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="65" />
+            <source>NPC being spoken to</source>
+            <translation>話しかけているNPC</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="79" />
+            <location filename="../src/ui/visualeventtools.cpp" line="123" />
+            <source>Movement Route</source>
+            <translation>移動ルート</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="81" />
+            <location filename="../src/ui/visualeventtools.cpp" line="151" />
+            <source>Target</source>
+            <translation>対象</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="89" />
+            <location filename="../src/ui/visualeventtools.cpp" line="98" />
+            <source>Down</source>
+            <translation>下</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="89" />
+            <location filename="../src/ui/visualeventtools.cpp" line="98" />
+            <source>Up</source>
+            <translation>上</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="89" />
+            <location filename="../src/ui/visualeventtools.cpp" line="98" />
+            <source>Left</source>
+            <translation>左</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="89" />
+            <location filename="../src/ui/visualeventtools.cpp" line="98" />
+            <source>Right</source>
+            <translation>右</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="90" />
+            <source>Wait %1 frames</source>
+            <translation>%1フレーム待機</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="91" />
+            <source>Face %1</source>
+            <translation>%1を向く</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="91" />
+            <source>Walk %1 (%2)</source>
+            <translation>%1へ移動（%2）</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="91" />
+            <location filename="../src/ui/visualeventtools.cpp" line="99" />
+            <source>Slow</source>
+            <translation>低速</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="91" />
+            <location filename="../src/ui/visualeventtools.cpp" line="99" />
+            <source>Fast</source>
+            <translation>高速</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="91" />
+            <location filename="../src/ui/visualeventtools.cpp" line="99" />
+            <source>Normal</source>
+            <translation>通常</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="96" />
+            <source>Walk</source>
+            <translation>移動</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="96" />
+            <source>Change Facing</source>
+            <translation>向きの変更</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="96" />
+            <source>Wait</source>
+            <translation>待機</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="96" />
+            <source>Action</source>
+            <translation>動作</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="98" />
+            <source>Direction</source>
+            <translation>方向</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="99" />
+            <source>Speed</source>
+            <translation>速度</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="100" />
+            <source>Steps / Wait Frames</source>
+            <translation>歩数・待機フレーム</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="104" />
+            <source>Add Step</source>
+            <translation>ステップを追加</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="105" />
+            <source>Update Step</source>
+            <translation>選択ステップを更新</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="106" />
+            <source>Delete Step</source>
+            <translation>ステップを削除</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="107" />
+            <source>Move Up</source>
+            <translation>上へ</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="107" />
+            <source>Move Down</source>
+            <translation>下へ</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="116" />
+            <source>Movement completes before the next command. Wait frames: 1, 2, 4, 8 or 16. Blocked tiles can prevent movement; check the route in game.</source>
+            <translation>移動完了後に次のコマンドへ進みます。待機は1・2・4・8・16フレームです。障害物で移動できなくなることがあるため、ゲーム内で確認してください。</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="129" />
+            <source>Transfer to Map</source>
+            <translation>ワープ・マップ移動</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="134" />
+            <source>Destination Map</source>
+            <translation>移動先マップ</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="135" />
+            <source>X Coordinate</source>
+            <translation>X座標</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="135" />
+            <source>Y Coordinate</source>
+            <translation>Y座標</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="138" />
+            <source>Coordinates start at 0. Map transfer ends this event. Choose a walkable tile and check collision and story conditions in game.</source>
+            <translation>座標は0から始まります。マップ移動でこのイベントは終了します。歩けるマスを選び、通行設定や進行状況との整合性をゲーム内で確認してください。</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="144" />
+            <location filename="../src/ui/visualeventtools.cpp" line="162" />
+            <source>Event Templates</source>
+            <translation>イベントテンプレート</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="146" />
+            <source>Pick Up Item</source>
+            <translation>アイテムを拾う</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="146" />
+            <source>One-time Conversation</source>
+            <translation>一度だけ発生する会話</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="146" />
+            <source>NPC Disappears</source>
+            <translation>NPCが消える</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="146" />
+            <source>Template</source>
+            <translation>テンプレート</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="149" />
+            <source>Search Constants</source>
+            <translation>定数を検索</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="149" />
+            <source>Persistent Flag (choose an unused flag)</source>
+            <translation>記録用フラグ（未使用のものを選択）</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="151" />
+            <source>Item</source>
+            <translation>アイテム</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="152" />
+            <source>Dialogue</source>
+            <translation>会話文</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="153" />
+            <source>Assign this flag to the selected NPC to keep it hidden on return</source>
+            <translation>このフラグを選択中のNPCにも設定し、マップに戻ったときも非表示にする</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="154" />
+            <source>Commands are inserted before End Script and can be edited afterwards. Use a persistent, unused flag. Item pickup sets the flag only when the bag accepts the item.</source>
+            <translation>「スクリプトの終了」の直前に追加します。追加後の編集も可能です。記録用には未使用の永続フラグを選んでください。アイテム取得時は、バッグに入った場合だけフラグをONにします。</translation>
+        </message>
+        <message>
+            <location filename="../src/ui/visualeventtools.cpp" line="162" />
+            <source>Choose a persistent FLAG_ constant and enter dialogue when needed. Automatic NPC flag assignment requires the NPC being spoken to as the target.</source>
+            <translation>一時フラグ以外のFLAG_定数を選び、会話が必要な場合は文章を入力してください。NPCのフラグを自動設定する場合、対象は「話しかけているNPC」にしてください。</translation>
         </message>
     </context>
     <context>

@@ -535,6 +535,12 @@ QHash<QString, int> ParseUtil::readCDefinesByRegex(const QString &filename, cons
 QStringList ParseUtil::readCDefineNames(const QString &filename, const QSet<QString> &regexList, QString *error) {
     return readCDefines(filename, regexList, true, error).filteredNames;
 }
+QHash<QString, QString> ParseUtil::readCDefineExpressions(const QString &filename, const QSet<QString> &regexList, QString *error) {
+    const auto defines = readCDefines(filename, regexList, true, error);
+    QHash<QString, QString> result;
+    for (const auto &name : defines.filteredNames) result.insert(name, defines.expressions.value(name));
+    return result;
+}
 
 // Find any defines in the specified file and save their expressions.
 // If any of these defines are encountered later by other define parsing functions then they'll be recognized and evaluated.

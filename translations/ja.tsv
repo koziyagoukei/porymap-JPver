@@ -986,3 +986,211 @@ Failed to create map. See %1 for details.	マップを作成できませんで�
 <html><head/><body><p>Width (in metatiles) of the new map.</p></body></html>	<html><head/><body><p>新規マップの幅をメタタイル単位で指定します。</p></body></html>
 <html><head/><body><p>Width of the output image in metatiles.</p></body></html>	<html><head/><body><p>出力画像の幅をメタタイル単位で指定します。</p></body></html>
 <html><head/><body><p>Width of the output image in pixels. Automatically rounded up to a multiple of a metatile's pixel width.</p></body></html>	<html><head/><body><p>出力画像の幅をピクセル単位で指定します。メタタイルの幅の倍数に自動的に切り上げます。</p></body></html>
+Move NPC / Player	NPC・プレイヤーの移動
+Transfer to Map	ワープ・マップ移動
+Hide NPC	NPCを非表示にする
+Choose a valid movement route (1 to 256 steps; waits of 1, 2, 4, 8 or 16 frames).	移動ルートは1～256ステップにしてください。待機は1・2・4・8・16フレームから指定できます。
+Cannot read this project's movement macros.	このプロジェクトの移動マクロを読み込めません。
+A required movement is missing from this project: %1	このプロジェクトに必要な移動コマンドがありません: %1
+Choose a known destination map and coordinates within its layout.	プロジェクト内の移動先マップと、その範囲内の座標を選択してください。
+Pending scripts use different source versions. Reopen the editor before saving.	保存待ちのスクリプト間で元ファイルの内容が一致しません。変更内容を控えてからエディタを開き直してください。
+Visual script editing ranges overlap.	ビジュアルイベントの編集範囲が重複しています。
+The transaction contains an unsafe or duplicate file path.	保存先のパスがプロジェクト外、または重複しています。
+Could not prepare the save. The original files are preserved.	保存の準備に失敗しました。元のファイルは変更されていません。
+Save failed. Original files were restored; your edits remain unsaved.	保存に失敗しました。元のファイルに復元し、編集内容は未保存のまま保持しています。
+Save failed and automatic recovery was incomplete. Keep the unsaved edits and recover from these backups: %1	保存に失敗し、自動復元も完了しませんでした。未保存の編集内容を控え、次のバックアップから復元してください: %1
+Cannot read the map before staging event commands.	イベントコマンドの適用前にマップファイルを読み込めませんでした。
+This script label is already used by another pending event.	このスクリプトラベルは、別の保存待ちイベントで使用されています。
+Event Templates	イベントテンプレート
+Search Constants	定数を検索
+Edit Movement Route	移動ルートを設定
+Choose Destination	移動先を選択
+Review and Apply	内容を確認して適用
+Apply keeps these commands in Porymap. Save the map to write both its Script reference and script source together.	適用したコマンドはPorymap内に保持されます。マップを保存すると、Script参照とスクリプトをまとめて書き込みます。
+Apply these commands, then save the map in Porymap. Script sources and map references are saved together with backups. Cancel leaves the files unchanged.	コマンドを適用した後、Porymapでマップを保存してください。スクリプトとマップの参照をまとめて保存し、バックアップも作成します。キャンセル時はファイルを変更しません。
+Search Project Constants	プロジェクト内の定数を検索
+Filter by name or value	名前・値で絞り込み
+Constant	定数名
+Definition File	定義ファイル
+Unresolved	未解決
+Only constant identifiers are inserted. Unresolved values are left to the project's build tools.	入力欄には定数名を挿入します。値を解決できない定数は、プロジェクトのビルド時に評価されます。
+Player	プレイヤー
+NPC being spoken to	話しかけているNPC
+Movement Route	移動ルート
+Target	対象
+Wait %1 frames	%1フレーム待機
+Face %1	%1を向く
+Walk %1 (%2)	%1へ移動（%2）
+Slow	低速
+Fast	高速
+Walk	移動
+Change Facing	向きの変更
+Wait	待機
+Action	動作
+Speed	速度
+Steps / Wait Frames	歩数・待機フレーム
+Add Step	ステップを追加
+Update Step	選択ステップを更新
+Delete Step	ステップを削除
+Movement completes before the next command. Wait frames: 1, 2, 4, 8 or 16. Blocked tiles can prevent movement; check the route in game.	移動完了後に次のコマンドへ進みます。待機は1・2・4・8・16フレームです。障害物で移動できなくなることがあるため、ゲーム内で確認してください。
+X Coordinate	X座標
+Y Coordinate	Y座標
+Coordinates start at 0. Choose a walkable destination tile; collision and story conditions must be checked in game.	座標は0から始まります。歩けるマスを指定し、通行設定や進行状況との整合性をゲーム内で確認してください。
+Pick Up Item	アイテムを拾う
+One-time Conversation	一度だけ発生する会話
+NPC Disappears	NPCが消える
+Template	テンプレート
+Persistent Flag (choose an unused flag)	記録用フラグ（未使用のものを選択）
+Dialogue	会話文
+Assign this flag to the selected NPC to keep it hidden on return	このフラグを選択中のNPCにも設定し、マップに戻ったときも非表示にする
+Commands are inserted before End Script and can be edited afterwards. Use a persistent, unused flag. Item pickup sets the flag only when the bag accepts the item.	「スクリプトの終了」の直前に追加します。追加後の編集も可能です。記録用には未使用の永続フラグを選んでください。アイテム取得時は、バッグに入った場合だけフラグをONにします。
+Choose a persistent FLAG_ constant and enter dialogue when needed. Automatic NPC flag assignment requires the NPC being spoken to as the target.	一時フラグ以外のFLAG_定数を選び、会話が必要な場合は文章を入力してください。NPCのフラグを自動設定する場合、対象は「話しかけているNPC」にしてください。
+Value / Expression	値・式
+Apply	適用
+Values are source expressions, not evaluated numbers. Only constant identifiers are inserted; the project's build tools resolve them.	値は定義元の式を表示しています。入力欄には定数名を挿入し、式はプロジェクトのビルド時に評価されます。
+Coordinates start at 0. Map transfer ends this event. Choose a walkable tile and check collision and story conditions in game.	座標は0から始まります。マップ移動でこのイベントは終了します。歩けるマスを選び、通行設定や進行状況との整合性をゲーム内で確認してください。
+A required engine macro is unavailable: %1	必要なイベントマクロがありません: %1
+The required macro signature, special or C implementation could not be verified for: %1	必要なマクロの引数、special、またはC実装を確認できませんでした: %1
+Battles	戦闘
+Pokemon Healing	ポケモンの回復
+Pokemon Gifts	ポケモンの入手
+Party Pokemon	ポケモンの操作
+Invalid Pokemon command data.	ポケモン用コマンドのデータが不正です。
+Enter a constant identifier for species, item, trainer or move.	種族・持ち物・トレーナー・技には定数名を入力してください。
+The level must be an integer from 1 to 100.	レベルは1～100の整数で指定してください。
+Choose a result variable from VAR_0x8008 to VAR_0x800B.	結果の保存先はVAR_0x8008～VAR_0x800Bから選択してください。
+Choose an unused persistent FLAG_ constant.	未使用の永続フラグ（FLAG_定数）を指定してください。
+The healing animation macros are unavailable.	回復演出に必要なマクロがありません。
+Enter the trainer's intro, defeat dialogue and, for doubles, the insufficient-party dialogue.	トレーナーの開始前・敗北時の台詞を入力してください。ダブルバトルでは手持ち不足時の台詞も必要です。
+This project's rematch macro is unavailable.	このプロジェクトの再戦マクロを確認できませんでした。
+Official rematches use the engine's rematch table. Distinct first-victory dialogue is only available for normal trainer battles.	公式の再戦処理はゲーム側の再戦表を使用します。初勝利専用の台詞は通常のトレーナー戦で設定できます。
+The project's givemon signature changed. Reconfigure this Pokemon command.	givemonの引数が変更されています。このポケモン用コマンドを設定し直してください。
+The safe nickname workflow is unavailable or its wait behavior changed.	安全なニックネーム設定処理を確認できないか、待機方法が変更されています。
+Detailed Pokemon creation requires a verified extended givemon implementation.	ポケモン生成の詳細設定には、確認済みの拡張givemon実装が必要です。
+Invalid detailed Pokemon parameter.	ポケモンの詳細パラメーターが不正です。
+This engine's shiny override accepts only 0 or 1; leave it blank for normal generation.	この実装で色違いを固定する値は0または1です。通常の生成方法に従う場合は既定値にしてください。
+IV, EV, ability slot or Dynamax values are out of range.	個体値・努力値・特性スロット・ダイマックス関連の値が範囲外です。
+Total EVs must not exceed 510.	努力値の合計は510以下にしてください。
+This ability slot is unavailable or could not be verified for the species.	この種族では指定の特性スロットを使用できないか、定義を確認できませんでした。
+The selected gender is incompatible with the species or could not be verified.	指定した性別はこの種族に対応していないか、性別の定義を確認できませんでした。
+Gigantamax eligibility could not be verified for this species.	この種族のキョダイマックス適性を確認できませんでした。
+Choose a valid party target, operation, move slot and distinct result variables.	手持ちの対象・操作・技スロットを正しく指定し、結果変数が重複しないようにしてください。
+The party selector's wait behavior changed. Reconfigure this command.	手持ち選択画面の待機方法が変更されています。コマンドを設定し直してください。
+The safe move replacement implementation is unavailable.	安全な技変更処理を確認できませんでした。
+Pokemon dialogue is too long or contains a raw Poryscript delimiter.	文章が長すぎるか、Poryscriptのraw区切り文字が含まれています。
+Trainer Battle must be the first command, with automatic player locking disabled, so NPC sight detection can read the native battle opcode.	視界判定が戦闘コマンドを読み取れるよう、トレーナー戦を先頭に置き、移動の自動固定を無効にしてください。
+Pokemon Event Settings	ポケモンイベントの設定
+Basic Settings	基本設定
+Search	検索
+Result Variable	結果の保存先変数
+Pokemon Species	ポケモンの種類
+Held Item	持ち物
+Trainer ID	トレーナーID
+Message Before Battle	戦闘開始前の文章
+After Battle	戦闘終了後
+After Winning	勝利した場合
+After Catching	捕獲した場合
+After Running Away	逃げた場合
+The result variable receives B_OUTCOME_* from GetBattleOutcome. Add If Variable for further processing. A total defeat normally causes a whiteout, so this event cannot run a defeat branch.	GetBattleOutcomeのB_OUTCOME_*を結果変数に保存します。追加処理には「条件分岐（変数）」を使用してください。全滅すると通常はホワイトアウトするため、このイベント内で敗北後の分岐は実行できません。
+Double Battle	ダブルバトル
+Use Official Rematch Rules	ゲーム標準の再戦処理を使用する
+Trainer's Intro Dialogue	トレーナーの開始前の台詞
+Trainer's Defeat Dialogue	トレーナーの敗北時の台詞
+Not Enough Usable Pokemon	戦闘可能なポケモンが不足しているときの台詞
+First Victory Dialogue	初めて勝利したときの台詞
+Already Defeated / Rematch Dialogue	戦闘済み・再戦後の台詞
+NPC Sight Detection	NPCの視界判定
+Start Automatically When the Player Enters Sight	プレイヤーが視界に入ると自動で戦闘を始める
+Sight Range (Tiles)	視界の範囲（マス）
+The native trainerbattle opcode must be first. Player locking is handled by the engine. Defeated flags, double-battle party checks and whiteouts use the game's rules. Rematches require the project's rematch table.	トレーナー戦はスクリプトの先頭に置く必要があります。移動の固定、戦闘済みフラグ、ダブルバトルの手持ち確認、全滅時の処理はゲーム側の仕様に従います。再戦にはプロジェクトの再戦表への登録が必要です。
+Pokemon Center Style Fade and Healing Fanfare	ポケモンセンター風の画面フェード・回復音を付ける
+Message After Healing	回復後の文章
+HealPlayerParty restores HP, PP and status using the engine. The center-style effect uses a fade and fanfare; it does not require a healing-machine object. Individual healing is unavailable without a verified engine helper.	HealPlayerPartyでHP・PP・状態異常を回復します。センター風の演出はフェードと回復音を使用し、回復装置の配置は不要です。個別回復には専用のゲーム側処理が必要です。
+Required Unused Persistent Flag	未使用の永続フラグ（必須）
+Success Flag (Optional, Once Only)	受け取り成功フラグ（任意・一度だけ）
+Messages and Results	文章・処理結果
+Message on Successful Receipt	受け取り成功時の文章
+Message When Party and PC Are Full	手持ち・PCが満杯で受け取れないときの文章
+Ask About Nickname (Blank to Skip)	ニックネームを尋ねる文章（空欄なら省略）
+A safe party/PC nickname implementation was not found.	手持ち・PCに対応した安全なニックネーム変更処理を確認できませんでした。
+Result: 0 = party, 1 = PC, 2 = cannot receive, 3 = already received. The success flag is set only after receipt. Existing party slots are never overwritten.	結果は0＝手持ち、1＝PC、2＝受け取り失敗、3＝受け取り済みです。成功時だけフラグをONにします。既存の手持ちポケモンは上書きしません。
+Creation Details	生成の詳細設定
+IVs and EVs	個体値・努力値
+Moves	覚えている技
+Engine Default	ゲームの既定値
+Poke Ball	モンスターボール
+Nature	性格
+Tera Type	テラスタイプ
+Ability Slot %1	特性スロット%1
+Ability Slot	特性スロット
+Search Species Abilities	種族の特性を検索
+This ability could not be verified for the selected species.	選択した種族でこの特性を使用できることを確認できませんでした。
+Male	オス
+Female	メス
+Genderless	性別不明
+Gender	性別
+Engine Default / Random	ゲームの既定値・ランダム
+Always Shiny	色違いに固定
+Never Shiny	通常色に固定
+Shininess	色違い設定
+Dynamax Level	ダイマックスレベル
+Gigantamax Factor (0 / 1)	キョダイマックス適性（0＝なし・1＝あり）
+HP	HP
+Attack	こうげき
+Defense	ぼうぎょ
+Sp. Atk	とくこう
+Sp. Def	とくぼう
+Blank/default IVs use engine generation. EVs are limited to 252 per stat and 510 total. Species ability slots, fixed genders and Gigantamax eligibility are checked when metadata is available.	個体値を既定値にするとゲーム側で生成します。努力値は各252・合計510までです。種族データを取得できる場合は特性スロット、固定の性別、キョダイマックス適性も確認します。
+Move %1	技%1
+Target Selection	対象の選び方
+First Party Pokemon	手持ちの先頭
+Specified Party Slot	手持ちの指定スロット
+Let Player Choose	プレイヤーに選ばせる
+Find First Matching Species	指定種族を先頭から検索
+Party Slot (0 to 5)	手持ちスロット（0～5）
+Operation	操作内容
+Read Species	種族を取得
+Replace Move	技を変更
+Heal Selected Pokemon	選択したポケモンを回復
+Change Held Item / Level / Nature	持ち物・レベル・性格の変更
+Change IVs / EVs / Ability / Tera Type / Friendship	個体値・努力値・特性・テラスタイプ・なつき度の変更
+This operation needs a separately implemented game-side helper.	この操作には、別途ゲーム側に専用処理を実装する必要があります。
+New Move	変更後の技
+Move Slot (0 to 3)	技スロット（0～3）
+Selected slot is returned in VAR_0x8009 (6 = none/cancel/egg). Species reads return SPECIES_* or 0; move replacement returns 1 or 0. Missing targets and eggs are skipped. Unsupported changes require a separate game-side helper.	選択した位置はVAR_0x8009に保存します（6＝対象なし・キャンセル・タマゴ）。種族取得はSPECIES_*または0、技変更は成功1・失敗0を返します。対象が存在しない場合やタマゴは操作せず、未対応の変更にはゲーム側の専用処理が必要です。
+This template requires an unused persistent flag.	このテンプレートには未使用の永続フラグが必要です。
+Pokemon Event Templates	ポケモンイベントのテンプレート
+Static Wild Battle	野生ポケモンとの固定戦闘
+Trainer Battle	トレーナーとの戦闘
+Pokemon Center Style Healing	ポケモンセンター風の回復
+Receive Pokemon from NPC	NPCからポケモンをもらう
+One-time Gift Pokemon	一度きりのプレゼントポケモン
+Receive Pokemon Egg	ポケモンのタマゴをもらう
+Choose and Operate on Party Pokemon	手持ちポケモンを選択して操作する
+Wild Pokemon Battle	野生ポケモンとの戦闘
+Check Trainer Defeated	トレーナーの戦闘済み状態を取得
+Heal Party Pokemon	手持ちポケモンを回復
+Give Pokemon	ポケモンを入手
+Give Pokemon Egg	タマゴを入手
+Select / Modify Party Pokemon	手持ちポケモンを選択・操作
+All Commands	すべてのコマンド
+Basic Event Commands	基本イベント
+Choose an actual Pokemon species, not NONE or EGG.	NONEやEGGではなく、実際のポケモンの種族を選択してください。
+Use the matching BALL_, NATURE_, TYPE_ or MOVE_ constant for this field.	この項目に対応するBALL_・NATURE_・TYPE_・MOVE_定数を指定してください。
+Choose a usable Tera type.	有効なテラスタイプを選択してください。
+Display Name	表示名
+Trainer Battle must be first. The engine handles locking, defeated flags, usable-party checks and whiteouts. Result: 1 = first victory, 0 = already defeated, 2 = official rematch flow. Rematches need the project's rematch table.	トレーナー戦は先頭に置いてください。移動固定、戦闘済み判定、手持ち不足、全滅時の処理はゲーム側に従います。結果は1＝初勝利、0＝戦闘済み、2＝公式の再戦処理です。再戦にはゲーム側の再戦表への登録が必要です。
+%1 IV	%1の個体値
+%1 EV	%1の努力値
+Party Position (1 to 6)	手持ちの位置（1～6匹目）
+Move Position (1 to 4)	技の位置（1～4番目）
+The selected party operation has no verified engine implementation.	選択した手持ち操作に対応するゲーム側の実装を確認できませんでした。
+Cure Status Condition	状態異常を回復
+Change Tera Type	テラスタイプを変更
+Change IVs / EVs / Ability / Friendship	個体値・努力値・特性・なつき度の変更
+Enabled only when this project's macro and C implementation are verified.	このプロジェクトのマクロとC実装を確認できる場合だけ使用できます。
+VAR_0x8009 receives the zero-based slot (6 = none/cancel/egg). Species reads return SPECIES_* or 0; other operations return 1 or 0. Missing targets and eggs are skipped. Unsupported changes require a separate game-side helper.	VAR_0x8009には0始まりの位置を保存します（6＝対象なし・キャンセル・タマゴ）。種族取得はSPECIES_*または0、それ以外の操作は成功1・失敗0を返します。対象が存在しない場合やタマゴは操作せず、未対応の変更にはゲーム側の専用処理が必要です。
+Choose an actual trainer ID, not TRAINER_NONE.	TRAINER_NONEではなく、実際のトレーナーIDを選択してください。
+NPC sight detection requires Trainer Battle as the first command.	NPCの視界判定を使用するには、トレーナー戦を先頭に置いてください。
+Trainer battles require an NPC event so the engine can identify the trainer object.	ゲーム側がトレーナーを正しく特定できるよう、トレーナー戦はNPCのイベントから作成してください。
+Trainer battles must be edited from an NPC event.	トレーナー戦はNPCのイベントから編集してください。

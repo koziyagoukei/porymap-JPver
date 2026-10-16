@@ -232,10 +232,18 @@ void EventFrame::addVisualEditorButton(NoScrollComboBox *scriptCombo) {
     connect(button, &QPushButton::clicked, this, [this, scriptCombo] {
         if (!this->project || !this->event || !this->event->getMap()) return;
         QPointer<Map> map = this->event->getMap();
-        VisualEventEditor dialog(this->project, map, scriptCombo->currentText(), this);
+        VisualEventEditor dialog(this->project, map, scriptCombo->currentText(), this, dynamic_cast<ObjectEvent *>(this->event) != nullptr);
         if (dialog.exec() == QDialog::Accepted && map) {
             // Reuse the existing combo's signals for Event::setScript / modify.
             scriptCombo->setTextItem(dialog.scriptLabel());
+            if (!dialog.objectFlag().isEmpty()) if (auto object = dynamic_cast<ObjectEvent *>(this->event))
+                object->setFlag(dialog.objectFlag());
+            if (!dialog.npcTrainer().isEmpty()) if(auto object=dynamic_cast<ObjectEvent *>(this->event)) {
+                object->setTrainerType(dialog.npcTrainer()["type"].toString());
+                object->setSightRadiusBerryTreeID(QString::number(dialog.npcTrainer()["sight"].toInt()));
+            }
+            this->event->modify();
+            this->invalidateValues();
             map->invalidateScripts();
         }
     });

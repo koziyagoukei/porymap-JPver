@@ -45,7 +45,10 @@ DEFINES += PORYMAP_VERSION=\\\"$$VERSION\\\"
 
 SOURCES += src/core/advancemapparser.cpp \
     src/core/visualeventscript.cpp \
+    src/core/pokemonevent.cpp \
     src/ui/visualeventeditor.cpp \
+    src/ui/visualeventtools.cpp \
+    src/ui/pokemoneventdialog.cpp \
     src/core/block.cpp \
     src/ui/resizelayoutpopup.cpp \
     src/core/bitpacker.cpp \
@@ -165,7 +168,10 @@ SOURCES += src/core/advancemapparser.cpp \
 
 HEADERS  += include/core/advancemapparser.h \
     include/core/visualeventscript.h \
+    include/core/pokemonevent.h \
     include/ui/visualeventeditor.h \
+    include/ui/visualeventtools.h \
+    include/ui/pokemoneventdialog.h \
     include/core/block.h \
     include/core/bitpacker.h \
     include/core/blockdata.h \
