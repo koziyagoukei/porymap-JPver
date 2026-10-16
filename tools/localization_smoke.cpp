@@ -30,6 +30,7 @@ static void capture(QWidget &widget, const QString &path) {
     require(widget.grab().save(path), "Cannot save screenshot");
     widget.hide();
 }
+#include "visual_event_gui_checks.h"
 int main(int argc, char **argv) {
     QApplication app(argc, argv);
     QFontDatabase::addApplicationFont("C:/Windows/Fonts/meiryo.ttc");
@@ -77,6 +78,7 @@ int main(int argc, char **argv) {
     require(Event::typeToString(Event::Type::HiddenItem) == QString::fromUtf8("隠しアイテム"), "Event label untranslated");
     QDialogButtonBox buttons(QDialogButtonBox::Save | QDialogButtonBox::Cancel);
     require(buttons.button(QDialogButtonBox::Cancel)->text().contains(QString::fromUtf8("キャンセル")), "Qt standard button untranslated");
+    visualEventGuiChecks();
     QFile result("smoke-results/result.txt");
     require(result.open(QIODevice::WriteOnly), "Cannot save test report");
     result.write("PASS: embedded catalogs, Japanese menus/events/buttons, all 6 region-map format round trips, unchanged event JSON keys.\n");

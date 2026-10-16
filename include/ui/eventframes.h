@@ -62,6 +62,7 @@ protected:
     void populateScriptDropdown(NoScrollComboBox * combo, Project * project);
     void populateMapNameDropdown(NoScrollComboBox * combo, Project * project);
     void populateIdNameDropdown(NoScrollComboBox * combo, Project * project, const QString &mapName, Event::Group group);
+    void addVisualEditorButton(NoScrollComboBox *scriptCombo);
 
 private:
     Event *event;

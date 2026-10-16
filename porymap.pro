@@ -44,6 +44,8 @@ VERSION = 6.3.1
 DEFINES += PORYMAP_VERSION=\\\"$$VERSION\\\"
 
 SOURCES += src/core/advancemapparser.cpp \
+    src/core/visualeventscript.cpp \
+    src/ui/visualeventeditor.cpp \
     src/core/block.cpp \
     src/ui/resizelayoutpopup.cpp \
     src/core/bitpacker.cpp \
@@ -162,6 +164,8 @@ SOURCES += src/core/advancemapparser.cpp \
     src/ui/wildmonsearch.cpp
 
 HEADERS  += include/core/advancemapparser.h \
+    include/core/visualeventscript.h \
+    include/ui/visualeventeditor.h \
     include/core/block.h \
     include/core/bitpacker.h \
     include/core/blockdata.h \

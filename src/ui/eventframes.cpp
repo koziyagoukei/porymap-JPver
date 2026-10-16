@@ -1,5 +1,6 @@
 #include <QCoreApplication>
 #include "eventframes.h"
+#include "visualeventeditor.h"
 #include "customattributesframe.h"
 #include "editcommands.h"
 #include "eventpixmapitem.h"
@@ -224,6 +225,22 @@ void EventFrame::populateScriptDropdown(NoScrollComboBox * combo, Project * proj
     connect(map, &Map::scriptsModified, this, &EventFrame::invalidateValues, Qt::UniqueConnection);
 }
 
+void EventFrame::addVisualEditorButton(NoScrollComboBox *scriptCombo) {
+    auto button = new QPushButton(QCoreApplication::translate("Porymap", "Edit Event Commands"), this);
+    button->setObjectName("editVisualEventCommands");
+    this->layout_contents->addWidget(button);
+    connect(button, &QPushButton::clicked, this, [this, scriptCombo] {
+        if (!this->project || !this->event || !this->event->getMap()) return;
+        QPointer<Map> map = this->event->getMap();
+        VisualEventEditor dialog(this->project, map, scriptCombo->currentText(), this);
+        if (dialog.exec() == QDialog::Accepted && map) {
+            // Reuse the existing combo's signals for Event::setScript / modify.
+            scriptCombo->setTextItem(dialog.scriptLabel());
+            map->invalidateScripts();
+        }
+    });
+}
+
 void EventFrame::populateMapNameDropdown(NoScrollComboBox * combo, Project * project) {
     if (!project)
         return;
@@ -310,6 +327,7 @@ void ObjectFrame::setup() {
 
     l_form_script->addRow(QCoreApplication::translate("Porymap", "Script"), l_hbox_scr);
     this->layout_contents->addLayout(l_form_script);
+    addVisualEditorButton(this->combo_script);
 
     // event flag
     QFormLayout *l_form_flag = new QFormLayout();
@@ -707,6 +725,7 @@ void TriggerFrame::setup() {
     this->combo_script->setToolTip(combo_script_toolTip);
     l_form_script->addRow(QCoreApplication::translate("Porymap", "Script"), this->combo_script);
     this->layout_contents->addLayout(l_form_script);
+    addVisualEditorButton(this->combo_script);
 
     // var combo
     QFormLayout *l_form_var = new QFormLayout();
@@ -851,6 +870,7 @@ void SignFrame::setup() {
     this->combo_script->setToolTip(combo_script_toolTip);
     l_form_script->addRow(QCoreApplication::translate("Porymap", "Script"), this->combo_script);
     this->layout_contents->addLayout(l_form_script);
+    addVisualEditorButton(this->combo_script);
 
     // custom attributes
     EventFrame::initCustomAttributesTable();

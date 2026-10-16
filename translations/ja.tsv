@@ -1,4 +1,90 @@
 Groups	グループ
+Dialogue exceeds 1000 encoded bytes. Split it into multiple Show Message commands.	会話文がゲーム用文字コードで 1000 バイトを超えています。複数の「文章の表示」に分けてください。
+This .inc was generated from Poryscript. Its .pory source is required for editing.	この .inc は Poryscript から生成されています。編集するには元の .pory ファイルが必要です。
+The script is not at a safe top-level editing position.	文字列・スクリプト・マクロ・条件の外側であることを確認できないため、安全に編集できません。
+Edit Event Commands	イベントコマンド編集
+Show Message	文章の表示
+Ask Yes / No	選択肢の表示（はい／いいえ）
+Turn Flag ON	フラグを ON にする
+Turn Flag OFF	フラグを OFF にする
+Assign Variable	変数に代入
+Add to Variable	変数に加算
+Subtract from Variable	変数から減算
+If Flag	条件分岐（フラグ）
+If Variable	条件分岐（変数）
+Otherwise	それ以外の場合
+End Condition	分岐の終了
+Give Item	アイテムの入手
+Face Player	NPC をプレイヤーの方へ向ける
+Wait Frames	待機（フレーム）
+Play Sound Effect	効果音の再生
+Play BGM	BGM の再生
+End Script	スクリプトの終了
+Cannot read a script source: %1	スクリプトのソースを読み込めません: %1
+The script label is defined more than once.	同じスクリプトラベルが複数の場所で定義されています。
+The script source must be an .inc or .pory file inside this project.	編集対象は、このプロジェクト内の .inc または .pory ソースにしてください。
+Poryscript is enabled, but its .pory source was not found. Generated .inc files cannot be edited.	Poryscript が有効ですが、元の .pory ファイルが見つかりません。生成された .inc は編集できません。
+The source is unreadable or is not valid UTF-8. Use the external editor to preserve its encoding.	ソースを読み込めないか、UTF-8 以外の文字コードです。文字コードを保持するため外部エディターを使用してください。
+The visual editor block is incomplete or duplicated.	ビジュアルエディターの編集範囲が不完全、または重複しています。
+This visual editor data version is unsupported or damaged.	再編集用のデータが未対応のバージョン、または破損しています。
+This script was changed outside the visual editor. It is read-only to preserve those changes.	外部でスクリプトが変更されています。変更を保護するため、読み取り専用で開きます。
+This existing script is not a visual editor script. Open it in the external editor.	この既存スクリプトは初期版では GUI に読み込めません。外部エディターで編集してください。
+A UTF-8 charmap.txt is required to validate dialogue in this project.	会話文を検証するには、プロジェクト直下に UTF-8 の charmap.txt が必要です。
+Dialogue contains a reserved terminator or unsupported control character.	会話文に終端記号「$」または未対応の制御文字が含まれています。
+Character or control code is missing from charmap.txt near: %1	charmap.txt にない文字・制御コードがあります。該当箇所: %1
+Use a valid script label. Existing labels cannot be renamed here.	ラベルには半角英字・数字・アンダースコアを使用し、数字以外で始めてください。保存済みラベルの名前変更には対応していません。
+The last command must be End Script (maximum 1000 commands).	最後に「スクリプトの終了」を配置してください。コマンドは最大 1000 個です。
+This label or its generated labels conflict with another script.	このラベル、または生成する補助ラベルが他のスクリプトと重複します。
+Unsupported event command.	未対応のイベントコマンド、または不正なパラメーターがあります。
+Choose a constant name or an integer from 0 to 65535.	定数名、または 0～65535 の整数を入力してください。
+Enter dialogue text (up to 8192 characters).	会話文を入力してください（最大 8192 文字）。
+Select ON or OFF for the flag condition.	フラグの条件には ON または OFF を指定してください。
+Select a valid comparison.	比較方法を選択してください。
+Conditions may be nested at most 16 levels deep.	条件分岐は最大 16 段まで入れ子にできます。
+Otherwise must occur once inside a condition.	「それ以外の場合」は、各条件分岐内に 1 回だけ配置できます。
+End Condition has no matching condition.	「分岐の終了」に対応する条件分岐がありません。
+End Script must occur once, outside conditions, at the end.	「スクリプトの終了」は、分岐の外側の末尾に 1 回だけ配置してください。
+Close every condition with End Condition.	すべての条件分岐を「分岐の終了」で閉じてください。
+Cannot verify this project's asm/macros/event.inc commands.	プロジェクトの asm/macros/event.inc を確認できません。
+A required script command is missing from this project: %1	このプロジェクトに必要なスクリプトコマンドが見つかりません: %1
+The script path is outside the project.	スクリプトのパスがプロジェクトの外側を指しています。
+Another visual editor is saving this script.	他のビジュアルエディターがこのスクリプトを保存しています。
+The source file changed after opening. Close and reopen the editor before saving.	開いた後にソースファイルが変更されました。一度閉じてから開き直してください。
+Could not create the backup. Nothing was saved.	バックアップを作成できなかったため、保存していません。
+Could not save the script atomically. The original file is preserved.	スクリプトを安全に保存できませんでした。元ファイルは保持されています。
+Visual Event Editor	ビジュアルイベントエディター
+Script Label	スクリプトラベル
+Source File	保存先のソース
+Lock player movement while this event runs	イベントの実行中はプレイヤーの移動を固定する
+Event Commands	イベントコマンド一覧
+Add Command	コマンドを追加
+Processing Order	イベントの処理順
+Delete Command	削除
+Duplicate Command	複製
+Move Up	上へ
+Move Down	下へ
+Command Settings	コマンドの設定
+Equal to	等しい
+Not equal to	等しくない
+Less than	より小さい
+Greater than	より大きい
+Less than or equal to	以下
+Greater than or equal to	以上
+Enter dialogue with line breaks. Use \l and \p to scroll or start a paragraph. Yes / No stores 1 / 0 in VAR_RESULT; branch with If Variable. Text is checked against the project's charmap.txt.	改行して会話文を入力できます。\l はスクロール、\p はページ送りです。「はい／いいえ」の結果は VAR_RESULT に 1／0 で入り、「条件分岐（変数）」で判定できます。会話文はプロジェクトの charmap.txt で確認します。
+Open in External Editor	外部エディターで開く
+Preview Generated Script	生成スクリプトのプレビュー
+Review and Save	確認して保存
+Save this new map in Porymap before editing its script.	新規マップは先に Porymap で保存してからスクリプトを編集してください。
+Edits stay in this window until you review and save. The map's script reference is saved with the map.	「確認して保存」まではファイルを変更しません。ラベルの関連付けは、最後に Porymap でマップを保存すると反映されます。
+ON	ON
+OFF	OFF
+Variable	変数
+BGM	BGM
+Sound Effect	効果音
+Frames	フレーム数
+1 = ON, 0 = OFF	フラグの状態（ON／OFF）
+Only this event's visual editor block will be saved. A backup of the original file is created before replacement.	このイベントの編集範囲だけを保存し、置き換え前のファイルをバックアップします。同じラベルを参照するイベントにも変更が反映されます。
+Discard the unsaved event command edits?	保存していないイベントコマンドの変更を破棄しますか？
 Project Configuration	プロジェクトの初期設定
 Game Version	ゲームのバージョン
 Export %1 Image	%1の画像を書き出す

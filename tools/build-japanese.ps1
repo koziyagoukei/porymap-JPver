@@ -26,6 +26,7 @@ try {
     & "$QtRoot\bin\windeployqt.exe" --release --compiler-runtime --no-translations "$packageDir\porymap.exe"
     Check-Exit 'windeployqt'
     Copy-Item -LiteralPath "$projectRoot\README-JA.md" -Destination "$packageDir\README-JA.md"
+    Copy-Item -LiteralPath "$projectRoot\VISUAL-EVENT-EDITOR-JA.md" -Destination "$packageDir\VISUAL-EVENT-EDITOR-JA.md"
     Copy-Item -LiteralPath "$projectRoot\LICENSE.md" -Destination "$packageDir\LICENSE.md"
     Copy-Item -LiteralPath "$projectRoot\licenses" -Destination $packageDir -Recurse -Force
     if ($SmokeTest) {
